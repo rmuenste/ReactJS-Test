@@ -2,14 +2,17 @@ import React, {Component} from 'react';
 import huntingPeriods from './huntingPeriods';
 import AnimalItem from './AnimalItem';
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import { S_IXGRP } from 'constants';
 
 class MainContent extends Component {
   constructor() {
     super();
+    let theData = huntingPeriods;
+    theData = this.shuffle(theData);
     this.state = {
       startDate: "",
       endDate: "",
-      dates: huntingPeriods,
+      dates: theData,
       currentItem: 0,
       showSolutionFeedback: false,
       result: false
@@ -30,6 +33,21 @@ class MainContent extends Component {
       this.setState({
         [name]: event.target.value
       });
+  }
+
+  shuffle(a) {
+    let j, x, i,idtemp, keytemp;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[i].key = i;
+        a[i].id = i+1;
+        a[j] = x;
+        x.id = j+1;
+        x.key = j;
+    }
+    return a;
   }
 
   // An event handler has an event parameter
@@ -77,8 +95,8 @@ class MainContent extends Component {
         {(!this.state.showSolutionFeedback) ?
          <div className={"card-container"}>
            <AnimalItem item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
-   <aside class="sidebar">
-      <p>Geben Sie die Jagdzeiten in der Form 01-15 für den 1. Januar an.</p>
+   <aside className="sidebar">
+      <p>Geben Sie die Jagdzeiten in der Form 01-15 für den 15. Januar an.</p>
     </aside>
          </div>
          :
