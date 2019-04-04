@@ -20,7 +20,7 @@ const huntingPeriods = [
         key: 2,
         imgPath: "./images/dam-sika.jpg",
         name: "Dam- und Sikawild",
-        begin: "01-09",
+        begin: "01-08",
         end: "15-01"
     },
     {
@@ -92,7 +92,7 @@ const huntingPeriods = [
         key: 11,
         imgPath: "./images/waschbaer.jpg",
         name: "Waschbär",
-        begin: "01-09",
+        begin: "01-08",
         end: "28-02"
     },
     {
@@ -165,7 +165,7 @@ const huntingPeriods = [
         imgPath: "./images/waldschnepfe.jpg",
         name: "Waldschnepfe",
         begin: "16-10",
-        end: "15-12"
+        end: "15-01"
     },
     {
         id: 22,
@@ -173,7 +173,7 @@ const huntingPeriods = [
         imgPath: "./images/rabenkraehe.jpg",
         name: "Rabenkrähe",
         begin: "01-08",
-        end: "20-02"
+        end: "10-03"
     },
     {
         id: 23,
@@ -190,7 +190,16 @@ const huntingPeriods = [
         name: "Rotwild",
         begin: "01-08",
         end: "15-01"
+    },
+    {
+        id: 25,
+        key: 24,
+        imgPath: "./images/muffelwild.jpg",
+        name: "Muffelwild",
+        begin: "01-08",
+        end: "31-01"
     }
+
 
 ];
 
