@@ -95,16 +95,18 @@ class MainContent extends Component {
         {(!this.state.showSolutionFeedback) ?
          <div className={"card-container"}>
            <AnimalItem item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
-   <aside className="sidebar">
-      <p>Geben Sie die Jagdzeiten in der Form 01-15 für den 15. Januar an.</p>
-    </aside>
+          <aside className="sidebar">
+              <p>Geben Sie die Jagdzeiten in der Form 01-15 für den 15. Januar an.</p>
+          </aside>
          </div>
          :
          <div className={"card-container"}>
            <AnimalItem item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
+           <aside className="sidebar">
+             <p>Geben Sie die Jagdzeiten in der Form 01-15 für den 15. Januar an.</p>
+           </aside>
          </div>
         }
-
       </main>
       );
   }
