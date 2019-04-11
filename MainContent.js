@@ -51,9 +51,13 @@ class MainContent extends Component {
   }
 
   // An event handler has an event parameter
-  checkSolution(id, userStart, userEnd) {
+  checkSolution(id, userSolution) {
+
     let item = this.state.dates[id];
-    if(userStart === item.begin && userEnd === item.end) {
+    if(userSolution.kulturtyp === item.kulturtyp &&
+       userSolution.nester === item.nester &&
+       userSolution.zugverhalten === item.zugverhalten &&
+       userSolution.paarbildung === item.paarbildung) {
       console.log("CheckSolution: Correct");
       this.setState({
         showSolutionFeedback: true,
@@ -84,10 +88,6 @@ class MainContent extends Component {
       currentItem: nextItem 
     });
   }
-
-//        <h1>Lösung</h1>
-//        <h3>Von {this.state.dates[this.state.currentItem].begin} bis {this.state.dates[this.state.currentItem].end}</h3>
-//        <button onClick={this.nextItem}>Weiter</button>
 
   render() {
     return (
