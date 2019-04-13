@@ -197,7 +197,7 @@ const huntingPeriods = [
         imgPath: "./images/muffelwild.jpg",
         name: "Muffelwild",
         begin: "01-08",
-        end: "31-01"
+        end: "15-01"
     }
 
 
