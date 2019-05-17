@@ -5,7 +5,7 @@ const huntingPeriods = [
         imgPath: "./images/rehbock.jpg",
         name: "Rehbock",
         begin: "01-05",
-        end: "15-01"
+        end: "31-01"
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ const huntingPeriods = [
         imgPath: "./images/keiler.jpg",
         name: "Schwarzwild",
         begin: "01-08",
-        end: "15-01"
+        end: "31-01"
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ const huntingPeriods = [
         imgPath: "./images/dam-sika.jpg",
         name: "Dam- und Sikawild",
         begin: "01-08",
-        end: "15-01"
+        end: "31-01"
     },
     {
         id: 4,
@@ -69,7 +69,7 @@ const huntingPeriods = [
         imgPath: "./images/dachs.jpg",
         name: "Dachs",
         begin: "01-09",
-        end: "30-11"
+        end: "31-12"
     },
     {
         id: 10,
@@ -189,7 +189,7 @@ const huntingPeriods = [
         imgPath: "./images/rothirsch.jpg",
         name: "Rotwild",
         begin: "01-08",
-        end: "15-01"
+        end: "31-01"
     },
     {
         id: 25,
@@ -197,9 +197,24 @@ const huntingPeriods = [
         imgPath: "./images/muffelwild.jpg",
         name: "Muffelwild",
         begin: "01-08",
-        end: "15-01"
+        end: "31-01"
+    },
+    {
+        id: 26,
+        key: 25,
+        imgPath: "./images/schmaltier-rot.jpg",
+        name: "Schmaltiere/spießer",
+        begin: "01-05",
+        end: "31-05"
+    },
+    {
+        id: 27,
+        key: 26,
+        imgPath: "./images/schmalreh.jpg",
+        name: "Schmalrehe/spießer",
+        begin: "01-05,01-09",
+        end: "31-05,31-01"
     }
-
 
 ];
 
