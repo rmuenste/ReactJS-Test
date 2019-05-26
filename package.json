@@ -1,34 +1,29 @@
 {
-  "name": "fromscratch",
+  "name": "reactjs-basics",
   "version": "1.0.0",
-  "description": "",
+  "description": "A basic ReactJS App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server --mode development --open --hot"
+    "start": "npm run build",
+    "build": "webpack -d && webpack-dev-server --content-base src/ --inline --hot --port 8181",
+    "build:prod": "webpack -p && cp src/index.html dist/index.html"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "reactjs"
+  ],
+  "author": "Raphael Muenster",
+  "license": "MIT",
   "dependencies": {
-    "classnames": "^2.2.6",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "react-transition-group": "^2.4.0"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/preset-env": "^7.4.2",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
-    ]
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.32.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
   }
 }

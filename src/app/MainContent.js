@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import huntingPeriods from './huntingPeriods';
 import AnimalItem from './AnimalItem';
-import {CSSTransition, TransitionGroup} from "react-transition-group";
-import { S_IXGRP } from 'constants';
 
 class MainContent extends Component {
   constructor() {
