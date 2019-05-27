@@ -4,15 +4,12 @@ import MainContent from './MainContent';
 import Footer from './Footer';
 
 class App extends React.Component {
-  constructor() {
-    super();
-  }
+
   render() {
     return (
       <div>
       <Navbar />
       <MainContent />
-      <Footer />
       </div>
     );
   }
