@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import huntingPeriods from './huntingPeriods';
 import AnimalItem from './AnimalItem';
+import { connect } from 'react-redux';
 
 class MainContent extends Component {
   constructor() {
@@ -57,12 +58,16 @@ class MainContent extends Component {
         showSolutionFeedback: true,
         result: true 
       });
+      this.props.dispatch( {type: 'SHOW_OVERLAY'} );
+      this.props.dispatch( {type: 'RESULT_OK'} );
     } else {
       console.log("Wrong");
       this.setState({
         showSolutionFeedback: true,
         result: false 
       });
+      this.props.dispatch( {type: 'SHOW_OVERLAY'} );
+      this.props.dispatch( {type: 'RESULT_WRONG'} );
     }
 
   }
@@ -74,6 +79,7 @@ class MainContent extends Component {
       showSolutionFeedback: false,
       result: false 
     });
+    this.props.dispatch( {type: 'HIDE_OVERLAY'} );
   }
 
   nextItem() {
@@ -110,4 +116,18 @@ class MainContent extends Component {
   }
 }
 
-export default MainContent;
+const mapStateToProps = state => {
+  return {
+    showOverlay: state.showTheOverlay 
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+      toggleOverlay: () => dispatch({type: "TOGGLE"}),
+      showOverlay: () => dispatch({type: "SHOW_OVERLAY"}),
+      hideOverlay: () => dispatch({type: "HIDE_OVERLAY"})
+  }
+};
+
+export default connect(mapStateToProps)(MainContent);

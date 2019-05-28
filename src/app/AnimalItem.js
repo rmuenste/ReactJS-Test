@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import FeedbackOverlay from "./FeedbackOverlay";
 
 class AnimalItem extends Component {
@@ -47,7 +48,7 @@ class AnimalItem extends Component {
         <h2>{this.props.item.name}</h2> 
         <div className={"card-image"}>
           <img src={this.props.item.imgPath}/>
-          {(this.props.feedbackState) ? <FeedbackOverlay result={this.props.result}/> : null}
+          {(this.props.feedbackState) ? <FeedbackOverlay result={this.props.reduxResult}/> : null}
         </div>
           <div className={"input-container"}>
           <form autoComplete={"off"}>
@@ -64,4 +65,10 @@ class AnimalItem extends Component {
   }
 }
 
-export default AnimalItem;
+const mapStateToProps = (state) => {
+  return {
+    reduxResult: state.currentResult
+  }
+}
+
+export default connect(mapStateToProps)(AnimalItem);

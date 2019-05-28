@@ -11,20 +11,49 @@ import {Provider} from "react-redux";
 
 import App from "./App";
 
-const reducer = (state = { showTheOverlay: true }, 
-                action) => {
-                    switch(action.type) {
-                        case "TOGGLE":
-                            state = {
-                                ...state,
-                                showTheOverlay: !state.showTheOverlay
-                            }
-                            break;
-                    }
-                    return state;
-                }
+const initialState = { 
+    showTheOverlay: false,
+    currentResult: false
+};
 
-const store = createStore(reducer);
+const rootReducer = (state = initialState, 
+                    action) => {
+                        switch(action.type) {
+                            case "TOGGLE":
+                                state = {
+                                    ...state,
+                                    showTheOverlay: !state.showTheOverlay
+                                }
+                                break;
+                            case "SHOW_OVERLAY":
+                                state = {
+                                    ...state,
+                                    showTheOverlay: true 
+                                }
+                                break;
+                            case "HIDE_OVERLAY":
+                                state = {
+                                    ...state,
+                                    showTheOverlay: false 
+                                }
+                                break;
+                            case "RESULT_OK":
+                                state = {
+                                    ...state,
+                                    currentResult: true 
+                                }
+                                break;
+                            case "RESULT_WRONG":
+                                state = {
+                                    ...state,
+                                    currentResult: false 
+                                }
+                                break;
+                        }
+                        return state;
+                    }
+
+const store = createStore(rootReducer);
 
 store.subscribe(() => {
   console.log("Store updated!", store.getState());
@@ -32,5 +61,5 @@ store.subscribe(() => {
 
 // call the render function
 ReactDOM.render(
-                <Provider><App /></Provider>,
+                <Provider store={store}><App /></Provider>,
                 document.getElementById('root'));
