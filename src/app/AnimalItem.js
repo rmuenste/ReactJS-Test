@@ -48,15 +48,15 @@ class AnimalItem extends Component {
         <h2>{this.props.item.name}</h2> 
         <div className={"card-image"}>
           <img src={this.props.item.imgPath}/>
-          {(this.props.feedbackState) ? <FeedbackOverlay result={this.props.reduxResult}/> : null}
+          {(this.props.showTheOverlay) ? <FeedbackOverlay result={this.props.reduxResult}/> : null}
         </div>
           <div className={"input-container"}>
           <form autoComplete={"off"}>
-            <input type="text" value={this.state.startDate} name="startDate" placeholder="Beginn der Jagdzeit" onChange={this.handleOnChange}/>
-            <input type="text" value={this.state.endDate} name="endDate" placeholder="Ende der Jagdzeit" onChange={this.handleOnChange}/>
+            <input type="text" disabled={this.props.showTheOverlay} value={this.state.startDate} name="startDate" placeholder="Beginn der Jagdzeit" onChange={this.handleOnChange}/>
+            <input type="text" disabled={this.props.showTheOverlay} value={this.state.endDate} name="endDate" placeholder="Ende der Jagdzeit" onChange={this.handleOnChange}/>
           </form>
             <br/>
-          {(!this.props.feedbackState) ? <button onClick={this.handleSolution}>Fertig!</button> :
+          {(!this.props.showTheOverlay) ? <button onClick={this.handleSolution}>Fertig!</button> :
            <button onClick={this.handleContinue}>Weiter!</button>
           }
           </div>
@@ -67,7 +67,8 @@ class AnimalItem extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    reduxResult: state.currentResult
+    reduxResult: state.currentResult,
+    showTheOverlay: state.showTheOverlay
   }
 }
 
