@@ -4,7 +4,7 @@ import AnimalItem from './AnimalItem';
 import { connect } from 'react-redux';
 
 class MainContent extends Component {
-  constructor() {
+  constructor(props) {
     super();
     let theData = huntingPeriods;
     theData = this.shuffle(theData);
@@ -17,6 +17,7 @@ class MainContent extends Component {
       result: false
     };
 
+    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     this.handleOnChange = this.handleOnChange.bind(this);
     this.nextItem = this.nextItem.bind(this);
     this.checkSolution = this.checkSolution.bind(this);
