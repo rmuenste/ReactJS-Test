@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import huntingPeriods from './huntingPeriods';
-import AnimalItem from './AnimalItem';
+import AnimalCard from './AnimalCard';
+import InfoCard from './InfoCard';
 import { connect } from 'react-redux';
 
 class MainContent extends Component {
@@ -22,6 +23,7 @@ class MainContent extends Component {
     this.nextItem = this.nextItem.bind(this);
     this.checkSolution = this.checkSolution.bind(this);
     this.advanceHandler = this.advanceHandler.bind(this);
+    props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(0)} );
   }
 
   // An event handler has an event parameter
@@ -73,8 +75,59 @@ class MainContent extends Component {
 
   }
 
+  getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  generateDates = (currIdx) => {
+    let gameData = [];
+
+    let firstIdx = this.getRandomInt(this.state.dates.length);
+
+    while(firstIdx === currIdx) {
+      firstIdx = this.getRandomInt(this.state.dates.length);
+    }
+
+    let item = this.state.dates[firstIdx];
+
+    gameData.push({
+      begin: item.begin,
+      end: item.end
+    });
+
+    let secondIdx = this.getRandomInt(this.state.dates.length);
+
+    while((secondIdx === currIdx) || 
+          (secondIdx === firstIdx) || 
+          (
+          (this.state.dates[firstIdx].begin !== this.state.dates[secondIdx].begin) &&
+          (this.state.dates[firstIdx].second !== this.state.dates[secondIdx].second))
+          ) {
+      secondIdx = this.getRandomInt(this.state.dates.length);
+    }
+
+    item = this.state.dates[secondIdx];
+
+    gameData.push({
+      begin: item.begin,
+      end: item.end
+    });
+
+    item = this.state.dates[currIdx];
+
+    gameData.push({
+      begin: item.begin,
+      end: item.end
+    });
+
+    return gameData;
+  }
+
   advanceHandler() {
     const nextItem = (this.state.currentItem + 1)%this.state.dates.length;
+
+    this.props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(nextItem)} );
+
     this.setState({
       currentItem: nextItem,
       showSolutionFeedback: false,
@@ -96,18 +149,21 @@ class MainContent extends Component {
 
   render() {
     return (
-      <main>
-        {(!this.state.showSolutionFeedback) ?
-         <div className={"card-container"}>
-           <AnimalItem item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
-         </div>
-         :
-         <div className={"card-container"}>
-           <AnimalItem item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
-         </div>
-        }
-      </main>
-      );
+      <div className="container-fluid padding">
+        <div className="row text-center padding">
+          <div className="col-md-4">
+          <InfoCard />
+          </div>
+          <div className="col-md-4">
+          {(!this.state.showSolutionFeedback) ?
+            <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
+          :
+            <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
+          }
+        </div>
+      </div>
+    </div>
+    );
   }
 }
 

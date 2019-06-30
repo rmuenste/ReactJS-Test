@@ -23,7 +23,8 @@ const initialState = {
     showTheOverlay: false,
     currentResult: false,
     correctAnswers: 0,
-    totalQuestions: 100
+    totalQuestions: 100,
+    levelOneData: []
 };
 
 const rootReducer = (state = initialState, 
@@ -64,6 +65,12 @@ const rootReducer = (state = initialState,
                                 state = {
                                     ...state,
                                     totalQuestions: action.payload
+                                }
+                                break;
+                            case "SET_LEVELONE_DATA":
+                                state = {
+                                    ...state,
+                                    levelOneData: action.payload
                                 }
                                 break;
                         }

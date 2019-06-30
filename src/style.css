@@ -1,96 +1,132 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
-.myHeader {
-  height: 300px;
-  background: url(images/bench20.jpg);
-  background-color: rgba(255, 255, 255, 0.2);
-  background-position: 50% 45%;
-  color: whitesmoke;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
-  margin-bottom: 15px;
-  text-align: center;
-  font-size: 30px;
-}
-
-.header-nav {
-  text-align: left;
-  height: 75px;
+html, body {
+  height: 100%;
   width: 100%;
-  padding-left: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+  font-family: 'Poppins', sans-serif;
+  color: #222;
 }
 
-.header-logo {
-  text-align: left;
-  margin-top: 10px;
-  width: 10%;
-  float: left;
+.progress {
+  margin-bottom: 15px;
 }
 
-.header-logo img {
-  max-height: 60px;
-  margin: 0 auto;
-  display: block;
+.navbar {
+  padding: .8rem;
 }
 
-.header-menu-text {
-  text-align: center;
-  margin-top: 10px;
-  margin-left: 240px;
-  width: 50%;
-  float: left;
+.navbar-nav li {
+  padding-right: 20px;
 }
 
-.header-overlay {
-  background-color: rgba(255, 255, 255, 0.2);
+.nav-link {
+  font-size: 1.1em !important;
+}
+
+carousel-inner img {
   width: 100%;
   height: 100%;
 }
 
-.header-text {
-  margin-top: 35px;
+.carousel-item {
+  height: 500px;
 }
 
-.myFooter {
-  height: 100px;
-  background-color: #333;
-  color: whitesmoke;
-  margin-bottom: 15px;
-  margin-top: 15px;
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-caption h1{
+  text-transform: uppercase;
+  text-shadow: 1px 1px 15px #000;
+}
+.carousel-caption h3{
+  font-size: 200%;
+  text-shadow: 1px 1px 10px #000;
+  padding-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #869960;
+  border: 1px solid #798A56;
+}
+
+.btn-primary:hover {
+  background-color: #535E3B;
+  border: 1px solid #798A56;
+}
+
+.padding {
+  padding-bottom: 2rem;
+}
+
+.welcome {
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.welcome hr {
+  width: 95%;
+  margin-top: 1rem;
+  margin-bottom: .3rem;
+}
+
+.fa-code {
+  color: #e54d26
+}
+.fa-bold {
+  color: #563d7c
+}
+
+.fa-css3 {
+  color: #2161c2
+}
+
+.fa-code, .fa-bold, .fa-css3 {
+  font-size: 4em;
+  margin: 1rem;
+}
+
+.social a {
+  font-size: 4.5em;
+  padding: 3rem;
+}
+
+.fa-facebook {
+  color: #3b5998
+}
+
+.fa-twitter {
+  color: #00aced
+}
+
+.fa-instagram {
+  color: #517fa4
+}
+
+.fa-youtube {
+  color: #bb0000
+}
+
+.fa-facebook:hover, 
+.fa-twitter:hover, 
+.fa-instagram:hover, 
+.fa-youtube:hover {
+  color: #d5d5d5
+}
+
+.mylist {
   text-align: left;
-  font-size: 14px;
 }
 
-.todo-list {
-  background-color: white;
-  margin: auto;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #efefef;
-  box-shadow:
-  0 1px 1px rgba(0,0,0,0,15),
-  0 10px 0 -5px #eee,
-  0 10px 1px -4px rgba(0,0,0,0,15),
-  0 20px 0 -10px #eee,
-  0 20px 1px -9px rgba(0,0,0,0,15);
-  padding: 30px
-}
-
-.svg-container {
-  padding: 244.91px 20px 256px 20px;
-}
-
-
-.card-container {
+.mycard-container {
   text-align: center;
 }
 
-.card {
+.mycard {
   border: 3px #f3f3f3 solid;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   background-color: #f3f3f3;
@@ -100,7 +136,7 @@ body {
   display: inline-block;
 }
 
-.card__feedback {
+.mycard__feedback {
   border: 3px #f3f3f3 solid;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   background-color: #f3f3f3;
@@ -110,16 +146,16 @@ body {
   display: inline-block;
 }
 
-.card>h2 {
+.mycard>h2 {
   margin-top: 0px;
 }
 
-.card-image {
+.mycard-image {
   position: relative; 
   max-width: 300px;
 }
 
-.card-color-overlay {
+.mycard-color-overlay {
   position:absolute;
   top: 0;
   left: 0;
@@ -128,22 +164,16 @@ body {
   background-color: rgba(0,0,0,.65)
 }
 
-.card img {
+.mycard img {
   max-width: calc(100%);
   margin: 0 auto;
   display: block;
 }
 
-.card form {
+.mycard form {
   max-width: calc(100%);
   margin: 0 auto;
   display: block;
-}
-
-.image-overlay {
-  position: absolute;
-  top:80px;
-  left:100px;
 }
 
 .input-container {
@@ -153,102 +183,77 @@ body {
   padding: 10px;
 }
 
-.input-container__feedback {
-  text-align: center;
-  margin: 0px;
-  padding: 10px;
+/*---Media Queries --*/
+@media (max-width: 992px) {
+
+  }
+@media (max-width: 768px) {
+  
+}
+@media (max-width: 576px) {
+  
 }
 
-.input-container__feedback button {
+footer {
+  background-color: #3f3f3f;
+  color: #d5d5d5;
+  padding-top: 2rem;
+}
+
+hr.light {
+  border-top: 1px solid #d5d5d5;
+  width: 75%;
+  margin-top: .8rem;
+  margin-bottom: 1rem;
+}
+
+hr.light-100 {
+  border-top: 1px solid #d5d5d5;
   width: 100%;
-  display: block;
-  background: #869960;
-  font-family: Tahoma, sans-serif;
-  font-size: 14pt;
-  color: #FFF;
-  padding: 10px 0;
-  border: 1px solid #798A56;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  outline: none; 
+  margin-top: .8rem;
+  margin-bottom: 1rem;
 }
 
-.input-container__feedback button:hover {
-  border: 1px solid #535E3B;
-  background-color: #798A56;
+/*---Firefox Bug Fix --*/
+.carousel-item {
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }
-
-.input-container button {
+/*--- Fixed Background Image --*/
+figure {
+  position: relative;
   width: 100%;
-  display: block;
-  background: #869960;
-  font-family: Tahoma, sans-serif;
-  font-size: 14pt;
-  color: #FFF;
-  padding: 10px 0;
-  border: 1px solid #798A56;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  outline: none; 
+  height: 60%;
+  margin: 0!important;
 }
-
-.input-container button:hover {
-  border: 1px solid #535E3B;
-  background-color: #798A56;
-}
-
-input[type="password"], 
-input[type="text"], 
-input[type="number"], 
-input[type="tel"], 
-input[type="email"],
-select {
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+}
+#fixed {
+  background-image: url('img/mac.png');
+  position: fixed;
   display: block;
-  box-sizing: border-box;
-  padding: 0 10px; 
-  height: 40px;
-  font-family: Tahoma, sans-serif;
-  font-size: 100%;
-  margin-bottom: 5px;
-  border: 1px solid #CDCDCD;
-  outline: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
 }
-
-.todo-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 30px 20px 0;
-  width: 70%;
-  border-bottom: 1px solid #cecece;
-  font-family: Roboto, sans-serif;
-  font-weight: 100;
-  font-size: 15px;
-  color: #333333;
-}
-
-.todo-item__para {
-  font-family: Roboto, sans-serif;
-  font-weight: 100;
-  font-size: 15px;
-  text-decoration: line-through;
-  color: grey;
-}
-
-input[type=checkbox] {
-  margin-right: 10px;
-  font-size: 30px;
-}
-
-input[type=checkbox]:focus {
-    outline: 0;
-}
-
-svg {
-  width: 100px;
-  display: block;
-  margin: 40px auto 0;
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
 }
 
 .path.circle {
@@ -273,6 +278,19 @@ svg {
     animation: dash .9s .35s ease-in-out forwards;
 }
 */
+
+.card-body {
+  position: relative
+}
+
+.overlaywrapper {
+  position:absolute;
+}
+
+.mydark {
+  background-color: rgba(0,0,0,.65);
+  height: 70%;
+}
 
 
 p.success {
@@ -333,5 +351,31 @@ p.error {
     stroke-dashoffset: 900;
   }
 }
+
+
+
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+
+
+
+
+
 
 
