@@ -23,6 +23,7 @@ const initialState = {
     showTheOverlay: false,
     currentResult: false,
     correctAnswers: 0,
+    progress: 0,
     totalQuestions: 100,
     levelOneData: []
 };
@@ -52,13 +53,15 @@ const rootReducer = (state = initialState,
                                 state = {
                                     ...state,
                                     currentResult: true,
-                                    correctAnswers: state.correctAnswers + 1 
+                                    correctAnswers: state.correctAnswers + 1, 
+                                    progress: state.progress + 1 
                                 }
                                 break;
                             case "RESULT_WRONG":
                                 state = {
                                     ...state,
-                                    currentResult: false 
+                                    currentResult: false,
+                                    progress: state.progress + 1 
                                 }
                                 break;
                             case "SET_TOTAL_QUESTIONS":

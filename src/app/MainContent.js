@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import huntingPeriods from './huntingPeriods';
 import AnimalCard from './AnimalCard';
 import InfoCard from './InfoCard';
+import DebugCard from './DebugCard';
 import { connect } from 'react-redux';
 
 class MainContent extends Component {
@@ -155,12 +156,15 @@ class MainContent extends Component {
           <InfoCard />
           </div>
           <div className="col-md-4">
-          {(!this.state.showSolutionFeedback) ?
-            <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
-          :
-            <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
-          }
+            {(!this.state.showSolutionFeedback) ?
+              <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
+            :
+              <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
+            }
         </div>
+          <div className="col-md-4">
+          <DebugCard />
+          </div>
       </div>
     </div>
     );
