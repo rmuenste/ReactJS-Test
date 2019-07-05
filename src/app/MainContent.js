@@ -3,6 +3,7 @@ import huntingPeriods from './huntingPeriods';
 import AnimalCard from './AnimalCard';
 import InfoCard from './InfoCard';
 import DebugCard from './DebugCard';
+import ResultCard from './ResultCard';
 import { connect } from 'react-redux';
 
 class MainContent extends Component {
@@ -83,43 +84,38 @@ class MainContent extends Component {
   generateDates = (currIdx) => {
     let gameData = [];
 
-    let firstIdx = this.getRandomInt(this.state.dates.length);
+    let item = this.state.dates[currIdx];
 
-    while(firstIdx === currIdx) {
-      firstIdx = this.getRandomInt(this.state.dates.length);
+    let beginSet = new Set();
+    let endSet = new Set();
+
+    beginSet.add(item.begin);
+    endSet.add(item.end);
+
+    while(beginSet.size < 3) {
+      let nextIdx = this.getRandomInt(this.state.dates.length);
+      item = this.state.dates[nextIdx];
+      beginSet.add(item.begin);
     }
 
-    let item = this.state.dates[firstIdx];
-
-    gameData.push({
-      begin: item.begin,
-      end: item.end
-    });
-
-    let secondIdx = this.getRandomInt(this.state.dates.length);
-
-    while((secondIdx === currIdx) || 
-          (secondIdx === firstIdx) || 
-          (
-          (this.state.dates[firstIdx].begin !== this.state.dates[secondIdx].begin) &&
-          (this.state.dates[firstIdx].second !== this.state.dates[secondIdx].second))
-          ) {
-      secondIdx = this.getRandomInt(this.state.dates.length);
+    while(endSet.size < 3) {
+      let nextIdx = this.getRandomInt(this.state.dates.length);
+      item = this.state.dates[nextIdx];
+      endSet.add(item.end);
     }
 
-    item = this.state.dates[secondIdx];
+    let beginIter = beginSet.values();
+    
+    for(let entry of beginIter) {
+      gameData.push({begin: entry, end: ""});
+    } 
 
-    gameData.push({
-      begin: item.begin,
-      end: item.end
-    });
-
-    item = this.state.dates[currIdx];
-
-    gameData.push({
-      begin: item.begin,
-      end: item.end
-    });
+    let endIter = endSet.values();
+    let idx = 0;
+    for(let entry of endIter) {
+      gameData[idx].end = entry;
+      idx++;
+    } 
 
     return gameData;
   }
@@ -149,6 +145,19 @@ class MainContent extends Component {
 //        <button onClick={this.nextItem}>Weiter</button>
 
   render() {
+    let mainCard = "";
+    if (this.props.progress === this.props.totalQuestions) {
+      mainCard = (
+        <ResultCard />
+      );
+    } else {
+      mainCard = (
+        (!this.state.showSolutionFeedback) ?
+          <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
+        : 
+          <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
+      );
+    }
     return (
       <div className="container-fluid padding">
         <div className="row text-center padding">
@@ -156,11 +165,7 @@ class MainContent extends Component {
           <InfoCard />
           </div>
           <div className="col-md-4">
-            {(!this.state.showSolutionFeedback) ?
-              <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
-            :
-              <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
-            }
+            {mainCard}
         </div>
           <div className="col-md-4">
           <DebugCard />
@@ -173,7 +178,9 @@ class MainContent extends Component {
 
 const mapStateToProps = state => {
   return {
-    showOverlay: state.showTheOverlay 
+    showOverlay: state.showTheOverlay,
+    progress: state.progress,
+    totalQuestions: state.totalQuestions
   }
 }
 

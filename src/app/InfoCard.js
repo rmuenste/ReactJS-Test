@@ -1,10 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 class InfoCard extends React.Component {
   constructor() {
     super();
   }
   render() {
+
+    let barValue = 100.0 * (this.props.correctAnswers/parseFloat(this.props.totalQuestions));
+    let progressBarValue = barValue + "%";
+    let barStyle = "progress-bar bg-danger";
+    if ((barValue > 60.0) && (barValue < 80.0)) {
+      barStyle = "progress-bar bg-warning";
+    }
+    if (barValue > 80.0) {
+      barStyle = "progress-bar bg-success";
+    }
+
     return(
         <div className="card">
         <div className="card-header">
@@ -18,7 +30,7 @@ class InfoCard extends React.Component {
                     <li>Zufällige Antworten vorgegeben</li>
                     <li>Wählen Sie den Beginn und</li>
                     <li>Das Ende der Jagdzeit aus</li>
-                    <li>Meistern Sie 14 Tierarten</li>
+                    <li>Meistern Sie 27 Tierarten</li>
                 </ul>
             </div>
             <form>
@@ -33,8 +45,10 @@ class InfoCard extends React.Component {
             </form>
             <label htmlFor="progress1">Punktestand</label>
             <div className="progress" id="progress1">
-                <div className="progress-bar bg-success" role="progressbar" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className={barStyle} role="progressbar" style={{width: progressBarValue}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
+            <label htmlFor="progress2">Verbleibende Fragen:</label>
+            <h5 className="card-title" id="progress2">{this.props.totalQuestions - this.props.progress}</h5>
             <button type="button" className="btn btn-primary btn-block">Start</button>	
         </div>
     </div>
@@ -42,4 +56,12 @@ class InfoCard extends React.Component {
   }
 }
 
-export default InfoCard;
+const mapStateToProps = (state) => {
+  return {
+    correctAnswers: state.correctAnswers,
+    progress: state.progress,
+    totalQuestions: state.totalQuestions
+  }
+}
+
+export default connect(mapStateToProps)(InfoCard);
