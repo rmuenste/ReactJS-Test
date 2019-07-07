@@ -9,7 +9,7 @@ import ReactDOM from "react-dom";
 import {createStore, combineReducers} from "redux";
 import {Provider} from "react-redux";
 
-import App from "./App";
+import App from "./components/App";
 
 /*
 * The store globally stores the following variables for us
