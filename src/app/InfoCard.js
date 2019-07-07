@@ -2,9 +2,18 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 class InfoCard extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
   }
+
+  toggleGame = () => {
+    if(this.props.gameRunning) {
+      this.props.resetHandler();
+    } else {
+      this.props.dispatch( {type: 'TOGGLE_GAME_RUNNING'} );
+    }
+  }
+
   render() {
 
     let barValue = 100.0 * (this.props.correctAnswers/parseFloat(this.props.totalQuestions));
@@ -16,6 +25,10 @@ class InfoCard extends React.Component {
     if (barValue > 80.0) {
       barStyle = "progress-bar bg-success";
     }
+
+    let buttonText = "Start";
+    if(this.props.gameRunning)
+      buttonText = "Beenden";
 
     return(
         <div className="card">
@@ -36,7 +49,7 @@ class InfoCard extends React.Component {
             <form>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlSelect1">Schwierigkeit</label>
-                    <select className="form-control" id="exampleFormControlSelect1">
+                    <select className="form-control" id="exampleFormControlSelect1" disabled={true}>
                     <option>Level 1</option>
                     <option>Level 2</option>
                     <option>Level 3</option>
@@ -49,7 +62,7 @@ class InfoCard extends React.Component {
             </div>
             <label htmlFor="progress2">Verbleibende Fragen:</label>
             <h5 className="card-title" id="progress2">{this.props.totalQuestions - this.props.progress}</h5>
-            <button type="button" className="btn btn-primary btn-block">Start</button>	
+            <button type="button" className="btn btn-primary btn-block" onClick={this.toggleGame}>{buttonText}</button>	
         </div>
     </div>
     );
@@ -60,6 +73,7 @@ const mapStateToProps = (state) => {
   return {
     correctAnswers: state.correctAnswers,
     progress: state.progress,
+    gameRunning: state.gameRunning,
     totalQuestions: state.totalQuestions
   }
 }

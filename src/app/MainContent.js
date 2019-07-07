@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import huntingPeriods from './huntingPeriods';
 import AnimalCard from './AnimalCard';
 import InfoCard from './InfoCard';
-import DebugCard from './DebugCard';
+import GeneralInfoCard from './GeneralInfoCard';
 import ResultCard from './ResultCard';
 import { connect } from 'react-redux';
 
@@ -21,15 +21,13 @@ class MainContent extends Component {
     };
 
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
-    this.handleOnChange = this.handleOnChange.bind(this);
     this.nextItem = this.nextItem.bind(this);
     this.checkSolution = this.checkSolution.bind(this);
-    this.advanceHandler = this.advanceHandler.bind(this);
     props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(0)} );
   }
 
   // An event handler has an event parameter
-  handleOnChange(event) {
+  handleOnChange = (event) => {
     // object destructuring
     const {name, value, type, checked} = event.target;
     type === "checkbox" ? this.setState({[name]: checked}) :
@@ -54,8 +52,27 @@ class MainContent extends Component {
     return a;
   }
 
+  resetGameState = () => {
+    // TODO: Implement a function that
+    // sets the game state back to its
+    // initial state
+    let theData = huntingPeriods;
+    theData = this.shuffle(theData);
+    this.setState({
+      startDate: "",
+      endDate: "",
+      dates: theData,
+      currentItem: 0,
+      showSolutionFeedback: false,
+      result: false
+    });
+    this.props.dispatch({type: 'RESET'});
+    this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
+    this.props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(0)} );
+  }
+
   // An event handler has an event parameter
-  checkSolution(id, userStart, userEnd) {
+  checkSolution = (id, userStart, userEnd) => {
     let item = this.state.dates[id];
     if(userStart === item.begin && userEnd === item.end) {
       console.log("CheckSolution: Correct");
@@ -63,7 +80,6 @@ class MainContent extends Component {
         showSolutionFeedback: true,
         result: true 
       });
-      this.props.dispatch( {type: 'SHOW_OVERLAY'} );
       this.props.dispatch( {type: 'RESULT_OK'} );
     } else {
       console.log("Wrong");
@@ -71,7 +87,6 @@ class MainContent extends Component {
         showSolutionFeedback: true,
         result: false 
       });
-      this.props.dispatch( {type: 'SHOW_OVERLAY'} );
       this.props.dispatch( {type: 'RESULT_WRONG'} );
     }
 
@@ -120,7 +135,7 @@ class MainContent extends Component {
     return gameData;
   }
 
-  advanceHandler() {
+  advanceHandler = () => {
     const nextItem = (this.state.currentItem + 1)%this.state.dates.length;
 
     this.props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(nextItem)} );
@@ -140,13 +155,11 @@ class MainContent extends Component {
     });
   }
 
-//        <h1>Lösung</h1>
-//        <h3>Von {this.state.dates[this.state.currentItem].begin} bis {this.state.dates[this.state.currentItem].end}</h3>
-//        <button onClick={this.nextItem}>Weiter</button>
-
   render() {
+
+    // Configure the main card before
     let mainCard = "";
-    if (this.props.progress === this.props.totalQuestions) {
+    if (this.props.progress === this.props.totalQuestions && !this.state.showSolutionFeedback) {
       mainCard = (
         <ResultCard />
       );
@@ -158,18 +171,25 @@ class MainContent extends Component {
           <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
       );
     }
+
+    let infoData = this.state.dates[this.state.currentItem].infos;
+    // return the actual JSX
     return (
       <div className="container-fluid padding">
         <div className="row text-center padding">
           <div className="col-md-4">
-          <InfoCard />
+          <InfoCard resetHandler={this.resetGameState}/>
           </div>
           <div className="col-md-4">
             {mainCard}
         </div>
-          <div className="col-md-4">
-          <DebugCard />
-          </div>
+          {(this.props.progress === this.props.totalQuestions && !this.state.showSolutionFeedback) ?  
+            null
+          :
+            <div className="col-md-4">
+            <GeneralInfoCard infoData={infoData}/>
+            </div>
+          }
       </div>
     </div>
     );
@@ -180,13 +200,14 @@ const mapStateToProps = state => {
   return {
     showOverlay: state.showTheOverlay,
     progress: state.progress,
+    gameRunning: state.gameRunning,
     totalQuestions: state.totalQuestions
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-      toggleOverlay: () => dispatch({type: "TOGGLE"}),
+      toggleRunning: () => dispatch({type: "TOGGLE_GAME_RUNNING"}),
       showOverlay: () => dispatch({type: "SHOW_OVERLAY"}),
       hideOverlay: () => dispatch({type: "HIDE_OVERLAY"})
   }

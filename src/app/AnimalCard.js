@@ -11,11 +11,9 @@ class AnimalCard extends Component {
       endDate: "",
     };
 
-    this.handleOnChange = this.handleOnChange.bind(this);
-    this.handleContinue = this.handleContinue.bind(this);
   }
 
-  handleContinue() {
+  handleContinue = () => {
     this.props.handler();
   }
 
@@ -30,7 +28,7 @@ class AnimalCard extends Component {
   }
 
   // An event handler has an event parameter
-  handleOnChange(event) {
+  handleOnChange = (event) => {
     // object destructuring
     const {name, value, type, checked} = event.target;
     console.log("Select triggered: " + name);
@@ -55,7 +53,7 @@ class AnimalCard extends Component {
 						<form>
 							<div className="form-group">
               <select className="form-control" id="exampleFormControlSelect1"  
-                      disabled={this.props.showTheOverlay} 
+                      disabled={this.props.showTheOverlay || !this.props.gameRunning} 
                       value={this.state.startDate} 
                       name="startDate" 
                       onChange={this.handleOnChange}>
@@ -66,7 +64,12 @@ class AnimalCard extends Component {
 							</select>
 							</div>
 							<div className="form-group">
-							<select className="form-control" id="exampleFormControlSelect2" disabled={this.props.showTheOverlay} value={this.state.endDate} name="endDate" onChange={this.handleOnChange}>
+              <select className="form-control" 
+                      id="exampleFormControlSelect2" 
+                      disabled={this.props.showTheOverlay || !this.props.gameRunning} 
+                      value={this.state.endDate} 
+                      name="endDate" 
+                      onChange={this.handleOnChange}>
 									<option>Ende der Jagdzeit</option>
 									<option>{this.props.gameData[0].end}</option>
 									<option>{this.props.gameData[1].end}</option>
@@ -74,8 +77,8 @@ class AnimalCard extends Component {
 							</select>
 							</div>
 						</form>
-          {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution}>Fertig!</button> :
-           <button className="btn btn-primary btn-block" onClick={this.handleContinue}>Weiter!</button>
+          {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
+           <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
           }
 				</div>
 			</div>      
@@ -87,7 +90,8 @@ const mapStateToProps = (state) => {
   return {
     reduxResult: state.currentResult,
     showTheOverlay: state.showTheOverlay,
-    gameData: state.levelOneData,
+    gameRunning: state.gameRunning,
+    gameData: state.levelOneData
   }
 }
 

@@ -22,6 +22,7 @@ import App from "./App";
 const initialState = { 
     showTheOverlay: false,
     currentResult: false,
+    gameRunning: false,
     correctAnswers: 0,
     progress: 0,
     totalQuestions: 100,
@@ -31,10 +32,10 @@ const initialState = {
 const rootReducer = (state = initialState, 
                     action) => {
                         switch(action.type) {
-                            case "TOGGLE":
+                            case "TOGGLE_GAME_RUNNING":
                                 state = {
                                     ...state,
-                                    showTheOverlay: !state.showTheOverlay
+                                    gameRunning: !state.gameRunning
                                 }
                                 break;
                             case "SHOW_OVERLAY":
@@ -52,6 +53,7 @@ const rootReducer = (state = initialState,
                             case "RESULT_OK":
                                 state = {
                                     ...state,
+                                    showTheOverlay: true,
                                     currentResult: true,
                                     correctAnswers: state.correctAnswers + 1, 
                                     progress: state.progress + 1 
@@ -61,6 +63,7 @@ const rootReducer = (state = initialState,
                                 state = {
                                     ...state,
                                     currentResult: false,
+                                    showTheOverlay: true,
                                     progress: state.progress + 1 
                                 }
                                 break;
@@ -68,6 +71,18 @@ const rootReducer = (state = initialState,
                                 state = {
                                     ...state,
                                     totalQuestions: action.payload
+                                }
+                                break;
+                            case "RESET":
+                                state = {
+                                    ...state,
+                                    showTheOverlay: false,
+                                    currentResult: false,
+                                    gameRunning: false,
+                                    correctAnswers: 0,
+                                    progress: 0,
+                                    totalQuestions: 100,
+                                    levelOneData: []
                                 }
                                 break;
                             case "SET_LEVELONE_DATA":
