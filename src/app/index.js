@@ -11,6 +11,8 @@ import {Provider} from "react-redux";
 
 import App from "./components/App";
 
+import {BrowserRouter} from "react-router-dom";
+
 /*
 * The store globally stores the following variables for us
 * showTheOverlay: Should we show the feedback overlay after user input?
@@ -103,5 +105,5 @@ store.subscribe(() => {
 
 // call the render function
 ReactDOM.render(
-                <Provider store={store}><App /></Provider>,
+                <Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
                 document.getElementById('root'));
