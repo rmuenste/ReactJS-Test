@@ -22,7 +22,7 @@ class Navbar extends React.Component {
                 <Link to={"/gezeiten"} className="nav-link">Gezeiten</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">About</a>
+                <Link to={"/nabu"} className="nav-link">Nabu</Link>
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#">Contact</a>
