@@ -187,7 +187,7 @@ class MainContent extends Component {
             null
           :
             <div className="col-md-4">
-            <GeneralInfoCard infoData={infoData}/>
+            <GeneralInfoCard infoData={infoData} resetHandler={this.resetGameState}/>
             </div>
           }
       </div>

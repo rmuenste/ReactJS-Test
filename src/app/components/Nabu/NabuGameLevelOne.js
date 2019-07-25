@@ -1,25 +1,51 @@
 
 import React, {Component} from "react";
 import NabuAnimalCard from "./NabuAnimalCard";
-import huntingPeriods from './nabudata';
+import nabuBirds from './nabudata';
+import { connect } from 'react-redux';
+import ResultCard from '../ResultCard';
 
 class NabuGameLevelOne extends Component {
   constructor(props) {
     super();
-    let theData = huntingPeriods;
+    let theData = nabuBirds;
 //    theData = this.shuffle(theData);
 
     this.state = {
       startDate: "",
       endDate: "",
       nabuData: theData,
-      currentItem: 0
+      currentItem: 0,
+      result: false
     };
 
 //    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
-//    this.nextItem = this.nextItem.bind(this);
-//    this.checkSolution = this.checkSolution.bind(this);
-//    props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(0)} );
+    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: 5} );
+  }
+
+  alertMessage = () => {
+    window.alert("Alert message from child");
+  }
+
+  // An event handler has an event parameter
+  checkSolution = (item, userSolution) => {
+
+    if(userSolution === item.name) {
+      console.log("CheckSolution: Correct");
+      this.setState({
+        showSolutionFeedback: true,
+        result: true 
+      });
+      this.props.dispatch( {type: 'RESULT_OK'} );
+    } else {
+      console.log("Wrong");
+      this.setState({
+        showSolutionFeedback: true,
+        result: false 
+      });
+      this.props.dispatch( {type: 'RESULT_WRONG'} );
+    }
+
   }
 
   advanceHandler = () => {
@@ -27,14 +53,42 @@ class NabuGameLevelOne extends Component {
 
     this.setState({
       currentItem: nextItem,
+      showSolutionFeedback: false,
+      result: false 
     });
+    this.props.dispatch( {type: 'HIDE_OVERLAY'} );
   }
 
   render() {
+      let nabuCard = "";
+      if (this.props.progress === this.props.totalQuestions && !this.state.showSolutionFeedback) {
+        nabuCard = (
+          <ResultCard />
+        );
+      } else {
+        nabuCard = (
+          (!this.state.showSolutionFeedback) ?
+            <NabuAnimalCard item={this.state.nabuData[this.state.currentItem]} solutionHandler={this.checkSolution}/>
+          : 
+            <NabuAnimalCard item={this.state.nabuData[this.state.currentItem]} feedbackState={true} result={this.state.result} continueHandler={this.advanceHandler}/>
+        );
+      }
+  
       return (
-      <NabuAnimalCard item={this.state.nabuData[this.state.currentItem]} continueHandler={this.advanceHandler}/>
+        <div>
+        {nabuCard}
+        </div>
       );
   }
 }
 
-export default NabuGameLevelOne;
+const mapStateToProps = (state) => {
+  return {
+    totalQuestions : state.totalQuestions,
+    showOverlay: state.showTheOverlay,
+    progress: state.progress,
+    gameRunning: state.gameRunning
+  };
+}
+
+export default connect(mapStateToProps)(NabuGameLevelOne);

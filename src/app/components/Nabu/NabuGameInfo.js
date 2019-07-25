@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {connect} from 'react-redux';
 
 class NabuGameInfo extends Component {
   constructor(props) {
@@ -6,12 +7,16 @@ class NabuGameInfo extends Component {
   }
 
   toggleGame = () => {
-
+    if(this.props.gameRunning) {
+      this.props.resetHandler();
+    } else {
+      this.props.dispatch( {type: 'TOGGLE_GAME_RUNNING'} );
+    }
   }
 
   render() {
 
-    let barValue = 100.0 * 0.25;
+    let barValue = 100.0 * (this.props.correctAnswers/parseFloat(this.props.totalQuestions));
     let progressBarValue = barValue + "%";
     let barStyle = "progress-bar bg-danger";
     if ((barValue > 60.0) && (barValue < 80.0)) {
@@ -22,6 +27,8 @@ class NabuGameInfo extends Component {
     }
 
     let buttonText = "Start";
+    if(this.props.gameRunning)
+      buttonText = "Beenden";
 
     return(
         <div className="card">
@@ -36,7 +43,7 @@ class NabuGameInfo extends Component {
                     <li>Tierarten unter Naturschutz</li>
                     <li>Zufällige Antworten vorgegeben</li>
                     <li>Identifizieren Sie die Tierart</li>
-                    <li>Meistern Sie 27 Tierarten</li>
+                    <li>Meistern Sie {this.props.totalQuestions} Tierarten</li>
                 </ul>
             </div>
             <form>
@@ -54,7 +61,7 @@ class NabuGameInfo extends Component {
                 <div className={barStyle} role="progressbar" style={{width: progressBarValue}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <label htmlFor="progress2">Verbleibende Fragen:</label>
-            <h5 className="card-title" id="progress2">27/27</h5>
+            <h5 className="card-title" id="progress2">{this.props.totalQuestions - this.props.progress}</h5>
             <button type="button" className="btn btn-primary btn-block" onClick={this.toggleGame}>{buttonText}</button>	
         </div>
     </div>
@@ -62,4 +69,13 @@ class NabuGameInfo extends Component {
   }
 }
 
-export default NabuGameInfo;
+const mapStateToProps = (state) => {
+  return {
+    correctAnswers: state.correctAnswers,
+    progress: state.progress,
+    gameRunning: state.gameRunning,
+    totalQuestions: state.totalQuestions
+  }
+}
+
+export default connect(mapStateToProps)(NabuGameInfo);

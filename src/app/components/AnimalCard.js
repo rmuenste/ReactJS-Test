@@ -18,13 +18,11 @@ class AnimalCard extends Component {
   }
 
   handleSolution = () => {
-
     this.props.handler(this.props.item.key, this.state.startDate, this.state.endDate),
     this.setState({
       startDate: "",
       endDate: "",
     });
-
   }
 
   // An event handler has an event parameter
