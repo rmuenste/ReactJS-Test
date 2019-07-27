@@ -4,6 +4,7 @@ import NabuAnimalCard from "./NabuAnimalCard";
 import nabuBirds from './nabudata';
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
+import NabuGameInfo from "./NabuGameInfo";
 
 class NabuGameLevelOne extends Component {
   constructor(props) {
@@ -23,8 +24,23 @@ class NabuGameLevelOne extends Component {
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: 5} );
   }
 
-  alertMessage = () => {
-    window.alert("Alert message from child");
+  resetGameState = () => {
+    // TODO: Implement a function that
+    // sets the game state back to its
+    // initial state
+
+    let theData = nabuBirds;
+
+    this.setState({
+      startDate: "",
+      endDate: "",
+      nabuData: theData,
+      currentItem: 0,
+      result: false
+    });
+
+    this.props.dispatch({type: 'RESET'});
+    this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: 5} );
   }
 
   // An event handler has an event parameter
@@ -76,7 +92,15 @@ class NabuGameLevelOne extends Component {
   
       return (
         <div>
-        {nabuCard}
+          <div className="row text-center padding">
+            <div className="col-md-4">
+              <NabuGameInfo resetHandler={this.resetGameState} />
+            </div>
+            <div className="col-md-4">
+              {nabuCard}
+            </div>
+          </div>
+
         </div>
       );
   }
