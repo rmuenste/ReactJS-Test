@@ -1,4 +1,3 @@
-
 import React, {Component} from "react";
 import NabuAnimalCard from "./NabuAnimalCard";
 import nabuBirds from './nabudata';

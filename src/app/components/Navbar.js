@@ -25,7 +25,7 @@ class Navbar extends React.Component {
                 <NavLink to={"/nabu"} className="nav-link">Nabu</NavLink>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Contact</a>
+                <NavLink to={"/ducks"} className="nav-link">Enten</NavLink>
             </li>
           </ul>
 
