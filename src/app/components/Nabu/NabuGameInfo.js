@@ -1,9 +1,13 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
+import Modal from 'react-bootstrap4-modal';
 
 class NabuGameInfo extends Component {
   constructor(props) {
     super();
+    this.state = {
+      modalVisible: false
+    };
   }
 
   toggleGame = () => {
@@ -12,6 +16,26 @@ class NabuGameInfo extends Component {
     } else {
       this.props.dispatch( {type: 'TOGGLE_GAME_RUNNING'} );
     }
+  }
+
+  handleReset = () => {
+    this.toggleGame();
+
+    this.setState({
+      modalVisible: false
+    });
+  }
+
+  handleCancel = () => {
+    this.setState({
+      modalVisible: false
+    });
+  }
+  
+  showResetModal = () => {
+    this.setState({
+      modalVisible: true
+    });
   }
 
   render() {
@@ -26,9 +50,14 @@ class NabuGameInfo extends Component {
       barStyle = "progress-bar bg-success";
     }
 
+    let gameControlButton = "";
     let buttonText = "Start";
-    if(this.props.gameRunning)
+    if(this.props.gameRunning) {
       buttonText = "Beenden";
+      gameControlButton = (<button type="button" className="btn btn-primary btn-block" onClick={this.showResetModal}>{buttonText}</button>);
+    } else {
+      gameControlButton = (<button type="button" className="btn btn-primary btn-block" onClick={this.toggleGame}>{buttonText}</button>);
+    }
 
     return(
       <div> 
@@ -64,34 +93,25 @@ class NabuGameInfo extends Component {
             </div>
             <label htmlFor="progress2">Verbleibende Fragen:</label>
             <h5 className="card-title" id="progress2">{this.props.totalQuestions - this.props.progress}</h5>
-            <button type="button" className="btn btn-primary btn-block" onClick={this.toggleGame}>{buttonText}</button>	
+            {gameControlButton}
         </div>
     </div>
-
-<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body">
-        modal text
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+      <Modal visible={this.state.modalVisible}>
+        <div className="modal-header">
+          <h5 className="modal-title">Spiel wird zurückgesetzt!</h5>
+        </div>
+        <div className="modal-body">
+          <p>Möchten Sie wirklich beenden?</p>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" onClick={this.handleCancel}>
+            Weiter
+          </button>
+          <button type="button" className="btn btn-primary" onClick={this.handleReset}>
+            Beenden 
+          </button>
+        </div>
+      </Modal>
 </div>
 
 

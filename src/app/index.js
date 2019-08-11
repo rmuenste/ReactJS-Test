@@ -12,6 +12,7 @@ import {Provider} from "react-redux";
 import App from "./components/App";
 
 import {BrowserRouter} from "react-router-dom";
+import {LOCATION_CHANGE} from 'react-router-redux';
 
 /*
 * The store globally stores the following variables for us
@@ -49,7 +50,8 @@ const rootReducer = (state = initialState,
                             case "HIDE_OVERLAY":
                                 state = {
                                     ...state,
-                                    showTheOverlay: false 
+                                    showTheOverlay: false,
+                                    currentResult: false 
                                 }
                                 break;
                             case "RESULT_OK":
@@ -86,6 +88,7 @@ const rootReducer = (state = initialState,
                                     totalQuestions: 100,
                                     levelOneData: []
                                 }
+                                console.log("RESET CALLED");
                                 break;
                             case "SET_LEVELONE_DATA":
                                 state = {

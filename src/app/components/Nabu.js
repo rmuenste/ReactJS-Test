@@ -1,5 +1,6 @@
 import React, {Component, createRef} from "react";
 import NabuGameLevelOne from "./Nabu/NabuGameLevelOne";
+import NabuGameIntro from "./Nabu/NabuGameIntro";
 import {connect} from 'react-redux';
 
 class Nabu extends Component {
@@ -24,6 +25,7 @@ class Nabu extends Component {
   render () {
     return (
       <div className="container-fluid padding">
+        <NabuGameIntro />
         <NabuGameLevelOne />
       </div>
     );

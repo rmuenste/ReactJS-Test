@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import FeedbackOverlay from "./FeedbackOverlay";
 
 class AnimalCard extends Component {
-  constructor() {
+  constructor(props) {
     super();
-    console.log("AnimalItem constructor");
+    console.log("AnimalCard constructor");
+    console.log(props);
     this.state = {
       startDate: "",
       endDate: "",
@@ -42,6 +43,9 @@ class AnimalCard extends Component {
 
   // render
   render() {
+    console.log("render");
+		console.log(this.props);
+		console.log(this.props.gameData[0].begin);
     return (
 			<div className="card">
         {(this.props.showTheOverlay) ? <div className="card-img-overlay"> <FeedbackOverlay result={this.props.reduxResult}/> </div> : null}

@@ -5,6 +5,7 @@ import InfoCard from './InfoCard';
 import GeneralInfoCard from './GeneralInfoCard';
 import ResultCard from './ResultCard';
 import { connect } from 'react-redux';
+import GameIntro from './GameIntro';
 
 class MainContent extends Component {
   constructor(props) {
@@ -24,6 +25,23 @@ class MainContent extends Component {
     this.nextItem = this.nextItem.bind(this);
     this.checkSolution = this.checkSolution.bind(this);
     props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(0)} );
+    console.log("Constructor MainComponent");
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      startDate: "",
+      endDate: "",
+      nabuData: {},
+      currentItem: 0,
+    });
+
+    this.props.dispatch({type: 'RESET'});
+  }
+
+  componentDidMount() {
+    console.log("Component did mount maincontent");
+    this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: this.state.dates.length} );
   }
 
   // An event handler has an event parameter
@@ -157,6 +175,7 @@ class MainContent extends Component {
 
   render() {
 
+    this.props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(this.state.currentItem)} );
     // Configure the main card before
     let mainCard = "";
     if (this.props.progress === this.props.totalQuestions && !this.state.showSolutionFeedback) {
@@ -175,23 +194,26 @@ class MainContent extends Component {
     let infoData = this.state.dates[this.state.currentItem].infos;
     // return the actual JSX
     return (
-      <div className="container-fluid padding">
-        <div className="row text-center padding">
-          <div className="col-md-4">
-          <InfoCard resetHandler={this.resetGameState}/>
-          </div>
-          <div className="col-md-4">
-            {mainCard}
-        </div>
-          {(this.props.progress === this.props.totalQuestions && !this.state.showSolutionFeedback) ?  
-            null
-          :
+      <div>
+        <GameIntro />
+        <div className="container-fluid padding">
+          <div className="row text-center padding">
             <div className="col-md-4">
-            <GeneralInfoCard infoData={infoData} resetHandler={this.resetGameState}/>
+              <InfoCard resetHandler={this.resetGameState}/>
             </div>
-          }
+            <div className="col-md-4">
+              {mainCard}
+            </div>
+            {(this.props.progress === this.props.totalQuestions && !this.state.showSolutionFeedback) ?  
+              null
+            :
+              <div className="col-md-4">
+                <GeneralInfoCard infoData={infoData} resetHandler={this.resetGameState}/>
+              </div>
+            }
+          </div>
+        </div>
       </div>
-    </div>
     );
   }
 }

@@ -6,7 +6,7 @@ const GameIntro = (props) => {
         <div className="container-fluid padding">
             <div className="row welcome text-center">
                 <div className="col-12">
-                    <h1 className="display-4">Gezeiten</h1>
+                    <h1 className="display-4">Die Jagdzeiten</h1>
                     <hr/>
                 </div>
                 <div className="col-12">

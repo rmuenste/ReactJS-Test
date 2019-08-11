@@ -5,7 +5,7 @@ const SocialMediaInfo = (props) => {
         <div className="container-fluid padding">
             <div className="row text-center padding">
                 <div className="col-12">
-                    <h2>Connect</h2>
+                    <h2>Finden Sie uns in sozialen Netzwerken</h2>
                 </div>
                 <div className="col-12 social padding">
                     <a href="#"><i className="fab fa-facebook"></i></a>

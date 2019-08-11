@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class Navbar extends React.Component {
   constructor() {
@@ -16,13 +16,13 @@ class Navbar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-                <Link to={"/"} className="nav-link">Home</Link>
+                <NavLink to={"/"} exact className="nav-link">Home</NavLink>
             </li>
             <li className="nav-item">
-                <Link to={"/gezeiten"} className="nav-link">Gezeiten</Link>
+                <NavLink to={"/gezeiten"} className="nav-link">J-Zeit</NavLink>
             </li>
             <li className="nav-item">
-                <Link to={"/nabu"} className="nav-link">Nabu</Link>
+                <NavLink to={"/nabu"} className="nav-link">Nabu</NavLink>
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#">Contact</a>

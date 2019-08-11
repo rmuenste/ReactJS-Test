@@ -15,10 +15,12 @@
   "license": "MIT",
   "dependencies": {
     "react": "^16.8.6",
+    "react-bootstrap4-modal": "^1.7.2",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
+    "react-router-redux": "^4.0.8",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6"
   },

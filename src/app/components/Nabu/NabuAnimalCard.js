@@ -25,6 +25,7 @@ class NabuAnimalCard extends Component {
 
   handleContinue = () => {
     console.log("continueHandler!");
+    console.log(this.props);
     this.props.continueHandler();
   }
 
