@@ -36,6 +36,24 @@ class NabuAnimalCard extends Component {
     });
   }
 
+  getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  generateRandomAnswers = () => {
+
+    let answerSet = new Set();
+
+    answerSet.add(this.props.item.name);
+
+    while( answerSet.size < 8) {
+      let idx = this.getRandomInt(this.props.inputData.length);
+      answerSet.add(this.props.inputData[idx].name);
+    }
+
+    return [...answerSet];
+  }
+
   // An event handler has an event parameter
   handleOnChange = (event) => {
     // destructure the object
@@ -52,8 +70,12 @@ class NabuAnimalCard extends Component {
 
   // render
   render() {
-    let namesArray = [...this.props.item.choices, this.props.item.name];
+    let namesArray = this.generateRandomAnswers();
     namesArray = this.shuffle(namesArray);
+    let namesElementArray = namesArray.map(
+      (value, index) => (<option key={index}>{value}</option>)
+    );
+
     return (
 			<div className="card">
         {(this.props.showTheOverlay) ? <div className="card-img-overlay"> <FeedbackOverlay result={this.props.reduxResult}/> </div> : null}
@@ -68,9 +90,7 @@ class NabuAnimalCard extends Component {
                                     name="animalName" 
                                     onChange={this.handleOnChange}>
 									<option>Tierart auswählen</option>
-									<option>{namesArray[0]}</option>
-									<option>{namesArray[1]}</option>
-									<option>{namesArray[2]}</option>
+                  {namesElementArray}
 							</select>
 							</div>
 						</form>

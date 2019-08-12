@@ -128,7 +128,7 @@ const nabuBirds = [
     {
         id: 19,
         key: 18,
-        imgPath: "./images/nabu/web/Schwarzstorch.jpg",
+        imgPath: "./images/nabu/web/schwarzstorch.jpg",
         name: "Schwarzstorch",
         choices: ["Steinkauz", "Waldkauz"]
     },
