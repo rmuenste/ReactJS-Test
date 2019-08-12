@@ -6,7 +6,8 @@ class DucksGameInfo extends Component {
   constructor(props) {
     super();
     this.state = {
-      modalVisible: false
+      modalVisible: false,
+      level: 1
     };
   }
 
@@ -16,6 +17,23 @@ class DucksGameInfo extends Component {
     } else {
       this.props.dispatch( {type: 'TOGGLE_GAME_RUNNING'} );
     }
+  }
+
+  // An event handler has an event parameter
+  handleOnChange = (event) => {
+    // destructure the object
+    const {name, value, type, checked} = event.target;
+    console.log("DucksGame Level changed!" + " " + value);
+    type === "checkBox" ? this.setState({[name]: checked}) :
+    this.setState({
+      [name]: event.target.value
+    });
+//    }, () => {
+//      console.log("Name: " + this.state.animalName);
+//    });
+    let levelValue = (value === "Level 1") ? 1 : 2;
+    this.props.dispatch( {type: 'SET_LEVEL', payload: levelValue});
+    console.log("DucksGame Level end!");
   }
 
   handleReset = () => {
@@ -59,6 +77,13 @@ class DucksGameInfo extends Component {
       gameControlButton = (<button type="button" className="btn btn-primary btn-block" onClick={this.toggleGame}>{buttonText}</button>);
     }
 
+    let levelOptions = "";
+    if (this.props.gameLevel == 1) {
+      levelOptions = [(<option key="level1">Level 1</option>), (<option key="level2">Level 2</option>)];
+    } else {
+      levelOptions = [(<option key="level2">Level 2</option>), (<option key="level1">Level 1</option>)];
+    }
+
     return(
       <div> 
 
@@ -80,10 +105,8 @@ class DucksGameInfo extends Component {
             <form>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlSelect1">Schwierigkeit</label>
-                    <select className="form-control" id="exampleFormControlSelect1" disabled={true}>
-                    <option>Level 1</option>
-                    <option>Level 2</option>
-                    <option>Level 3</option>
+                    <select className="form-control" id="exampleFormControlSelect1" value={this.state.level} onChange={this.handleOnChange}>
+                    {levelOptions}
                     </select>
                 </div>
             </form>
@@ -124,6 +147,7 @@ const mapStateToProps = (state) => {
     correctAnswers: state.correctAnswers,
     progress: state.progress,
     gameRunning: state.gameRunning,
+    gameLevel: state.gameLevel,
     totalQuestions: state.totalQuestions
   }
 }

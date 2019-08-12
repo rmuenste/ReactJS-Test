@@ -28,6 +28,7 @@ const initialState = {
     gameRunning: false,
     correctAnswers: 0,
     progress: 0,
+    gameLevel: 1,
     totalQuestions: 100,
     levelOneData: []
 };
@@ -86,7 +87,7 @@ const rootReducer = (state = initialState,
                                     correctAnswers: 0,
                                     progress: 0,
                                     totalQuestions: 100,
-                                    levelOneData: []
+                                    levelOneData: [],
                                 }
                                 console.log("RESET CALLED");
                                 break;
@@ -94,6 +95,12 @@ const rootReducer = (state = initialState,
                                 state = {
                                     ...state,
                                     levelOneData: action.payload
+                                }
+                                break;
+                            case "SET_LEVEL":
+                                state = {
+                                    ...state,
+                                    gameLevel: action.payload
                                 }
                                 break;
                         }
