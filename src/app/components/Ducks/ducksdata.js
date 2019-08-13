@@ -115,7 +115,7 @@ const ducksData = [
         name: "Schellente",
         breeding: "Bodenbrüter",
         eggs: "6-10",
-        type: "Tauchente"
+        type: "Meeresente"
     },
     {
         id: 14,
