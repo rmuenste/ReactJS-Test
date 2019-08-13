@@ -27,6 +27,9 @@ class Navbar extends React.Component {
             <li className="nav-item">
                 <NavLink to={"/ducks"} className="nav-link">Enten</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink to={"/geese"} className="nav-link">Gänse</NavLink>
+            </li>
           </ul>
 
         </div>

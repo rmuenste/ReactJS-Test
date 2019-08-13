@@ -3,12 +3,37 @@ import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
 
 class NabuAnimalCard extends Component {
-  constructor() {
+  constructor(props) {
     super();
+
+    let namesArray = this.generateRandomAnswers(props);
+    namesArray = this.shuffle(namesArray);
+    let namesElementArray = namesArray.map(
+      (value, index) => (<option key={index}>{value}</option>)
+    );
+
     this.state = {
       animalName: "",
       endDate: "",
+      choices: namesElementArray
     };
+
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.item.name !== prevProps.item.name) {
+
+      let namesArray = this.generateRandomAnswers(this.props);
+      namesArray = this.shuffle(namesArray);
+      let namesElementArray = namesArray.map(
+        (value, index) => (<option key={index}>{value}</option>)
+      );
+
+      this.setState({
+        choices: namesElementArray
+      });
+
+    }
   }
 
   shuffle = (a) => {
@@ -40,15 +65,15 @@ class NabuAnimalCard extends Component {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  generateRandomAnswers = () => {
+  generateRandomAnswers = (theProps) => {
 
     let answerSet = new Set();
 
-    answerSet.add(this.props.item.name);
+    answerSet.add(theProps.item.name);
 
     while( answerSet.size < 8) {
-      let idx = this.getRandomInt(this.props.inputData.length);
-      answerSet.add(this.props.inputData[idx].name);
+      let idx = this.getRandomInt(theProps.inputData.length);
+      answerSet.add(theProps.inputData[idx].name);
     }
 
     return [...answerSet];
@@ -70,11 +95,6 @@ class NabuAnimalCard extends Component {
 
   // render
   render() {
-    let namesArray = this.generateRandomAnswers();
-    namesArray = this.shuffle(namesArray);
-    let namesElementArray = namesArray.map(
-      (value, index) => (<option key={index}>{value}</option>)
-    );
 
     return (
 			<div className="card">
@@ -90,7 +110,7 @@ class NabuAnimalCard extends Component {
                                     name="animalName" 
                                     onChange={this.handleOnChange}>
 									<option>Tierart auswählen</option>
-                  {namesElementArray}
+                  {this.state.choices}
 							</select>
 							</div>
 						</form>
