@@ -1,6 +1,6 @@
 import React from "react";
 
-const GeeseGameIntro = (props) => {
+const GullsGameIntro = (props) => {
     return (
         <div className="container-fluid padding">
             <div className="row welcome text-center">
@@ -14,7 +14,8 @@ const GeeseGameIntro = (props) => {
                         Die meisten Möwenarten bevorzugen als Lebensraum Meeresküsten, die Lachmöwe ist aber auch an Binnengewässern oder Seen zu finden. Die Möwen sind 
                         Allesfresser, die ihre Nahrung hauptsächlich in Ufernähe suchen. Falls sich in diesem Bereich Wiesen, Äcker oder Müllkippen finden, ist ein hohes 
                         Vorkommen von Möwen sehr wahrscheinlich. Möwen sind Koloniebrüter und leben in einer Jahresehe, in der sich beide Geschlechter an der Brut beteiligen.
-                        Die Größe eines Möwengeleges umfaßt 2-3 Eier.
+                        Die Größe eines Möwengeleges umfaßt 2-3 Eier. Obwohl die Nähe zu Gewässern eine natürliche Lebensumgebung für Möwen ist, können diese nicht tauchen, wie 
+                        es z.B. Enten können.
                     </p>
                 </div>
             </div>
@@ -22,4 +23,4 @@ const GeeseGameIntro = (props) => {
     );
 }
 
-export default GeeseGameIntro;
+export default GullsGameIntro;

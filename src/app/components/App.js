@@ -9,6 +9,8 @@ import Nabu from './Nabu';
 import Ducks from './Ducks';
 import Geese from './Geese';
 import Gulls from './Gulls';
+import Pigeons from './Pigeons';
+import Ravens from './Ravens';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 class App extends React.Component {
@@ -30,6 +32,8 @@ class App extends React.Component {
             <Route path="/ducks" component={Ducks}/>
             <Route path="/geese" component={Geese}/>
             <Route path="/gulls" component={Gulls}/>
+            <Route path="/pigeons" component={Pigeons}/>
+            <Route path="/ravens" component={Ravens}/>
             <hr className="my-4"/>
             <SocialMediaInfo />
             <Footer />

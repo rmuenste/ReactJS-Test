@@ -24,15 +24,6 @@ class Navbar extends React.Component {
             <li className="nav-item">
                 <NavLink to={"/nabu"} className="nav-link">Nabu</NavLink>
             </li>
-            <li className="nav-item">
-                <NavLink to={"/ducks"} className="nav-link">Enten</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink to={"/geese"} className="nav-link">Gänse</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink to={"/gulls"} className="nav-link">Möwen</NavLink>
-            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Federwild
@@ -41,6 +32,8 @@ class Navbar extends React.Component {
                 <NavLink to={"/ducks"} className="dropdown-item">Enten</NavLink>
                 <NavLink to={"/geese"} className="dropdown-item">Gänse</NavLink>
                 <NavLink to={"/gulls"} className="dropdown-item">Möwen</NavLink>
+                <NavLink to={"/pigeons"} className="dropdown-item">Tauben</NavLink>
+                <NavLink to={"/ravens"} className="dropdown-item">Raben</NavLink>
                 <a className="dropdown-item" href="#">Wildhühner</a>
                 <div className="dropdown-divider"></div>
                 <a className="dropdown-item" href="#">Greifvögel</a>
