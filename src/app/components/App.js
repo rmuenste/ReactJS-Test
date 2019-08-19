@@ -11,6 +11,8 @@ import Geese from './Geese';
 import Gulls from './Gulls';
 import Pigeons from './Pigeons';
 import Ravens from './Ravens';
+import Chicken from './Chicken';
+import BirdsOfPrey from './BirdsOfPrey';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 class App extends React.Component {
@@ -32,8 +34,10 @@ class App extends React.Component {
             <Route path="/ducks" component={Ducks}/>
             <Route path="/geese" component={Geese}/>
             <Route path="/gulls" component={Gulls}/>
+            <Route path="/chicken" component={Chicken}/>
             <Route path="/pigeons" component={Pigeons}/>
             <Route path="/ravens" component={Ravens}/>
+            <Route path="/birdsofprey" component={BirdsOfPrey}/>
             <hr className="my-4"/>
             <SocialMediaInfo />
             <Footer />

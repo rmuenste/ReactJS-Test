@@ -1,22 +1,22 @@
 import React, {Component} from "react";
-import geeseData from './geesedata';
-import { geeseNames } from './geesedata';
+import birdsofpreyData from './birdsofpreydata';
+import { birdsofpreyNames } from './birdsofpreydata';
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
-import GeeseGameInfo from "./GeeseGameInfo";
-import GeeseAnimalCardLevelTwo from "./GeeseAnimalCardLevelTwo";
+import BirdsOfPreyGameInfo from "./BirdsOfPreyGameInfo";
+import BirdsOfPreyAnimalCardLevelTwo from "./BirdsOfPreyAnimalCardLevelTwo";
 
-class GeeseGameLevelTwo extends Component {
+class BirdsOfPreyGameLevelTwo extends Component {
   constructor(props) {
     super();
-    let theData = geeseData;
+    let theData = birdsofpreyData;
     theData = this.shuffle(theData);
 
     this.state = {
       startDate: "",
       endDate: "",
-      theGeese: theData,
-      allNames: geeseNames,
+      theBirdsOfPrey: theData,
+      allNames: birdsofpreyNames,
       currentItem: 0,
     };
 
@@ -43,7 +43,7 @@ class GeeseGameLevelTwo extends Component {
     this.setState({
       startDate: "",
       endDate: "",
-      theGeese: {},
+      theBirdsOfPrey: {},
       currentItem: 0,
     });
 
@@ -51,8 +51,8 @@ class GeeseGameLevelTwo extends Component {
   }
 
   componentDidMount() {
-    console.log("Component did mount GeeseGameLevelTwo");
-    this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: this.state.theGeese.length} );
+    console.log("Component did mount BirdsOfPreyGameLevelTwo");
+    this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: this.state.theBirdsOfPrey.length} );
   }
 
   resetGameState = () => {
@@ -66,7 +66,7 @@ class GeeseGameLevelTwo extends Component {
     this.setState({
       startDate: "",
       endDate: "",
-      theGeese: theData,
+      theBirdsOfPrey: theData,
       currentItem: 0,
     });
 
@@ -121,19 +121,19 @@ class GeeseGameLevelTwo extends Component {
             userResult = true;
         }
 
-    if(userResult) {
+    if(userResult || points >= 75.0) {
       console.log("CheckSolution: Correct");
       console.log("Points: " + points);
-      this.props.dispatch( {type: 'RESULT_OK'} );
+      this.props.dispatch( {type: 'RESULT_OK_POINTS', payload: points} );
     } else {
       console.log("Wrong");
-      this.props.dispatch( {type: 'RESULT_WRONG'} );
+      this.props.dispatch( {type: 'RESULT_WRONG_POINTS', payload: points} );
     }
 
   }
 
   advanceHandler = () => {
-    const nextItem = (this.state.currentItem + 1)%this.state.theGeese.length;
+    const nextItem = (this.state.currentItem + 1)%this.state.theBirdsOfPrey.length;
 
     this.setState({
       currentItem: nextItem,
@@ -150,12 +150,12 @@ class GeeseGameLevelTwo extends Component {
       } else {
         ducksCard = (
           (!this.props.showTheOverlay) ?
-            <GeeseAnimalCardLevelTwo item={this.state.theGeese[this.state.currentItem]} 
+            <BirdsOfPreyAnimalCardLevelTwo item={this.state.theBirdsOfPrey[this.state.currentItem]} 
                              solutionHandler={this.checkSolution} 
                              inputData={this.state.allNames} 
                              continueHandler={this.advanceHandler}/>
           : 
-            <GeeseAnimalCardLevelTwo item={this.state.theGeese[this.state.currentItem]} 
+            <BirdsOfPreyAnimalCardLevelTwo item={this.state.theBirdsOfPrey[this.state.currentItem]} 
                              feedbackState={true} 
                              result={this.props.currentResult} 
                              inputData={this.state.allNames} 
@@ -167,7 +167,7 @@ class GeeseGameLevelTwo extends Component {
         <div>
           <div className="row text-center padding">
               <div className="col-md-4">
-                  <GeeseGameInfo resetHandler={this.resetGameState} />
+                  <BirdsOfPreyGameInfo resetHandler={this.resetGameState} />
               </div>
               <div className="col-md-4">
                   {ducksCard}
@@ -188,4 +188,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(GeeseGameLevelTwo);
+export default connect(mapStateToProps)(BirdsOfPreyGameLevelTwo);

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from 'react-redux';
 import Modal from 'react-bootstrap4-modal';
 
-class GeeseGameInfo extends Component {
+class BirdsOfPreyGameInfo extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -23,7 +23,7 @@ class GeeseGameInfo extends Component {
   handleOnChange = (event) => {
     // destructure the object
     const {name, value, type, checked} = event.target;
-    console.log("GeeseGame Level changed!" + " " + value);
+    console.log("BirdsOfPreyGame Level changed!" + " " + value);
     type === "checkBox" ? this.setState({[name]: checked}) :
     this.setState({
       [name]: event.target.value
@@ -33,7 +33,7 @@ class GeeseGameInfo extends Component {
 //    });
     let levelValue = (value === "Level 1") ? 1 : 2;
     this.props.dispatch( {type: 'SET_LEVEL', payload: levelValue});
-    console.log("GeeseGame Level end!");
+    console.log("BirdsOfPreyGame Level end!");
   }
 
   handleReset = () => {
@@ -152,4 +152,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(GeeseGameInfo);
+export default connect(mapStateToProps)(BirdsOfPreyGameInfo);

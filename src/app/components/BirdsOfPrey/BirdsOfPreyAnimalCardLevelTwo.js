@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
 
-class GeeseAnimalCard extends Component {
+class BirdsOfPreyAnimalCard extends Component {
   constructor() {
     super();
     this.state = {
@@ -70,7 +70,7 @@ class GeeseAnimalCard extends Component {
     let choicesArray = this.props.inputData.map(
        (item) => (<option key={item.key}>{item.name}</option>));
 
-    let swimArray = [(<option key="1">Feldgans</option>), (<option key="2">Bunte Gans</option>), (<option key="3">Halbgans</option>)]; 
+    let swimArray = [(<option key="1">Gleitstoßgreifer</option>), (<option key="2">Pirsch-Startfluggreifer</option>), (<option key="3">Späh-Stoßfluggreifer</option>)]; 
 
     return (
 			<div className="card">
@@ -96,7 +96,7 @@ class GeeseAnimalCard extends Component {
                                         value={this.state.duckType}
                                         name="duckType" 
                                         onChange={this.handleOnChange}>
-                                        <option>Gänseart auswählen</option>
+                                        <option>Flugverhalten</option>
                                         {swimArray}
                                 </select>
                                 </div>
@@ -108,11 +108,13 @@ class GeeseAnimalCard extends Component {
                                         value={this.state.breeding}
                                         name="breeding" 
                                         onChange={this.handleOnChange}>
-                                        <option>Brütet wo?</option>
+                                        <option>Brutort</option>
                                         <option>Bodenbrüter</option>
+                                        <option>Boden-Baumbrüter</option>
                                         <option>Baumbrüter</option>
-                                        <option>Höhlenbrüter</option>
-                                        <option>Flexibel</option>
+                                        <option>Baum-Felsenbrüter</option>
+                                        <option>Baum-Felsen-Bodenbrüter</option>
+                                        <option>Felsenbrüter</option>
                                 </select>
                                 </div>
                                 <div className="col-sm-6">
@@ -145,4 +147,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(GeeseAnimalCard);
+export default connect(mapStateToProps)(BirdsOfPreyAnimalCard);

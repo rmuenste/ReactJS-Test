@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
 
-class GeeseAnimalCard extends Component {
+class BirdsOfPreyAnimalCard extends Component {
   constructor() {
     super();
     this.state = {
@@ -67,7 +67,7 @@ class GeeseAnimalCard extends Component {
         {(this.props.showTheOverlay) ? <div className="card-img-overlay"> <FeedbackOverlay result={this.props.reduxResult}/> </div> : null}
 				<img src={this.props.item.imgPath} className="card-img-top"/>
 				<div className="card-body">
-					<h4 className="card-title">Gänseart:</h4>
+					<h4 className="card-title">Greifvogelart:</h4>
 						<form>
 							<div className="form-group">
                             <select className="form-control" id="exampleFormControlSelect1"  
@@ -98,4 +98,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(GeeseAnimalCard);
+export default connect(mapStateToProps)(BirdsOfPreyAnimalCard);

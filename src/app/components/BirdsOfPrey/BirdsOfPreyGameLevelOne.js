@@ -1,22 +1,22 @@
 import React, {Component} from "react";
-import GeeseAnimalCard from "./GeeseAnimalCard";
-import geeseData from './geesedata';
-import { geeseNames } from './geesedata';
+import BirdsOfPreyAnimalCard from "./BirdsOfPreyAnimalCard";
+import birdsofpreyData from './birdsofpreydata';
+import { birdsofpreyNames } from './birdsofpreydata';
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
-import GeeseGameInfo from "./GeeseGameInfo";
+import BirdsOfPreyGameInfo from "./BirdsOfPreyGameInfo";
 
-class GeeseGameLevelOne extends Component {
+class BirdsOfPreyGameLevelOne extends Component {
   constructor(props) {
     super();
-    let theData = geeseData;
+    let theData = birdsofpreyData;
     theData = this.shuffle(theData);
 
     this.state = {
       startDate: "",
       endDate: "",
-      theGeese: theData,
-      allNames: geeseNames,
+      theBirdsOfPrey: theData,
+      allNames: birdsofpreyNames,
       currentItem: 0,
     };
 
@@ -43,7 +43,7 @@ class GeeseGameLevelOne extends Component {
     this.setState({
       startDate: "",
       endDate: "",
-      theGeese: {},
+      theBirdsOfPrey: {},
       currentItem: 0,
     });
 
@@ -52,7 +52,7 @@ class GeeseGameLevelOne extends Component {
 
   componentDidMount() {
     console.log("Component did mount maincontent");
-    this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: this.state.theGeese.length} );
+    this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: this.state.theBirdsOfPrey.length} );
   }
 
   resetGameState = () => {
@@ -60,13 +60,13 @@ class GeeseGameLevelOne extends Component {
     // sets the game state back to its
     // initial state
 
-    let theData = geeseData;
+    let theData = birdsofpreyData;
     theData = this.shuffle(theData);
 
     this.setState({
       startDate: "",
       endDate: "",
-      theGeese: theData,
+      theBirdsOfPrey: theData,
       currentItem: 0,
     });
 
@@ -88,7 +88,7 @@ class GeeseGameLevelOne extends Component {
   }
 
   advanceHandler = () => {
-    const nextItem = (this.state.currentItem + 1)%this.state.theGeese.length;
+    const nextItem = (this.state.currentItem + 1)%this.state.theBirdsOfPrey.length;
 
     this.setState({
       currentItem: nextItem,
@@ -105,12 +105,12 @@ class GeeseGameLevelOne extends Component {
       } else {
         ducksCard = (
           (!this.props.showTheOverlay) ?
-            <GeeseAnimalCard item={this.state.theGeese[this.state.currentItem]} 
+            <BirdsOfPreyAnimalCard item={this.state.theBirdsOfPrey[this.state.currentItem]} 
                              solutionHandler={this.checkSolution} 
                              inputData={this.state.allNames} 
                              continueHandler={this.advanceHandler}/>
           : 
-            <GeeseAnimalCard item={this.state.theGeese[this.state.currentItem]} 
+            <BirdsOfPreyAnimalCard item={this.state.theBirdsOfPrey[this.state.currentItem]} 
                              feedbackState={true} 
                              result={this.props.currentResult} 
                              inputData={this.state.allNames} 
@@ -122,7 +122,7 @@ class GeeseGameLevelOne extends Component {
         <div>
           <div className="row text-center padding">
               <div className="col-md-4">
-                  <GeeseGameInfo resetHandler={this.resetGameState} />
+                  <BirdsOfPreyGameInfo resetHandler={this.resetGameState} />
               </div>
               <div className="col-md-4">
                   {ducksCard}
@@ -143,4 +143,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(GeeseGameLevelOne);
+export default connect(mapStateToProps)(BirdsOfPreyGameLevelOne);

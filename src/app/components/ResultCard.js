@@ -23,6 +23,20 @@ class ResultCard extends React.Component {
         medalLink = "images/bronzemedal.png";
     }
 
+    let pointsResult = null;
+
+    if (this.props.points === 0) {
+      pointsResult = null;
+    } else {
+
+      let pointsPercentage = 100.0 *  (this.props.points / (this.props.totalQuestions * 100.0));
+      pointsResult = (
+      <ul>
+          <li>{pointsPercentage}</li>
+      </ul>
+      );
+    }
+
     return(
         <div className="card">
         <div className="card-header">
@@ -37,6 +51,7 @@ class ResultCard extends React.Component {
                 <ul>
                     <li>{percentageString}</li>
                 </ul>
+                {pointsResult}
             </div>
 
             <h5 className="card-title">Resultat: </h5>
@@ -52,7 +67,8 @@ class ResultCard extends React.Component {
 const mapStateToProps = state => {
   return {
     correctAnswers: state.correctAnswers,
-    totalQuestions: state.totalQuestions
+    totalQuestions: state.totalQuestions,
+    points: state.points
   }
 }
 

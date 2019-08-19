@@ -26,6 +26,21 @@ class Navbar extends React.Component {
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Haarwild
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <NavLink to={"/ducks"} className="dropdown-item">Enten</NavLink>
+                <NavLink to={"/geese"} className="dropdown-item">Gänse</NavLink>
+                <NavLink to={"/gulls"} className="dropdown-item">Möwen</NavLink>
+                <NavLink to={"/pigeons"} className="dropdown-item">Tauben</NavLink>
+                <NavLink to={"/ravens"} className="dropdown-item">Raben</NavLink>
+                <NavLink to={"/chicken"} className="dropdown-item">Wildhühner</NavLink>
+                <div className="dropdown-divider"></div>
+                <NavLink to={"/birdsofprey"} className="dropdown-item">Greifvögel</NavLink>
+              </div>
+            </li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Federwild
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -34,9 +49,9 @@ class Navbar extends React.Component {
                 <NavLink to={"/gulls"} className="dropdown-item">Möwen</NavLink>
                 <NavLink to={"/pigeons"} className="dropdown-item">Tauben</NavLink>
                 <NavLink to={"/ravens"} className="dropdown-item">Raben</NavLink>
-                <a className="dropdown-item" href="#">Wildhühner</a>
+                <NavLink to={"/chicken"} className="dropdown-item">Wildhühner</NavLink>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">Greifvögel</a>
+                <NavLink to={"/birdsofprey"} className="dropdown-item">Greifvögel</NavLink>
               </div>
             </li>
           </ul>

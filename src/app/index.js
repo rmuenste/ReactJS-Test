@@ -28,6 +28,7 @@ const initialState = {
     gameRunning: false,
     correctAnswers: 0,
     progress: 0,
+    points: 0,
     gameLevel: 1,
     totalQuestions: 100,
     levelOneData: []
@@ -61,7 +62,17 @@ const rootReducer = (state = initialState,
                                     showTheOverlay: true,
                                     currentResult: true,
                                     correctAnswers: state.correctAnswers + 1, 
-                                    progress: state.progress + 1 
+                                    progress: state.progress + 1, 
+                                }
+                                break;
+                            case "RESULT_OK_POINTS":
+                                state = {
+                                    ...state,
+                                    showTheOverlay: true,
+                                    currentResult: true,
+                                    correctAnswers: state.correctAnswers + 1, 
+                                    progress: state.progress + 1, 
+                                    points: state.points + action.payload 
                                 }
                                 break;
                             case "RESULT_WRONG":
@@ -70,6 +81,15 @@ const rootReducer = (state = initialState,
                                     currentResult: false,
                                     showTheOverlay: true,
                                     progress: state.progress + 1 
+                                }
+                                break;
+                            case "RESULT_WRONG_POINTS":
+                                state = {
+                                    ...state,
+                                    currentResult: false,
+                                    showTheOverlay: true,
+                                    progress: state.progress + 1,
+                                    points: state.points + action.payload 
                                 }
                                 break;
                             case "SET_TOTAL_QUESTIONS":
@@ -86,6 +106,7 @@ const rootReducer = (state = initialState,
                                     gameRunning: false,
                                     correctAnswers: 0,
                                     progress: 0,
+                                    points: 0,
                                     totalQuestions: 100,
                                     levelOneData: [],
                                 }

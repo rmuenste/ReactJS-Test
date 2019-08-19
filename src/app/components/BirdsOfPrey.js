@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import GeeseGameLevelOne from "./Geese/GeeseGameLevelOne";
-import GeeseGameLevelTwo from "./Geese/GeeseGameLevelTwo";
+import BirdsOfPreyGameLevelOne from "./BirdsOfPrey/BirdsOfPreyGameLevelOne";
+import BirdsOfPreyGameLevelTwo from "./BirdsOfPrey/BirdsOfPreyGameLevelTwo";
 import {connect} from 'react-redux';
-import GeeseGameIntro from "./Geese/GeeseGameIntro";
+import BirdsOfPreyGameIntro from "./BirdsOfPrey/BirdsOfPreyGameIntro";
 
-class Geese extends Component {
+class BirdsOfPrey extends Component {
   constructor(props) {
     super();
   }
@@ -24,14 +24,14 @@ class Geese extends Component {
   render () {
     let GameComponent = "";
     if (this.props.level == 1) {
-        GameComponent = (<GeeseGameLevelOne setLevelHandler={this.gameLevelChanged}/>);
+        GameComponent = (<BirdsOfPreyGameLevelOne setLevelHandler={this.gameLevelChanged}/>);
     } else if (this.props.level == 2) {
-        GameComponent = (<GeeseGameLevelTwo setLevelHandler={this.gameLevelChanged}/>);
+        GameComponent = (<BirdsOfPreyGameLevelTwo setLevelHandler={this.gameLevelChanged}/>);
     }
 
     return (
       <div className="container-fluid padding">
-          <GeeseGameIntro />
+          <BirdsOfPreyGameIntro />
           {GameComponent}
       </div>
     );
@@ -49,4 +49,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Geese);
+export default connect(mapStateToProps)(BirdsOfPrey);
