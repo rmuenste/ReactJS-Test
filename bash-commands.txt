@@ -1,0 +1,1 @@
+for i in BirdsOfPrey*; do name=$(echo $i | sed 's/BirdsOfPrey/Chicken/'); mv $i $name;  done
