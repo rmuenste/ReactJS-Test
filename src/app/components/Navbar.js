@@ -26,6 +26,14 @@ class Navbar extends React.Component {
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Land/Waldbau
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <NavLink to={"/seeds"} className="dropdown-item">Sämereien</NavLink>
+              </div>
+            </li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Haarwild
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
