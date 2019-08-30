@@ -40,7 +40,9 @@ class BirdsOfPreyAnimalCard extends Component {
     let choicesArray = this.props.inputData.map(
        (item) => (<option key={item.key}>{item.name}</option>));
 
-    let swimArray = [(<option key="1">Gleitstoßgreifer</option>), (<option key="2">Pirsch-Startfluggreifer</option>), (<option key="3">Späh-Stoßfluggreifer</option>)]; 
+    let flightArray = [(<option key="1">Gleitstoßgreifer</option>), 
+                       (<option key="2">Pirsch-Startfluggreifer</option>), 
+                       (<option key="3">Späh-Stoßfluggreifer</option>)]; 
 
     return (
 			<div className="card">
@@ -56,7 +58,7 @@ class BirdsOfPreyAnimalCard extends Component {
                                         value={this.state.name}
                                         name="name" 
                                         onChange={this.handleOnChange}>
-                                        <option>Tierart auswählen</option>
+                                        <option>Tierart</option>
                                         {choicesArray}
                                 </select>
                                 </div>
@@ -67,7 +69,7 @@ class BirdsOfPreyAnimalCard extends Component {
                                         name="flightType" 
                                         onChange={this.handleOnChange}>
                                         <option>Flugverhalten</option>
-                                        {swimArray}
+                                        {flightArray}
                                 </select>
                                 </div>
                             </div>
