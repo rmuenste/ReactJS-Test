@@ -1,27 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
+import { statePrototype } from "./birdsofpreydata";
 
 class BirdsOfPreyAnimalCard extends Component {
   constructor() {
     super();
-    this.state = {
-      animalName: "",
-      duckType: "",
-      breeding: "",
-      eggs: ""
-    };
-  }
-
-  shuffle = (a) => {
-    let j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
+    // get the state prototype from the input file?
+    this.state = {...statePrototype}; 
   }
 
   handleContinue = () => {
@@ -31,26 +17,12 @@ class BirdsOfPreyAnimalCard extends Component {
   }
 
   handleSolution = () => {
-    let solutionObject =  {
-        name: this.state.animalName,
-        type: this.state.duckType,
-        breeding: this.state.breeding,
-        eggs: this.state.eggs
-    };
+    console.log("Name: " + this.state.name);
+    let solutionObject =  {...this.state};
 
-    this.props.solutionHandler(this.props.item, {
-        name: this.state.animalName,
-        type: this.state.duckType,
-        breeding: this.state.breeding,
-        eggs: this.state.eggs
-    });
+    this.props.solutionHandler(this.props.item, solutionObject);
 
-    this.setState({
-      animalName: "",
-      duckType: "",
-      breeding: "",
-      eggs: ""
-    });
+    this.setState({...statePrototype});
   }
 
   // An event handler has an event parameter
@@ -65,8 +37,6 @@ class BirdsOfPreyAnimalCard extends Component {
 
   // render
   render() {
-//    let namesArray = [...this.props.item.choices, this.props.item.name];
-//    namesArray = this.shuffle(namesArray);
     let choicesArray = this.props.inputData.map(
        (item) => (<option key={item.key}>{item.name}</option>));
 
@@ -83,8 +53,8 @@ class BirdsOfPreyAnimalCard extends Component {
                                 <div className="col-sm-6">
                                 <select className="form-control" id="exampleFormControlSelect1"  
                                         disabled={false}
-                                        value={this.state.animalName}
-                                        name="animalName" 
+                                        value={this.state.name}
+                                        name="name" 
                                         onChange={this.handleOnChange}>
                                         <option>Tierart auswählen</option>
                                         {choicesArray}
@@ -93,8 +63,8 @@ class BirdsOfPreyAnimalCard extends Component {
                                 <div className="col-sm-6">
                                 <select className="form-control" id="exampleFormControlSelect1"  
                                         disabled={false}
-                                        value={this.state.duckType}
-                                        name="duckType" 
+                                        value={this.state.flightType}
+                                        name="flightType" 
                                         onChange={this.handleOnChange}>
                                         <option>Flugverhalten</option>
                                         {swimArray}

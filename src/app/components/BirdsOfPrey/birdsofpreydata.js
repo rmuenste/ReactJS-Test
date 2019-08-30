@@ -182,6 +182,13 @@ const birdsofpreyData = [
     },
 ]
 
+export const statePrototype = {
+    name: "",
+    flightType: "",
+    breeding: "",
+    eggs: ""
+}
+
 export const birdsofpreyNames = [
     {
         id: 1,

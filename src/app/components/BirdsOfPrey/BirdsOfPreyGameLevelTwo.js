@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
 import BirdsOfPreyGameInfo from "./BirdsOfPreyGameInfo";
 import BirdsOfPreyAnimalCardLevelTwo from "./BirdsOfPreyAnimalCardLevelTwo";
+import shuffle from "../../modules/Shuffle";
 
 class BirdsOfPreyGameLevelTwo extends Component {
   constructor(props) {
     super();
     let theData = birdsofpreyData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
 
     this.state = {
       startDate: "",
@@ -22,21 +23,6 @@ class BirdsOfPreyGameLevelTwo extends Component {
 
 //    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
-  }
-
-  shuffle(a) {
-    let j, x, i,idtemp, keytemp;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[i].key = i;
-        a[i].id = i+1;
-        a[j] = x;
-        x.id = j+1;
-        x.key = j;
-    }
-    return a;
   }
 
   componentWillUnmount() {
@@ -61,7 +47,7 @@ class BirdsOfPreyGameLevelTwo extends Component {
     // initial state
 
     let theData = ducksData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
 
     this.setState({
       startDate: "",
@@ -93,29 +79,29 @@ class BirdsOfPreyGameLevelTwo extends Component {
         console.log("name wrong " + userSolution.name);
     }
 
-    if (userSolution.type === item.type) {
+    if (userSolution.flightType === item.type) {
         typeResult = true;
         points += 25.0;
     } else {
-        console.log("type wrong " + userSolution.type);
+        console.log("type wrong " + userSolution.flightType);
     }
 
     if (userSolution.breeding === item.breeding) {
         breedingResult = true;
         points += 25.0;
     } else {
-        console.log("breeding wrong " + userSolution.breedingResult);
+        console.log("breeding wrong " + userSolution.breeding);
     }
 
     if (userSolution.eggs === item.eggs) {
         eggsResult = true;
         points += 25.0;
     } else {
-        console.log("eggs wrong " + userSolution.eggsResult);
+        console.log("eggs wrong " + userSolution.eggs);
     }
 
     if (userSolution.name === item.name &&
-        userSolution.type === item.type &&
+        userSolution.flightType === item.type &&
         userSolution.breeding === item.breeding &&
         userSolution.eggs === item.eggs) {
             userResult = true;
