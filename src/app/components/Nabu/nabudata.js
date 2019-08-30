@@ -180,6 +180,111 @@ const nabuBirds = [
         imgPath: "./images/nabu/web/sumpfohreule.jpg",
         name: "Sumpfohreule",
         choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 27,
+        key: 26,
+        imgPath: "./images/nabu/web/bekassine2.jpg",
+        name: "Bekassine",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 28,
+        key: 27,
+        imgPath: "./images/nabu/web/bluthaenfling.jpg",
+        name: "Bluthänfling",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 29,
+        key: 28,
+        imgPath: "./images/nabu/web/dompfaff.jpg",
+        name: "Dompfaff",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 30,
+        key: 29,
+        imgPath: "./images/nabu/web/erlenzeisig.jpg",
+        name: "Erlenzeisig",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 31,
+        key: 30,
+        imgPath: "./images/nabu/web/fichtenkreuzschnabel.jpg",
+        name: "Fichtenkreuzschnabel",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 32,
+        key: 31,
+        imgPath: "./images/nabu/web/flussregenpfeifer.jpg",
+        name: "Flussregenpfeifer",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 33,
+        key: 32,
+        imgPath: "./images/nabu/web/gartengrasmuecke2.jpg",
+        name: "Gartengrasmücke",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 34,
+        key: 33,
+        imgPath: "./images/nabu/web/goldammer.jpg",
+        name: "Goldammer",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 35,
+        key: 34,
+        imgPath: "./images/nabu/web/grosserbrachvogel.jpg",
+        name: "Großer Brachvogel",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 36,
+        key: 35,
+        imgPath: "./images/nabu/web/grosserohrdommel.jpg",
+        name: "Große Rohrdommel",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 37,
+        key: 36,
+        imgPath: "./images/nabu/web/gruenfink2.jpg",
+        name: "Grünfink",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 38,
+        key: 37,
+        imgPath: "./images/nabu/web/gruenfuessigesteichhuhn.jpg",
+        name: "Grünfüßiges Teichhuhn",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 39,
+        key: 38,
+        imgPath: "./images/nabu/web/kernbeisser.jpg",
+        name: "Kernbeißer",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 40,
+        key: 39,
+        imgPath: "./images/nabu/web/kiebitz.jpg",
+        name: "Kiebitz",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
+    },
+    {
+        id: 41,
+        key: 40,
+        imgPath: "./images/nabu/web/kleiber.jpg",
+        name: "Kleiber",
+        choices: ["Steinkauz", "Waldkauz", "Sumpfohreule"]
     }
 ];
 
