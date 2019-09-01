@@ -44,7 +44,7 @@ class Navbar extends React.Component {
                 <NavLink to={"/ravens"} className="dropdown-item">Raben</NavLink>
                 <NavLink to={"/chicken"} className="dropdown-item">Wildhühner</NavLink>
                 <div className="dropdown-divider"></div>
-                <NavLink to={"/birdsofprey"} className="dropdown-item">Greifvögel</NavLink>
+                <NavLink to={"/breeding"} className="dropdown-item">Fortpflanzung</NavLink>
               </div>
             </li>
             <li className="nav-item dropdown">
