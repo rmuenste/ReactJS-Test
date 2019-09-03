@@ -13,7 +13,7 @@ import Pigeons from './Pigeons';
 import Ravens from './Ravens';
 import Chicken from './Chicken';
 import Seeds from './Seeds';
-import Breeding from './Breeding';
+//import Breeding from './Breeding';
 import BirdsOfPrey from './BirdsOfPrey';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
@@ -40,7 +40,6 @@ class App extends React.Component {
             <Route path="/pigeons" component={Pigeons}/>
             <Route path="/ravens" component={Ravens}/>
             <Route path="/seeds" component={Seeds}/>
-            <Route path="/breeding" component={Breeding}/>
             <Route path="/birdsofprey" component={BirdsOfPrey}/>
             <hr className="my-4"/>
             <SocialMediaInfo />

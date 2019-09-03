@@ -283,6 +283,7 @@ figure {
 }
 
 /*
+//             Styling of the fields
 //-----------------------------------------------------
 */
 .my-select {
@@ -292,6 +293,22 @@ figure {
 .my-select:disabled {
   background-color: salmon;
   box-shadow: 0 0 0 0.2rem red;
+}
+
+
+
+.my-select-success {
+  background-color: lightblue;
+}
+
+/*
+  background-color: #869960;
+  border: 1px solid #798A56;
+*/
+
+.my-select-success:disabled {
+  background-color: lightblue;
+  box-shadow: 0 0 0 0.2rem #798A56;
 }
 
 .card-body {

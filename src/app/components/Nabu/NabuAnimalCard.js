@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
+import { shuffleNames } from "../../modules/Shuffle";
 
 class NabuAnimalCard extends Component {
   constructor(props) {
     super();
 
     let namesArray = this.generateRandomAnswers(props);
-    namesArray = this.shuffle(namesArray);
+    namesArray = shuffleNames(namesArray);
     let namesElementArray = namesArray.map(
       (value, index) => (<option key={index}>{value}</option>)
     );
@@ -24,7 +25,7 @@ class NabuAnimalCard extends Component {
     if (this.props.item.name !== prevProps.item.name) {
 
       let namesArray = this.generateRandomAnswers(this.props);
-      namesArray = this.shuffle(namesArray);
+      namesArray = shuffleNames(namesArray);
       let namesElementArray = namesArray.map(
         (value, index) => (<option key={index}>{value}</option>)
       );
@@ -36,17 +37,6 @@ class NabuAnimalCard extends Component {
     }
   }
 
-  shuffle = (a) => {
-    let j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
-  }
-
   handleContinue = () => {
     console.log("continueHandler!");
     console.log(this.props);
@@ -55,10 +45,6 @@ class NabuAnimalCard extends Component {
 
   handleSolution = () => {
     this.props.solutionHandler(this.props.item, this.state.animalName);
-
-//    this.setState({
-//      animalName: ""
-//    });
   }
 
   getRandomInt = (max) => {
@@ -101,7 +87,7 @@ class NabuAnimalCard extends Component {
       if (this.props.reduxResult === false)
         selectClass = "custom-select my-select";
       else
-        selectClass = "custom-select";
+        selectClass = "custom-select my-select-success";
     }
 
     let selectComponent = (
