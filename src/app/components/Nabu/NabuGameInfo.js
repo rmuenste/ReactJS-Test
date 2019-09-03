@@ -67,7 +67,7 @@ class NabuGameInfo extends Component {
             Nabu
         </div>
         <div className="card-body">
-            <h5 className="card-title">Spielregeln Level 1</h5>
+            <h5 className="card-title">Spielregeln</h5>
 
             <div className="mylist">
                 <ul>
@@ -77,16 +77,6 @@ class NabuGameInfo extends Component {
                     <li>Meistern Sie {this.props.totalQuestions} Tierarten</li>
                 </ul>
             </div>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Schwierigkeit</label>
-                    <select className="form-control" id="exampleFormControlSelect1" disabled={true}>
-                    <option>Level 1</option>
-                    <option>Level 2</option>
-                    <option>Level 3</option>
-                    </select>
-                </div>
-            </form>
             <label htmlFor="progress1">Punktestand</label>
             <div className="progress" id="progress1">
                 <div className={barStyle} role="progressbar" style={{width: progressBarValue}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

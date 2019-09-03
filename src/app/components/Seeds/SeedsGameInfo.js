@@ -89,27 +89,18 @@ class SeedsGameInfo extends Component {
 
         <div className="card">
         <div className="card-header">
-            Nabu
+            Sämereien
         </div>
         <div className="card-body">
-            <h5 className="card-title">Spielregeln Level 1</h5>
+            <h5 className="card-title">Spielregeln</h5>
 
             <div className="mylist">
                 <ul>
-                    <li>Tierarten unter Naturschutz</li>
+                    <li>Identifizieren des Saatguts</li>
                     <li>Zufällige Antworten vorgegeben</li>
-                    <li>Identifizieren Sie die Tierart</li>
-                    <li>Meistern Sie {this.props.totalQuestions} Tierarten</li>
+                    <li>Meistern Sie {this.props.totalQuestions} Sämereien</li>
                 </ul>
             </div>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Schwierigkeit</label>
-                    <select className="form-control" id="exampleFormControlSelect1" value={this.state.level} onChange={this.handleOnChange}>
-                    {levelOptions}
-                    </select>
-                </div>
-            </form>
             <label htmlFor="progress1">Punktestand</label>
             <div className="progress" id="progress1">
                 <div className={barStyle} role="progressbar" style={{width: progressBarValue}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import ducksData from './ducksdata';
 import { duckNames } from './ducksdata';
 import { connect } from 'react-redux';
+import { ducksGameInfo } from './ducksdata';
 import ResultCard from '../ResultCard';
 import DucksGameInfo from "./DucksGameInfo";
 import DucksAnimalCardLevelTwo from "./DucksAnimalCardLevelTwo";
@@ -167,7 +168,11 @@ class DucksGameLevelTwo extends Component {
         <div>
           <div className="row text-center padding">
               <div className="col-md-4">
-                  <DucksGameInfo resetHandler={this.resetGameState} />
+                  <DucksGameInfo resetHandler={this.resetGameState} 
+                                 title={ducksGameInfo.gameTitle} 
+                                 subTitle={ducksGameInfo.gameDescLevel[this.props.level-1].subTitle}
+                                 gameGoals={ducksGameInfo.gameDescLevel[this.props.level-1].gameGoals}
+                                 />
               </div>
               <div className="col-md-4">
                   {ducksCard}
@@ -184,7 +189,8 @@ const mapStateToProps = (state) => {
     showOverlay: state.showTheOverlay,
     progress: state.progress,
     gameRunning: state.gameRunning,
-    currentResult: state.currentResult
+    currentResult: state.currentResult,
+    level: state.gameLevel
   };
 }
 

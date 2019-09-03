@@ -7,6 +7,7 @@ html, body {
   color: #222;
 }
 
+/* Navbar styling */
 .progress {
   margin-bottom: 15px;
 }
@@ -282,12 +283,16 @@ figure {
 }
 
 /*
-.path.line {
-    stroke-dashoffset: 1000;
-    -webkit-animation: dash .9s .35s ease-in-out forwards;
-    animation: dash .9s .35s ease-in-out forwards;
-}
+//-----------------------------------------------------
 */
+.my-select {
+  background-color: salmon;
+}
+
+.my-select:disabled {
+  background-color: salmon;
+  box-shadow: 0 0 0 0.2rem red;
+}
 
 .card-body {
   position: relative

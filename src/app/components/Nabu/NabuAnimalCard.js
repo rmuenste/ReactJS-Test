@@ -56,9 +56,9 @@ class NabuAnimalCard extends Component {
   handleSolution = () => {
     this.props.solutionHandler(this.props.item, this.state.animalName);
 
-    this.setState({
-      animalName: ""
-    });
+//    this.setState({
+//      animalName: ""
+//    });
   }
 
   getRandomInt = (max) => {
@@ -96,6 +96,33 @@ class NabuAnimalCard extends Component {
   // render
   render() {
 
+    let selectClass = "custom-select";
+    if (this.props.showTheOverlay) {
+      if (this.props.reduxResult === false)
+        selectClass = "custom-select my-select";
+      else
+        selectClass = "custom-select";
+    }
+
+    let selectComponent = (
+    <select className={selectClass} id="exampleFormControlSelect1"  
+                      disabled={this.props.showTheOverlay}
+                      value={this.state.animalName}
+                      name="animalName" 
+                      onChange={this.handleOnChange}>
+    <option>Tierart auswählen</option>
+    {this.state.choices}
+    </select>);
+
+    if (this.props.showTheOverlay) {
+    selectComponent = (
+    <select className={selectClass} id="exampleFormControlSelect1"  
+                      disabled={this.props.showTheOverlay}
+                      >
+    <option>{this.props.item.name}</option>
+    </select>);
+    }
+
     return (
 			<div className="card">
         {(this.props.showTheOverlay) ? <div className="card-img-overlay"> <FeedbackOverlay result={this.props.reduxResult}/> </div> : null}
@@ -104,14 +131,7 @@ class NabuAnimalCard extends Component {
 					<h4 className="card-title">Tierart:</h4>
 						<form>
 							<div className="form-group">
-                            <select className="form-control" id="exampleFormControlSelect1"  
-                                    disabled={false}
-                                    value={this.state.animalName}
-                                    name="animalName" 
-                                    onChange={this.handleOnChange}>
-									<option>Tierart auswählen</option>
-                  {this.state.choices}
-							</select>
+                {selectComponent}
 							</div>
 						</form>
                 {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :

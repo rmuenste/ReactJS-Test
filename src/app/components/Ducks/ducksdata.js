@@ -258,5 +258,30 @@ export const duckNames = [
     }
 ]
 
+export const ducksGameInfo = {
+    gameTitle: "Enten",
+    gameDescLevel: [
+        {
+          subTitle: "Spielregeln Level 1",
+          gameGoals: [
+              "Erkennen Sie die Entenart",
+              "Zufällige Antworten vorgegeben",
+              "Meistern Sie 18 Tierarten"
+          ]
+        },
+        {
+          subTitle: "Spielregeln Level 2",
+          gameGoals: [
+              "Erkennen Sie die Entenart",
+              "Zufällige Antworten vorgegeben",
+              "Unterscheiden Sie Schwimm- Tauch- und Meeresenten",
+              "Geben Sie den Brutort an",
+              "Bestimmen Sie die Größe des Geleges",
+              "Meistern Sie 18 Tierarten"
+          ]
+        },
+    ]
+
+};
 
 export default ducksData;

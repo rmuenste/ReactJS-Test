@@ -2,15 +2,17 @@ import React, {Component} from "react";
 import DucksAnimalCard from "./DucksAnimalCard";
 import ducksData from './ducksdata';
 import { duckNames } from './ducksdata';
+import { ducksGameInfo } from './ducksdata';
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
 import DucksGameInfo from "./DucksGameInfo";
+import shuffle from "../../modules/Shuffle";
 
 class DucksGameLevelOne extends Component {
   constructor(props) {
     super();
     let theData = ducksData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
 
     this.state = {
       startDate: "",
@@ -22,21 +24,6 @@ class DucksGameLevelOne extends Component {
 
 //    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
-  }
-
-  shuffle(a) {
-    let j, x, i,idtemp, keytemp;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[i].key = i;
-        a[i].id = i+1;
-        a[j] = x;
-        x.id = j+1;
-        x.key = j;
-    }
-    return a;
   }
 
   componentWillUnmount() {
@@ -61,7 +48,7 @@ class DucksGameLevelOne extends Component {
     // initial state
 
     let theData = ducksData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
 
     this.setState({
       startDate: "",
@@ -122,7 +109,11 @@ class DucksGameLevelOne extends Component {
         <div>
           <div className="row text-center padding">
               <div className="col-md-4">
-                  <DucksGameInfo resetHandler={this.resetGameState} />
+                  <DucksGameInfo resetHandler={this.resetGameState} 
+                                 title={ducksGameInfo.gameTitle} 
+                                 subTitle={ducksGameInfo.gameDescLevel[this.props.level-1].subTitle}
+                                 gameGoals={ducksGameInfo.gameDescLevel[this.props.level-1].gameGoals}
+                                 />
               </div>
               <div className="col-md-4">
                   {ducksCard}
@@ -139,7 +130,8 @@ const mapStateToProps = (state) => {
     showOverlay: state.showTheOverlay,
     progress: state.progress,
     gameRunning: state.gameRunning,
-    currentResult: state.currentResult
+    currentResult: state.currentResult,
+    level: state.gameLevel
   };
 }
 

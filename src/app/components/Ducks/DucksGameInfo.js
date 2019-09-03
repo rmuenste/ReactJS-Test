@@ -84,22 +84,21 @@ class DucksGameInfo extends Component {
       levelOptions = [(<option key="level2">Level 2</option>), (<option key="level1">Level 1</option>)];
     }
 
+    let gameDesc = this.props.gameGoals.map( (item, index) => (<li key={index}>{item}</li>) );
+
     return(
       <div> 
 
         <div className="card">
         <div className="card-header">
-            Nabu
+            {this.props.title}
         </div>
         <div className="card-body">
-            <h5 className="card-title">Spielregeln Level 1</h5>
+            <h5 className="card-title">{this.props.subTitle}</h5>
 
             <div className="mylist">
                 <ul>
-                    <li>Tierarten unter Naturschutz</li>
-                    <li>Zufällige Antworten vorgegeben</li>
-                    <li>Identifizieren Sie die Tierart</li>
-                    <li>Meistern Sie {this.props.totalQuestions} Tierarten</li>
+                    {gameDesc}
                 </ul>
             </div>
             <form>
