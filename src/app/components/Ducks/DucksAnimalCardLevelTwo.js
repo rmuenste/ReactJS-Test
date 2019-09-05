@@ -10,7 +10,8 @@ class DucksAnimalCard extends Component {
       animalName: "",
       duckType: "",
       breeding: "",
-      eggs: ""
+      eggs: "",
+      fieldNames: ["animalName", "duckType", "breeding", "eggs"]
     };
   }
 
@@ -27,7 +28,8 @@ class DucksAnimalCard extends Component {
         animalName: "",
         duckType: "",
         breeding: "",
-        eggs: ""
+        eggs: "",
+        fieldNames: ["animalName", "duckType", "breeding", "eggs"]
       });
     }
   }
@@ -46,10 +48,13 @@ class DucksAnimalCard extends Component {
   handleOnChange = (event) => {
     // destructure the object
     const {name, value, type, checked} = event.target;
-    type === "checkBox" ? this.setState({[name]: checked}) :
-    this.setState({
-      [name]: value
-    });
+    if (type === "checkBox") {
+      this.setState({[name]: checked}); 
+    } else {
+      this.setState({
+        [name]: value
+      });
+    }
   }
 
   // An event handler has an event parameter
@@ -72,117 +77,33 @@ class DucksAnimalCard extends Component {
 
     let breedingArray = [(<option key="1">Bodenbrüter</option>), (<option key="2">Baumbrüter</option>), (<option key="3">Höhlenbrüter</option>)]; 
 
-    let classSelectElement = ["custom-select","custom-select","custom-select","custom-select"];
+    let eggsArray = [(<option key="1">{this.props.item.eggs}</option>)]; 
 
-    if (this.props.showTheOverlay) {
-      for (const [idx, val] of this.props.userSolution.entries()) {
-        if(val) 
-          classSelectElement[idx] += " my-select-success";
-        else
-          classSelectElement[idx] += " my-select";
-      }
+    let elementDisabled = this.props.showTheOverlay;
+
+    let allDataArray = [choicesArray, swimArray, breedingArray, eggsArray];
+
+    let headerArray = ["Entenart", "Entengruppe", "Brutort", "Anzahl Eier?"];
+
+    let solutionArray = [this.props.item.name, this.props.item.type, this.props.item.breeding, this.props.item.eggs];
+
+    if(this.props.showTheOverlay) {
+      headerArray = ["", "", "", ""];
     }
 
-//      <select className={classSelectElement[0]} id="exampleFormControlSelect0"  
-//              disabled={false}
-//              value={this.state.animalName}
-//              name="animalName" 
-//              onChange={this.handleOnChange}>
-//              <option>Entenart</option>
-//              {choicesArray}
-//      </select>
-
-
-
-
-    let selectElementArray = [
-      (
-      <GameSelectElement isDisabled={false} 
-                          name="animalName"
-                          value={this.state.animalName}
+    let selectElementArray = this.state.fieldNames.map( (itemName, index) => {
+      return (
+      <GameSelectElement isDisabled={elementDisabled} 
+                          name={itemName}
+                          value={(this.props.showTheOverlay) ? solutionArray[index] : this.state[itemName]}
                           changeHandler={this.handleOnChange}
-                          selectOptions={choicesArray}
-                          selectHeader="Entenart"
-                          showResult={false}
-                          userSolution={true}
+                          selectOptions={allDataArray[index]}
+                          selectHeader={headerArray[index]}
+                          showResult={this.props.showTheOverlay}
+                          userSolution={this.props.userSolution[index]}
                           />
-      ),
-      (
-      <select className={classSelectElement[1]} id="exampleFormControlSelect1"  
-              disabled={false}
-              value={this.state.duckType}
-              name="duckType" 
-              onChange={this.handleOnChange}>
-              <option>Entengruppe</option>
-              {swimArray}
-      </select>
-      ),
-      (
-      <GameSelectElement isDisabled={false} 
-                          name="breeding"
-                          value={this.state.breeding}
-                          changeHandler={this.handleOnChange}
-                          selectOptions={breedingArray}
-                          selectHeader="Brutort"
-                          showResult={false}
-                          userSolution={true}
-                          />
-      ),
-      (
-      <select className={classSelectElement[3]} id="exampleFormControlSelect3"  
-              disabled={false}
-              value={this.state.eggs}
-              name="eggs" 
-              onChange={this.handleOnChange}>
-              <option>Anzahl Eier?</option>
-              <option>{this.props.item.eggs}</option>
-      </select>
-      )
-
-    ];
-
-    if (this.props.showTheOverlay) {
-      selectElementArray = [
-      (
-      <GameSelectElement isDisabled={true} 
-                          name="animalName"
-                          value={this.props.item.name}
-                          changeHandler={this.handleOnChange}
-                          selectOptions={choicesArray}
-                          selectHeader=""
-                          showResult={true}
-                          userSolution={this.props.userSolution[0]}
-                          />
-      ),
-      (
-      <select className={classSelectElement[1]} id="exampleFormControlSelect1"  
-              disabled={true}
-              >
-              <option>{this.props.item.type}</option>
-      </select>
-      ),
-      (
-      <GameSelectElement isDisabled={true} 
-                          name="breeding"
-                          value={this.props.item.breeding}
-                          changeHandler={this.handleOnChange}
-                          selectOptions={breedingArray}
-                          selectHeader=""
-                          showResult={true}
-                          userSolution={this.props.userSolution[2]}
-                          />
-      ),
-      (
-      <select className={classSelectElement[3]} id="exampleFormControlSelect3"  
-              disabled={true}
-              >
-              <option>{this.props.item.eggs}</option>
-      </select>
-      )
-
-    ];
-    }
-
+      );
+    });
 
     let questionsForm = (
       <form>
@@ -219,18 +140,18 @@ class DucksAnimalCard extends Component {
 				<img src={this.props.item.imgPath} className="card-img-top"/>
 				<div className="card-body">
 					<h4 className="card-title">Fragen:</h4>
-            {questionsForm}
-            {(!this.props.showTheOverlay) ? 
-            <button className="btn btn-primary btn-block" 
-                    onClick={this.handleSolution} 
-                    disabled={!this.props.gameRunning}>Fertig!</button> :
-            <button className="btn btn-primary btn-block" 
-                    onClick={this.handleContinue} 
-                    disabled={!this.props.gameRunning}>Weiter!</button>
-            }
+          {questionsForm}
+          {(!this.props.showTheOverlay) ? 
+          <button className="btn btn-primary btn-block" 
+                  onClick={this.handleSolution} 
+                  disabled={!this.props.gameRunning}>Fertig!</button> :
+          <button className="btn btn-primary btn-block" 
+                  onClick={this.handleContinue} 
+                  disabled={!this.props.gameRunning}>Weiter!</button>
+          }
 				</div>
 			</div>      
-      );
+    );
   }
 }
 
