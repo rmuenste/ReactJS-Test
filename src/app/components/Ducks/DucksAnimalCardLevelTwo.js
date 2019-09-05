@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
+import GameSelectElement from "../GameSelectElement/GameSelectElement";
 
 class DucksAnimalCard extends Component {
   constructor() {
@@ -51,12 +52,25 @@ class DucksAnimalCard extends Component {
     });
   }
 
+  // An event handler has an event parameter
+  testHandler = (event) => {
+    // destructure the object
+    const {name, value, type, checked} = event.target;
+    console.log("Received: " + [name, value, type, checked]);
+//    type === "checkBox" ? this.setState({[name]: checked}) :
+//    this.setState({
+//      [name]: value
+//    });
+  }
+
   generateQuestionsForm = () => {
 
     let choicesArray = this.props.inputData.map(
        (item) => (<option key={item.key}>{item.name}</option>));
 
     let swimArray = [(<option key="1">Schwimmente</option>), (<option key="2">Tauchente</option>), (<option key="3">Meeresente</option>)]; 
+
+    let breedingArray = [(<option key="1">Bodenbrüter</option>), (<option key="2">Baumbrüter</option>), (<option key="3">Höhlenbrüter</option>)]; 
 
     let classSelectElement = ["custom-select","custom-select","custom-select","custom-select"];
 
@@ -69,16 +83,29 @@ class DucksAnimalCard extends Component {
       }
     }
 
+//      <select className={classSelectElement[0]} id="exampleFormControlSelect0"  
+//              disabled={false}
+//              value={this.state.animalName}
+//              name="animalName" 
+//              onChange={this.handleOnChange}>
+//              <option>Entenart</option>
+//              {choicesArray}
+//      </select>
+
+
+
+
     let selectElementArray = [
       (
-      <select className={classSelectElement[0]} id="exampleFormControlSelect0"  
-              disabled={false}
-              value={this.state.animalName}
-              name="animalName" 
-              onChange={this.handleOnChange}>
-              <option>Entenart</option>
-              {choicesArray}
-      </select>
+      <GameSelectElement isDisabled={false} 
+                          name="animalName"
+                          value={this.state.animalName}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={choicesArray}
+                          selectHeader="Entenart"
+                          showResult={false}
+                          userSolution={true}
+                          />
       ),
       (
       <select className={classSelectElement[1]} id="exampleFormControlSelect1"  
@@ -91,16 +118,15 @@ class DucksAnimalCard extends Component {
       </select>
       ),
       (
-      <select className={classSelectElement[2]} id="exampleFormControlSelect2"  
-              disabled={false}
-              value={this.state.breeding}
-              name="breeding" 
-              onChange={this.handleOnChange}>
-              <option>Brutort</option>
-              <option>Bodenbrüter</option>
-              <option>Baumbrüter</option>
-              <option>Höhlenbrüter</option>
-      </select>
+      <GameSelectElement isDisabled={false} 
+                          name="breeding"
+                          value={this.state.breeding}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={breedingArray}
+                          selectHeader="Brutort"
+                          showResult={false}
+                          userSolution={true}
+                          />
       ),
       (
       <select className={classSelectElement[3]} id="exampleFormControlSelect3"  
@@ -118,11 +144,15 @@ class DucksAnimalCard extends Component {
     if (this.props.showTheOverlay) {
       selectElementArray = [
       (
-      <select className={classSelectElement[0]} id="exampleFormControlSelect0"  
-              disabled={true}
-              >
-              <option>{this.props.item.name}</option>
-      </select>
+      <GameSelectElement isDisabled={true} 
+                          name="animalName"
+                          value={this.props.item.name}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={choicesArray}
+                          selectHeader=""
+                          showResult={true}
+                          userSolution={this.props.userSolution[0]}
+                          />
       ),
       (
       <select className={classSelectElement[1]} id="exampleFormControlSelect1"  
@@ -132,11 +162,15 @@ class DucksAnimalCard extends Component {
       </select>
       ),
       (
-      <select className={classSelectElement[2]} id="exampleFormControlSelect2"  
-              disabled={true}
-              >
-              <option>{this.props.item.breeding}</option>
-      </select>
+      <GameSelectElement isDisabled={true} 
+                          name="breeding"
+                          value={this.props.item.breeding}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={breedingArray}
+                          selectHeader=""
+                          showResult={true}
+                          userSolution={this.props.userSolution[2]}
+                          />
       ),
       (
       <select className={classSelectElement[3]} id="exampleFormControlSelect3"  
