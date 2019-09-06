@@ -10,7 +10,11 @@ const SeedsGameIntro = (props) => {
                 </div>
                 <div className="col-12">
                     <p className="lead">
-                    Viele verschiedene Federwildarten nehmen gerne Sämereien als Nahrungsquelle an.        
+                    Der Themenbereich Land- und Waldbau umfasst unter anderem auch die Kenntnis bestimmter Nutzpflanzen und des dazugehörigen Saatgutes (auch 
+                    Sämereien genannt). Das Identifizieren verschiedener Proben von Sämereien ist häufig ein Bestandteil der mündlichen Prüfung, weshalb dieses 
+                    Thema bzw. diese Aufgabe mit einen Beispielen hier geübt werden kann. Die Kenntnis der Nutzpflanzen hilft einem Jäger z.B. bei der Anlage von 
+                    Wildäckern zu Hegezwecken. Darüberhinaus gibt es bei den Wildarten bestimmte Präferenzen bezüglich der Äsung. Sind einem Jäger diese bekannt, 
+                    so kann dies bei der Bestimmung welche Schänden an Pflanzen von welcher Wildart verursacht werden könnten.
                     </p>
                 </div>
             </div>
