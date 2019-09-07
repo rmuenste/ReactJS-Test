@@ -9,7 +9,7 @@ class Navbar extends React.Component {
     return(
     <nav className="navbar navbar-expand-md navbar-light bg-light">
       <div className="container-fluid">
-        <a href="#"><img src="images/Logo-hunt-green.png"/></a>
+        <a href="#"><img src="assets/images/Logo-hunt-green.png"/></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
               <span className="navbar-toggler-icon"></span>
         </button>

@@ -3,7 +3,7 @@ const ducksData = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/ducks/stockente.jpg",
+        imgPath: "./assets/images/ducks/stockente.jpg",
         name: "Stockente",
         breeding: "Bodenbrüter",
         eggs: "8-14",
@@ -12,7 +12,7 @@ const ducksData = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/ducks/bergente.jpg",
+        imgPath: "./assets/images/ducks/bergente.jpg",
         name: "Bergente",
         breeding: "Bodenbrüter",
         eggs: "6-10",
@@ -21,7 +21,7 @@ const ducksData = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/ducks/brandgans.jpg",
+        imgPath: "./assets/images/ducks/brandgans.jpg",
         name: "Brandgans",
         breeding: "Bodenbrüter",
         eggs: "8-12",
@@ -30,7 +30,7 @@ const ducksData = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/ducks/eiderente.jpg",
+        imgPath: "./assets/images/ducks/eiderente.jpg",
         name: "Eiderente",
         breeding: "Bodenbrüter",
         eggs: "4-6",
@@ -39,7 +39,7 @@ const ducksData = [
     {
         id: 5,
         key: 4,
-        imgPath: "./images/ducks/eisente.jpg",
+        imgPath: "./assets/images/ducks/eisente.jpg",
         name: "Eisente",
         breeding: "Bodenbrüter",
         eggs: "5-8",
@@ -48,7 +48,7 @@ const ducksData = [
     {
         id: 6,
         key: 5,
-        imgPath: "./images/ducks/knaekente.jpg",
+        imgPath: "./assets/images/ducks/knaekente.jpg",
         name: "Knäckente",
         breeding: "Bodenbrüter",
         eggs: "8-12",
@@ -57,7 +57,7 @@ const ducksData = [
     {
         id: 7,
         key: 6,
-        imgPath: "./images/ducks/kolbenente.jpg",
+        imgPath: "./assets/images/ducks/kolbenente.jpg",
         name: "Kolbenente",
         breeding: "Bodenbrüter",
         eggs: "6-12",
@@ -66,7 +66,7 @@ const ducksData = [
     {
         id: 8,
         key: 7,
-        imgPath: "./images/ducks/krickente.jpg",
+        imgPath: "./assets/images/ducks/krickente.jpg",
         name: "Krickente",
         breeding: "Bodenbrüter",
         eggs: "8-10",
@@ -75,7 +75,7 @@ const ducksData = [
     {
         id: 9,
         key: 8,
-        imgPath: "./images/ducks/loeffelente.jpg",
+        imgPath: "./assets/images/ducks/loeffelente.jpg",
         name: "Löffelente",
         breeding: "Bodenbrüter",
         eggs: "8-12",
@@ -84,7 +84,7 @@ const ducksData = [
     {
         id: 10,
         key: 9,
-        imgPath: "./images/ducks/pfeifente.jpg",
+        imgPath: "./assets/images/ducks/pfeifente.jpg",
         name: "Pfeifente",
         breeding: "Bodenbrüter",
         eggs: "8-12",
@@ -93,7 +93,7 @@ const ducksData = [
     {
         id: 11,
         key: 10,
-        imgPath: "./images/ducks/reiherente.jpg",
+        imgPath: "./assets/images/ducks/reiherente.jpg",
         name: "Reiherente",
         breeding: "Bodenbrüter",
         eggs: "8-12",
@@ -102,7 +102,7 @@ const ducksData = [
     {
         id: 12,
         key: 11,
-        imgPath: "./images/ducks/samtente.jpg",
+        imgPath: "./assets/images/ducks/samtente.jpg",
         name: "Samtente",
         breeding: "Bodenbrüter",
         eggs: "6-10",
@@ -111,7 +111,7 @@ const ducksData = [
     {
         id: 13,
         key: 12,
-        imgPath: "./images/ducks/schellente.jpg",
+        imgPath: "./assets/images/ducks/schellente.jpg",
         name: "Schellente",
         breeding: "Bodenbrüter",
         eggs: "6-10",
@@ -120,7 +120,7 @@ const ducksData = [
     {
         id: 14,
         key: 13,
-        imgPath: "./images/ducks/schnatterente.jpg",
+        imgPath: "./assets/images/ducks/schnatterente.jpg",
         name: "Schnatterente",
         breeding: "Bodenbrüter",
         eggs: "8-12",
@@ -129,7 +129,7 @@ const ducksData = [
     {
         id: 15,
         key: 14,
-        imgPath: "./images/ducks/spiessente.jpg",
+        imgPath: "./assets/images/ducks/spiessente.jpg",
         name: "Spießente",
         breeding: "Bodenbrüter",
         eggs: "7-10",
@@ -138,7 +138,7 @@ const ducksData = [
     {
         id: 16,
         key: 15,
-        imgPath: "./images/ducks/tafelente.jpg",
+        imgPath: "./assets/images/ducks/tafelente.jpg",
         name: "Tafelente",
         breeding: "Bodenbrüter",
         eggs: "6-9",
@@ -147,7 +147,7 @@ const ducksData = [
     {
         id: 17,
         key: 16,
-        imgPath: "./images/ducks/trauerente.jpg",
+        imgPath: "./assets/images/ducks/trauerente.jpg",
         name: "Trauerente",
         breeding: "Bodenbrüter",
         eggs: "5-8",
@@ -156,7 +156,7 @@ const ducksData = [
     {
         id: 18,
         key: 17,
-        imgPath: "./images/ducks/moorente.jpg",
+        imgPath: "./assets/images/ducks/moorente.jpg",
         name: "Moorente",
         breeding: "Bodenbrüter",
         eggs: "8-12",

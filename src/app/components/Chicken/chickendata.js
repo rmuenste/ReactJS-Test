@@ -3,7 +3,7 @@ const chickenData = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/chicken/auerhahn.jpg",
+        imgPath: "./assets/images/chicken/auerhahn.jpg",
         name: "Auerhahn",
         breeding: "Bodenbrüter",
         nests: "Elstern, Krähen",
@@ -13,7 +13,7 @@ const chickenData = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/chicken/Birkhahn.jpg",
+        imgPath: "./assets/images/chicken/Birkhahn.jpg",
         name: "Birkhahn",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -23,7 +23,7 @@ const chickenData = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/chicken/haselhuhn.jpg",
+        imgPath: "./assets/images/chicken/haselhuhn.jpg",
         name: "Haselhuhn",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -33,7 +33,7 @@ const chickenData = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/chicken/rebhuhn.jpg",
+        imgPath: "./assets/images/chicken/rebhuhn.jpg",
         name: "Rebhuhn",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -43,7 +43,7 @@ const chickenData = [
     {
         id: 5,
         key: 4,
-        imgPath: "./images/chicken/ringelfasan.jpg",
+        imgPath: "./assets/images/chicken/ringelfasan.jpg",
         name: "Ringelfasan",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -53,7 +53,7 @@ const chickenData = [
     {
         id: 6,
         key: 5,
-        imgPath: "./images/chicken/wachtel.jpg",
+        imgPath: "./assets/images/chicken/wachtel.jpg",
         name: "Wachtel",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -63,7 +63,7 @@ const chickenData = [
     {
         id: 7,
         key: 6,
-        imgPath: "./images/chicken/alpenschneehuhn.jpg",
+        imgPath: "./assets/images/chicken/alpenschneehuhn.jpg",
         name: "Alpenschneehuhn",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -73,7 +73,7 @@ const chickenData = [
     {
         id: 8,
         key: 7,
-        imgPath: "./images/chicken/wildtruhthahn.jpg",
+        imgPath: "./assets/images/chicken/wildtruhthahn.jpg",
         name: "Wildtruhthahn",
         breeding: "Bodenbrüter",
         nests: "begrünt",

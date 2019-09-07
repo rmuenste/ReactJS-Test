@@ -3,7 +3,7 @@ const seedsData = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/seeds/Gerste.jpg",
+        imgPath: "./assets/images/seeds/gerste.jpg",
         name: "Gerste",
         breeding: "Baumbrüter",
         aussaat: "März-April",
@@ -14,7 +14,7 @@ const seedsData = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/seeds/gras.jpg",
+        imgPath: "./assets/images/seeds/gras.jpg",
         name: "Gras",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -24,7 +24,7 @@ const seedsData = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/seeds/hafer.jpg",
+        imgPath: "./assets/images/seeds/hafer.jpg",
         name: "Hafer",
         aussaat: "März-April",
         breeding: "Baum-Felsenbrüter",
@@ -35,7 +35,7 @@ const seedsData = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/seeds/klee.jpg",
+        imgPath: "./assets/images/seeds/klee.jpg",
         name: "Klee",
         breeding: "Baum-Felsen-Bodenbrüter",
         nests: "begrünt",
@@ -45,7 +45,7 @@ const seedsData = [
     {
         id: 5,
         key: 4,
-        imgPath: "./images/seeds/lupine.jpg",
+        imgPath: "./assets/images/seeds/lupine.jpg",
         name: "Lupine",
         breeding: "Felsenbrüter",
         nests: "begrünt",
@@ -55,7 +55,7 @@ const seedsData = [
     {
         id: 6,
         key: 5,
-        imgPath: "./images/seeds/raps.jpg",
+        imgPath: "./assets/images/seeds/raps.jpg",
         name: "Raps",
         breeding: "Baum-Felsenbrüter",
         nests: "begrünt",
@@ -65,7 +65,7 @@ const seedsData = [
     {
         id: 7,
         key: 6,
-        imgPath: "./images/seeds/roggen-klee.jpg",
+        imgPath: "./assets/images/seeds/roggen-klee.jpg",
         name: "Roggen-Klee",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -75,7 +75,7 @@ const seedsData = [
     {
         id: 8,
         key: 7,
-        imgPath: "./images/seeds/ruebsen.jpg",
+        imgPath: "./assets/images/seeds/ruebsen.jpg",
         name: "Rübsen",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -85,7 +85,7 @@ const seedsData = [
     {
         id: 9,
         key: 8,
-        imgPath: "./images/seeds/saatgerste.jpg",
+        imgPath: "./assets/images/seeds/saatgerste.jpg",
         name: "Saatgerste",
         breeding: "Boden-Baumbrüter",
         nests: "begrünt",
@@ -95,7 +95,7 @@ const seedsData = [
     {
         id: 10,
         key: 9,
-        imgPath: "./images/seeds/saatmais.jpg",
+        imgPath: "./assets/images/seeds/saatmais.jpg",
         name: "Saatmais",
         breeding: "Baum-Felsenbrüter",
         nests: "begrünt",
@@ -105,7 +105,7 @@ const seedsData = [
     {
         id: 11,
         key: 10,
-        imgPath: "./images/seeds/schneckenkorn.jpg",
+        imgPath: "./assets/images/seeds/schneckenkorn.jpg",
         name: "Schneckenkorn",
         breeding: "Baum-Felsenbrüter",
         nests: "begrünt",
@@ -115,7 +115,7 @@ const seedsData = [
     {
         id: 12,
         key: 11,
-        imgPath: "./images/seeds/walzhafer.jpg",
+        imgPath: "./assets/images/seeds/walzhafer.jpg",
         name: "Walzhafer",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -125,7 +125,7 @@ const seedsData = [
     {
         id: 13,
         key: 12,
-        imgPath: "./images/seeds/weizen.jpg",
+        imgPath: "./assets/images/seeds/weizen.jpg",
         name: "Weizen",
         breeding: "Baumbrüter",
         aussaat: "März-April",
@@ -137,7 +137,7 @@ const seedsData = [
     {
         id: 14,
         key: 13,
-        imgPath: "./images/seeds/wicken.jpg",
+        imgPath: "./assets/images/seeds/wicken.jpg",
         name: "Wicken",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -147,7 +147,7 @@ const seedsData = [
     {
         id: 15,
         key: 14,
-        imgPath: "./images/seeds/hafer2.jpg",
+        imgPath: "./assets/images/seeds/hafer2.jpg",
         name: "Hafer",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -157,7 +157,7 @@ const seedsData = [
     {
         id: 16,
         key: 15,
-        imgPath: "./images/seeds/weizen2.jpg",
+        imgPath: "./assets/images/seeds/weizen2.jpg",
         name: "Weizen",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -167,7 +167,7 @@ const seedsData = [
     {
         id: 17,
         key: 16,
-        imgPath: "./images/seeds/roggen2.jpg",
+        imgPath: "./assets/images/seeds/roggen2.jpg",
         name: "Roggen",
         aussaat: "März-April",
         winter: "September-Oktober",
@@ -179,7 +179,7 @@ const seedsData = [
     {
         id: 18,
         key: 17,
-        imgPath: "./images/seeds/gerste2.jpg",
+        imgPath: "./assets/images/seeds/gerste2.jpg",
         name: "Gerste",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -189,7 +189,7 @@ const seedsData = [
     {
         id: 19,
         key: 18,
-        imgPath: "./images/seeds/mais.jpg",
+        imgPath: "./assets/images/seeds/mais.jpg",
         name: "Mais",
         aussaat: "Apil-Mai",
         breeding: "Bodenbrüter",
@@ -200,7 +200,7 @@ const seedsData = [
     {
         id: 20,
         key: 19,
-        imgPath: "./images/seeds/waldstaudenroggen.jpg",
+        imgPath: "./assets/images/seeds/waldstaudenroggen.jpg",
         name: "Waldstaudenroggen",
         breeding: "Bodenbrüter",
         nests: "begrünt",

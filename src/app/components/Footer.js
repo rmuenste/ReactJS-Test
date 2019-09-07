@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="container-fluid padding">
       <div className="row text-center">
         <div className="col-md-4">
-            <img src="images/Logo-hunt-green.png"/>
+            <img src="assets/images/Logo-hunt-green.png"/>
           <hr className="light"/>
           <p>555-555-555</p>
           <p>email@myemail.com</p>

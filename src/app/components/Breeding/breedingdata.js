@@ -2,7 +2,7 @@ const breedingData = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/rehbock.jpg",
+        imgPath: "./assets/images/rehbock.jpg",
         name: "Rehwild",
         begin: "01-05",
         end: "31-01",
@@ -52,7 +52,7 @@ const breedingData = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/keiler.jpg",
+        imgPath: "./assets/images/keiler.jpg",
         name: "Schwarzwild",
         begin: "01-08",
         end: "31-01",
@@ -105,7 +105,7 @@ const breedingData = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/dam-sika.jpg",
+        imgPath: "./assets/images/dam-sika.jpg",
         name: "Dam- und Sikawild",
         begin: "01-08",
         end: "31-01",
@@ -159,7 +159,7 @@ const breedingData = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/feldhase.jpg",
+        imgPath: "./assets/images/feldhase.jpg",
         name: "Feldhase",
         begin: "16-10",
         end: "31-12",
@@ -209,7 +209,7 @@ const breedingData = [
     {
         id: 5,
         key: 4,
-        imgPath: "./images/wildkaninchen.jpg",
+        imgPath: "./assets/images/wildkaninchen.jpg",
         name: "Wildkaninchen",
         begin: "16-10",
         end: "28-02",
@@ -259,7 +259,7 @@ const breedingData = [
     {
         id: 6,
         key: 5,
-        imgPath: "./images/steinmarder.jpg",
+        imgPath: "./assets/images/steinmarder.jpg",
         name: "Steinmarder",
         begin: "16-10",
         end: "28-02",
@@ -309,7 +309,7 @@ const breedingData = [
     {
         id: 7,
         key: 6,
-        imgPath: "./images/iltis.jpg",
+        imgPath: "./assets/images/iltis.jpg",
         name: "Iltis",
         begin: "16-10",
         end: "28-02",
@@ -359,7 +359,7 @@ const breedingData = [
     {
         id: 8,
         key: 7,
-        imgPath: "./images/hermelin.jpg",
+        imgPath: "./assets/images/hermelin.jpg",
         name: "Hermelin",
         begin: "01-09",
         end: "28-02",
@@ -412,7 +412,7 @@ const breedingData = [
     {
         id: 9,
         key: 8,
-        imgPath: "./images/dachs.jpg",
+        imgPath: "./assets/images/dachs.jpg",
         name: "Dachs",
         begin: "01-09",
         end: "31-12",
@@ -470,7 +470,7 @@ const breedingData = [
     {
         id: 10,
         key: 9,
-        imgPath: "./images/fuchs.jpg",
+        imgPath: "./assets/images/fuchs.jpg",
         name: "Fuchs",
         begin: "16-07",
         end: "28-02",
@@ -527,7 +527,7 @@ const breedingData = [
     {
         id: 11,
         key: 10,
-        imgPath: "./images/mink.jpg",
+        imgPath: "./assets/images/mink.jpg",
         name: "Mink",
         begin: "16-10",
         end: "28-02",
@@ -580,7 +580,7 @@ const breedingData = [
     {
         id: 12,
         key: 11,
-        imgPath: "./images/waschbaer.jpg",
+        imgPath: "./assets/images/waschbaer.jpg",
         name: "Waschbär",
         begin: "01-08",
         end: "28-02",
@@ -633,7 +633,7 @@ const breedingData = [
     {
         id: 13,
         key: 12,
-        imgPath: "./images/marderhund.jpg",
+        imgPath: "./assets/images/marderhund.jpg",
         name: "Marderhund",
         begin: "01-09",
         end: "28-02",
@@ -686,7 +686,7 @@ const breedingData = [
     {
         id: 14,
         key: 13,
-        imgPath: "./images/elch.jpg",
+        imgPath: "./assets/images/elch.jpg",
         name: "Elchwild",
         begin: "01-09",
         end: "15-12",
@@ -743,7 +743,7 @@ const breedingData = [
     {
         id: 15,
         key: 14,
-        imgPath: "./images/baummarder.jpg",
+        imgPath: "./assets/images/baummarder.jpg",
         name: "Baummarder",
         begin: "16-10",
         end: "15-01",
@@ -790,7 +790,7 @@ const breedingData = [
     {
         id: 16,
         key: 15,
-        imgPath: "./images/fischotter.jpg",
+        imgPath: "./assets/images/fischotter.jpg",
         name: "Fischotter",
         begin: "16-03",
         end: "30-04",
@@ -834,7 +834,7 @@ const breedingData = [
     {
         id: 17,
         key: 16,
-        imgPath: "./images/mauswiesel.jpg",
+        imgPath: "./assets/images/mauswiesel.jpg",
         name: "Mauswiesel",
         begin: "01-11",
         end: "20-02",
@@ -884,7 +884,7 @@ const breedingData = [
     {
         id: 18,
         key: 17,
-        imgPath: "./images/nutria.jpg",
+        imgPath: "./assets/images/nutria.jpg",
         name: "Nutria",
         begin: "01-11",
         end: "20-02",
@@ -934,7 +934,7 @@ const breedingData = [
     {
         id: 19,
         key: 18,
-        imgPath: "./images/biber.jpg",
+        imgPath: "./assets/images/biber.jpg",
         name: "Biber",
         begin: "16-07",
         end: "31-01",
@@ -978,7 +978,7 @@ const breedingData = [
     {
         id: 20,
         key: 19,
-        imgPath: "./images/bisam.jpg",
+        imgPath: "./assets/images/bisam.jpg",
         name: "Bisam",
         begin: "16-09",
         end: "15-01",
@@ -1032,7 +1032,7 @@ const breedingData = [
     {
         id: 21,
         key: 20,
-        imgPath: "./images/murmeltier.jpg",
+        imgPath: "./assets/images/murmeltier.jpg",
         name: "Murmeltier",
         begin: "16-10",
         end: "15-01",
@@ -1083,7 +1083,7 @@ const breedingData = [
     {
         id: 22,
         key: 21,
-        imgPath: "./images/wolf.jpg",
+        imgPath: "./assets/images/wolf.jpg",
         name: "Wolf",
         begin: "01-08",
         end: "10-03",
@@ -1134,7 +1134,7 @@ const breedingData = [
     {
         id: 23,
         key: 22,
-        imgPath: "./images/steinbock.jpg",
+        imgPath: "./assets/images/steinbock.jpg",
         name: "Steinwild",
         begin: "01-08",
         end: "28-02",
@@ -1185,7 +1185,7 @@ const breedingData = [
     {
         id: 24,
         key: 23,
-        imgPath: "./images/gams.jpg",
+        imgPath: "./assets/images/gams.jpg",
         name: "Gamswild",
         begin: "01-08",
         end: "31-01",
@@ -1240,7 +1240,7 @@ const breedingData = [
     {
         id: 25,
         key: 24,
-        imgPath: "./images/muffelwild.jpg",
+        imgPath: "./assets/images/muffelwild.jpg",
         name: "Muffelwild",
         begin: "01-08",
         end: "31-01",
@@ -1290,7 +1290,7 @@ const breedingData = [
     {
         id: 26,
         key: 25,
-        imgPath: "./images/rothirsch.jpg",
+        imgPath: "./assets/images/rothirsch.jpg",
         name: "Rotwild",
         begin: "01-05",
         end: "31-05",
@@ -1345,7 +1345,7 @@ const breedingData = [
     {
         id: 27,
         key: 26,
-        imgPath: "./images/wildkatze.jpg",
+        imgPath: "./assets/images/wildkatze.jpg",
         name: "Wildkatze",
         begin: "01-05,01-09",
         end: "31-05,31-01",
@@ -1357,7 +1357,7 @@ const breedingData = [
     {
         id: 28,
         key: 27,
-        imgPath: "./images/luchs.jpg",
+        imgPath: "./assets/images/luchs.jpg",
         name: "Luchs",
         begin: "01-05,01-09",
         end: "31-05,31-01",

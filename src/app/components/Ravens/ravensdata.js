@@ -2,7 +2,7 @@ const ravensData = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/ravens/alpendohle.jpg",
+        imgPath: "./assets/images/ravens/alpendohle.jpg",
         name: "Alpendohle",
         breeding: "Felsbrüter",
         eggs: "4-6",
@@ -11,7 +11,7 @@ const ravensData = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/ravens/dohle.jpg",
+        imgPath: "./assets/images/ravens/dohle.jpg",
         name: "Dohle",
         breeding: "Höhlenbrüter",
         eggs: "4-6",
@@ -20,7 +20,7 @@ const ravensData = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/ravens/eichelhaeher.jpg",
+        imgPath: "./assets/images/ravens/eichelhaeher.jpg",
         name: "Eichelhäher",
         breeding: "Baumbrüter",
         eggs: "5-6",
@@ -29,7 +29,7 @@ const ravensData = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/ravens/elster.jpg",
+        imgPath: "./assets/images/ravens/elster.jpg",
         name: "Elster",
         breeding: "Baum-Heckenbrüter",
         eggs: "4-7",
@@ -38,7 +38,7 @@ const ravensData = [
     {
         id: 5,
         key: 4,
-        imgPath: "./images/ravens/kolkrabe.jpg",
+        imgPath: "./assets/images/ravens/kolkrabe.jpg",
         name: "Kolkrabe",
         breeding: "Baum-Felsbrüter",
         eggs: "4-6",
@@ -47,7 +47,7 @@ const ravensData = [
     {
         id: 6,
         key: 5,
-        imgPath: "./images/ravens/nebelkraehe.jpg",
+        imgPath: "./assets/images/ravens/nebelkraehe.jpg",
         name: "Nebelkrähe",
         breeding: "Baumbrüter",
         eggs: "4-6",
@@ -56,7 +56,7 @@ const ravensData = [
     {
         id: 7,
         key: 6,
-        imgPath: "./images/ravens/rabenkraehe.jpg",
+        imgPath: "./assets/images/ravens/rabenkraehe.jpg",
         name: "Rabenkrähe",
         breeding: "Baumbrüter",
         eggs: "4-6",
@@ -65,7 +65,7 @@ const ravensData = [
     {
         id: 8,
         key: 7,
-        imgPath: "./images/ravens/saatkraehe.jpg",
+        imgPath: "./assets/images/ravens/saatkraehe.jpg",
         name: "Saatkrähe",
         breeding: "Baumbrüter",
         eggs: "4-5",
@@ -74,7 +74,7 @@ const ravensData = [
     {
         id: 9,
         key: 8,
-        imgPath: "./images/ravens/tannenhaeher.jpg",
+        imgPath: "./assets/images/ravens/tannenhaeher.jpg",
         name: "Tannenhäher",
         breeding: "Baumbrüter",
         eggs: "3-4",
