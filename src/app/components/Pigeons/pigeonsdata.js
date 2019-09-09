@@ -3,7 +3,7 @@ const pigeonsData = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/pigeons/hohltaube.jpg",
+        imgPath: "./assets/images/pigeons/hohltaube.jpg",
         name: "Hohltaube",
         breeding: "Höhlenbrüter",
         eggs: "2",
@@ -12,7 +12,7 @@ const pigeonsData = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/pigeons/ringeltaube.jpg",
+        imgPath: "./assets/images/pigeons/ringeltaube.jpg",
         name: "Ringeltaube",
         breeding: "Baumbrüter",
         eggs: "2",
@@ -21,7 +21,7 @@ const pigeonsData = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/pigeons/tuerkentaube.jpg",
+        imgPath: "./assets/images/pigeons/tuerkentaube.jpg",
         name: "Türkentaube",
         breeding: "Baumbrüter",
         eggs: "2",
@@ -30,7 +30,7 @@ const pigeonsData = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/pigeons/turteltaube.jpg",
+        imgPath: "./assets/images/pigeons/turteltaube.jpg",
         name: "Turteltaube",
         breeding: "Baumbrüter",
         eggs: "2",

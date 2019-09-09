@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "./FeedbackOverlay";
+import GameSelectElement from "./GameSelectElement/GameSelectElement";
 
 class AnimalCard extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class AnimalCard extends Component {
     this.state = {
       startDate: "",
       endDate: "",
+      fieldNames: ["startDate", "endDate"]
     };
 
   }
@@ -41,44 +43,64 @@ class AnimalCard extends Component {
       });
   }
 
+  generateQuestionsForm = () => {
+
+    let headerArray = ["Beginn der Jagdzeit", "Ende der Jagdzeit"];
+
+    let beginArray = this.props.gameData.map( (item, index) => (
+      <option key={index}>{item.begin}</option>
+      )
+    );
+
+    let endArray = this.props.gameData.map( (item, index) => (
+      <option key={index}>{item.end}</option>
+      )
+    );
+
+    let allDataArray = [beginArray, endArray];
+
+    let solutionArray = [this.props.item.begin, this.props.item.end];
+
+    let selectElementArray2 = this.state.fieldNames.map( (itemName, index) => {
+      return (
+      <GameSelectElement isDisabled={this.props.showTheOverlay || !this.props.gameRunning} 
+                          name={itemName}
+                          value={(this.props.showTheOverlay) ? solutionArray[index] : this.state[itemName]}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={allDataArray[index]}
+                          selectHeader={headerArray[index]}
+                          showResult={this.props.showTheOverlay}
+                          userSolution={this.props.userSolution[index]}
+                          />
+      );
+    });
+
+    let selectElementArray = (
+      <form>
+        <div className="form-group">
+          {selectElementArray2[0]}
+        </div>
+        <div className="form-group">
+          {selectElementArray2[1]}
+        </div>
+      </form>
+    );
+
+    return selectElementArray;
+  }
+
   // render
   render() {
-    console.log("render");
-		console.log(this.props);
-		console.log(this.props.gameData[0].begin);
+
+    let questionsForm = this.generateQuestionsForm();
+
     return (
 			<div className="card">
         {(this.props.showTheOverlay) ? <div className="card-img-overlay"> <FeedbackOverlay result={this.props.reduxResult}/> </div> : null}
 				<img src={this.props.item.imgPath} className="card-img-top"/>
 				<div className="card-body">
 					<h4 className="card-title">{this.props.item.name}</h4>
-						<form>
-							<div className="form-group">
-              <select className="form-control" id="exampleFormControlSelect1"  
-                      disabled={this.props.showTheOverlay || !this.props.gameRunning} 
-                      value={this.state.startDate} 
-                      name="startDate" 
-                      onChange={this.handleOnChange}>
-									<option>Beginn der Jagdzeit</option>
-									<option>{this.props.gameData[0].begin}</option>
-									<option>{this.props.gameData[1].begin}</option>
-									<option>{this.props.gameData[2].begin}</option>
-							</select>
-							</div>
-							<div className="form-group">
-              <select className="form-control" 
-                      id="exampleFormControlSelect2" 
-                      disabled={this.props.showTheOverlay || !this.props.gameRunning} 
-                      value={this.state.endDate} 
-                      name="endDate" 
-                      onChange={this.handleOnChange}>
-									<option>Ende der Jagdzeit</option>
-									<option>{this.props.gameData[0].end}</option>
-									<option>{this.props.gameData[1].end}</option>
-									<option>{this.props.gameData[2].end}</option>
-							</select>
-							</div>
-						</form>
+          {questionsForm}
           {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
            <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
           }

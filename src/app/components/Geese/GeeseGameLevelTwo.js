@@ -5,12 +5,16 @@ import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
 import GeeseGameInfo from "./GeeseGameInfo";
 import GeeseAnimalCardLevelTwo from "./GeeseAnimalCardLevelTwo";
+import shuffle from "../../modules/Shuffle";
 
 class GeeseGameLevelTwo extends Component {
   constructor(props) {
     super();
+
     let theData = geeseData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
+
+    let solutionStateArray = [false, false, false, false];
 
     this.state = {
       startDate: "",
@@ -18,33 +22,21 @@ class GeeseGameLevelTwo extends Component {
       theGeese: theData,
       allNames: geeseNames,
       currentItem: 0,
+      solutionState: solutionStateArray
     };
 
-//    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
   }
 
-  shuffle(a) {
-    let j, x, i,idtemp, keytemp;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[i].key = i;
-        a[i].id = i+1;
-        a[j] = x;
-        x.id = j+1;
-        x.key = j;
-    }
-    return a;
-  }
-
   componentWillUnmount() {
+    let solutionStateArray = [false, false, false, false];
+
     this.setState({
       startDate: "",
       endDate: "",
       theGeese: {},
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -61,13 +53,16 @@ class GeeseGameLevelTwo extends Component {
     // initial state
 
     let theData = ducksData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
+
+    let solutionStateArray = [false, false, false, false];
 
     this.setState({
       startDate: "",
       endDate: "",
       theGeese: theData,
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -78,6 +73,7 @@ class GeeseGameLevelTwo extends Component {
   checkSolution = (item, userSolution) => {
 
     let userResult = false;
+    let solutionStateArray = [false, false, false, false];
 
     let nameResult = false;
     let typeResult = false;
@@ -87,6 +83,7 @@ class GeeseGameLevelTwo extends Component {
     let points = 0.0;
 
     if (userSolution.name === item.name) {
+        solutionStateArray[0] = true;
         nameResult = true;
         points += 25.0;
     } else {
@@ -94,6 +91,7 @@ class GeeseGameLevelTwo extends Component {
     }
 
     if (userSolution.type === item.type) {
+        solutionStateArray[1] = true;
         typeResult = true;
         points += 25.0;
     } else {
@@ -101,6 +99,7 @@ class GeeseGameLevelTwo extends Component {
     }
 
     if (userSolution.breeding === item.breeding) {
+        solutionStateArray[2] = true;
         breedingResult = true;
         points += 25.0;
     } else {
@@ -108,18 +107,21 @@ class GeeseGameLevelTwo extends Component {
     }
 
     if (userSolution.eggs === item.eggs) {
+        solutionStateArray[3] = true;
         eggsResult = true;
         points += 25.0;
     } else {
         console.log("eggs wrong " + userSolution.eggsResult);
     }
 
-    if (userSolution.name === item.name &&
-        userSolution.type === item.type &&
-        userSolution.breeding === item.breeding &&
-        userSolution.eggs === item.eggs) {
+    if (solutionStateArray[0] &&
+        solutionStateArray[1] &&
+        solutionStateArray[2] &&
+        solutionStateArray[3]) {
             userResult = true;
         }
+
+    this.setState({solutionState: solutionStateArray})
 
     if(userResult) {
       console.log("CheckSolution: Correct");
@@ -153,13 +155,17 @@ class GeeseGameLevelTwo extends Component {
             <GeeseAnimalCardLevelTwo item={this.state.theGeese[this.state.currentItem]} 
                              solutionHandler={this.checkSolution} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
           : 
             <GeeseAnimalCardLevelTwo item={this.state.theGeese[this.state.currentItem]} 
                              feedbackState={true} 
                              result={this.props.currentResult} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
         );
       }
   

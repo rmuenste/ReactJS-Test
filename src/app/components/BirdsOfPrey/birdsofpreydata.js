@@ -3,7 +3,7 @@ const birdsofpreyData = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/birdsofprey/baumfalke.jpg",
+        imgPath: "./assets/images/birdsofprey/baumfalke.jpg",
         name: "Baumfalke",
         breeding: "Baumbrüter",
         nests: "Elstern, Krähen",
@@ -13,7 +13,7 @@ const birdsofpreyData = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/birdsofprey/bussard.jpg",
+        imgPath: "./assets/images/birdsofprey/bussard.jpg",
         name: "Bussard",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -23,7 +23,7 @@ const birdsofpreyData = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/birdsofprey/fischadler.jpg",
+        imgPath: "./assets/images/birdsofprey/fischadler.jpg",
         name: "Fischadler",
         breeding: "Baum-Felsenbrüter",
         nests: "begrünt",
@@ -33,7 +33,7 @@ const birdsofpreyData = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/birdsofprey/rauhfussbussard.jpg",
+        imgPath: "./assets/images/birdsofprey/rauhfussbussard.jpg",
         name: "Rauhfußbussard",
         breeding: "Baum-Felsen-Bodenbrüter",
         nests: "begrünt",
@@ -43,7 +43,7 @@ const birdsofpreyData = [
     {
         id: 5,
         key: 4,
-        imgPath: "./images/birdsofprey/steinadler.jpg",
+        imgPath: "./assets/images/birdsofprey/steinadler.jpg",
         name: "Steinadler",
         breeding: "Felsenbrüter",
         nests: "begrünt",
@@ -53,7 +53,7 @@ const birdsofpreyData = [
     {
         id: 6,
         key: 5,
-        imgPath: "./images/birdsofprey/seeadler.jpg",
+        imgPath: "./assets/images/birdsofprey/seeadler.jpg",
         name: "Seeadler",
         breeding: "Baum-Felsenbrüter",
         nests: "begrünt",
@@ -63,7 +63,7 @@ const birdsofpreyData = [
     {
         id: 7,
         key: 6,
-        imgPath: "./images/birdsofprey/habicht.jpg",
+        imgPath: "./assets/images/birdsofprey/habicht.jpg",
         name: "Habicht",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -73,7 +73,7 @@ const birdsofpreyData = [
     {
         id: 8,
         key: 7,
-        imgPath: "./images/birdsofprey/sperberfrau.jpg",
+        imgPath: "./assets/images/birdsofprey/sperberfrau.jpg",
         name: "Sperber",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -83,7 +83,7 @@ const birdsofpreyData = [
     {
         id: 9,
         key: 8,
-        imgPath: "./images/birdsofprey/merlin.jpg",
+        imgPath: "./assets/images/birdsofprey/merlin.jpg",
         name: "Merlin",
         breeding: "Boden-Baumbrüter",
         nests: "begrünt",
@@ -93,7 +93,7 @@ const birdsofpreyData = [
     {
         id: 10,
         key: 9,
-        imgPath: "./images/birdsofprey/wanderfalke.jpg",
+        imgPath: "./assets/images/birdsofprey/wanderfalke.jpg",
         name: "Wanderfalke",
         breeding: "Baum-Felsenbrüter",
         nests: "begrünt",
@@ -103,7 +103,7 @@ const birdsofpreyData = [
     {
         id: 11,
         key: 10,
-        imgPath: "./images/birdsofprey/turmfalke.jpg",
+        imgPath: "./assets/images/birdsofprey/turmfalke.jpg",
         name: "Turmfalke",
         breeding: "Baum-Felsenbrüter",
         nests: "begrünt",
@@ -113,7 +113,7 @@ const birdsofpreyData = [
     {
         id: 12,
         key: 11,
-        imgPath: "./images/birdsofprey/schwarzmilan.jpg",
+        imgPath: "./assets/images/birdsofprey/schwarzmilan.jpg",
         name: "Schwarzmilan",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -123,7 +123,7 @@ const birdsofpreyData = [
     {
         id: 13,
         key: 12,
-        imgPath: "./images/birdsofprey/rotmilan.jpg",
+        imgPath: "./assets/images/birdsofprey/rotmilan.jpg",
         name: "Rotmilan",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -133,7 +133,7 @@ const birdsofpreyData = [
     {
         id: 14,
         key: 13,
-        imgPath: "./images/birdsofprey/kornweihe.jpg",
+        imgPath: "./assets/images/birdsofprey/kornweihe.jpg",
         name: "Kornweihe",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -143,7 +143,7 @@ const birdsofpreyData = [
     {
         id: 15,
         key: 14,
-        imgPath: "./images/birdsofprey/steppenweihe.jpg",
+        imgPath: "./assets/images/birdsofprey/steppenweihe.jpg",
         name: "Steppenweihe",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -153,7 +153,7 @@ const birdsofpreyData = [
     {
         id: 16,
         key: 15,
-        imgPath: "./images/birdsofprey/wiesenweihe.jpg",
+        imgPath: "./assets/images/birdsofprey/wiesenweihe.jpg",
         name: "Wiesenweihe",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -163,7 +163,7 @@ const birdsofpreyData = [
     {
         id: 17,
         key: 16,
-        imgPath: "./images/birdsofprey/rohrweihe.jpg",
+        imgPath: "./assets/images/birdsofprey/rohrweihe.jpg",
         name: "Rohrweihe",
         breeding: "Bodenbrüter",
         nests: "begrünt",
@@ -173,7 +173,7 @@ const birdsofpreyData = [
     {
         id: 18,
         key: 17,
-        imgPath: "./images/birdsofprey/wespenbussard.jpg",
+        imgPath: "./assets/images/birdsofprey/wespenbussard.jpg",
         name: "Wespenbussard",
         breeding: "Baumbrüter",
         nests: "begrünt",
@@ -186,7 +186,8 @@ export const statePrototype = {
     name: "",
     flightType: "",
     breeding: "",
-    eggs: ""
+    eggs: "",
+    fieldNames: ["name", "flightType", "breeding", "eggs"]
 }
 
 export const birdsofpreyNames = [

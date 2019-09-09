@@ -2,7 +2,7 @@ const huntingPeriods = [
     {
         id: 1,
         key: 0,
-        imgPath: "./images/rehbock.jpg",
+        imgPath: "./assets/images/rehbock.jpg",
         name: "Rehbock",
         begin: "01-05",
         end: "31-01",
@@ -48,7 +48,7 @@ const huntingPeriods = [
     {
         id: 2,
         key: 1,
-        imgPath: "./images/keiler.jpg",
+        imgPath: "./assets/images/keiler.jpg",
         name: "Schwarzwild",
         begin: "01-08",
         end: "31-01",
@@ -97,7 +97,7 @@ const huntingPeriods = [
     {
         id: 3,
         key: 2,
-        imgPath: "./images/dam-sika.jpg",
+        imgPath: "./assets/images/dam-sika.jpg",
         name: "Dam- und Sikawild",
         begin: "01-08",
         end: "31-01",
@@ -147,7 +147,7 @@ const huntingPeriods = [
     {
         id: 4,
         key: 3,
-        imgPath: "./images/feldhase.jpg",
+        imgPath: "./assets/images/feldhase.jpg",
         name: "Feldhase",
         begin: "16-10",
         end: "31-12",
@@ -193,7 +193,7 @@ const huntingPeriods = [
     {
         id: 5,
         key: 4,
-        imgPath: "./images/wildkaninchen.jpg",
+        imgPath: "./assets/images/wildkaninchen.jpg",
         name: "Wildkaninchen",
         begin: "16-10",
         end: "28-02",
@@ -239,7 +239,7 @@ const huntingPeriods = [
     {
         id: 6,
         key: 5,
-        imgPath: "./images/steinmarder.jpg",
+        imgPath: "./assets/images/steinmarder.jpg",
         name: "Steinmarder",
         begin: "16-10",
         end: "28-02",
@@ -285,7 +285,7 @@ const huntingPeriods = [
     {
         id: 7,
         key: 6,
-        imgPath: "./images/iltis.jpg",
+        imgPath: "./assets/images/iltis.jpg",
         name: "Iltis",
         begin: "16-10",
         end: "28-02",
@@ -331,7 +331,7 @@ const huntingPeriods = [
     {
         id: 8,
         key: 7,
-        imgPath: "./images/hermelin.jpg",
+        imgPath: "./assets/images/hermelin.jpg",
         name: "Hermelin",
         begin: "01-09",
         end: "28-02",
@@ -380,7 +380,7 @@ const huntingPeriods = [
     {
         id: 9,
         key: 8,
-        imgPath: "./images/dachs.jpg",
+        imgPath: "./assets/images/dachs.jpg",
         name: "Dachs",
         begin: "01-09",
         end: "31-12",
@@ -434,7 +434,7 @@ const huntingPeriods = [
     {
         id: 10,
         key: 9,
-        imgPath: "./images/fuchs.jpg",
+        imgPath: "./assets/images/fuchs.jpg",
         name: "Fuchs",
         begin: "16-07",
         end: "28-02",
@@ -487,7 +487,7 @@ const huntingPeriods = [
     {
         id: 11,
         key: 10,
-        imgPath: "./images/mink.jpg",
+        imgPath: "./assets/images/mink.jpg",
         name: "Mink",
         begin: "16-10",
         end: "28-02",
@@ -536,7 +536,7 @@ const huntingPeriods = [
     {
         id: 12,
         key: 11,
-        imgPath: "./images/waschbaer.jpg",
+        imgPath: "./assets/images/waschbaer.jpg",
         name: "Waschbär",
         begin: "01-08",
         end: "28-02",
@@ -585,7 +585,7 @@ const huntingPeriods = [
     {
         id: 13,
         key: 12,
-        imgPath: "./images/marderhund.jpg",
+        imgPath: "./assets/images/marderhund.jpg",
         name: "Marderhund",
         begin: "01-09",
         end: "28-02",
@@ -634,7 +634,7 @@ const huntingPeriods = [
     {
         id: 14,
         key: 13,
-        imgPath: "./images/rebhuhn.jpg",
+        imgPath: "./assets/images/rebhuhn.jpg",
         name: "Rebhuhn",
         begin: "01-09",
         end: "15-12",
@@ -687,7 +687,7 @@ const huntingPeriods = [
     {
         id: 15,
         key: 14,
-        imgPath: "./images/fasan.jpg",
+        imgPath: "./assets/images/fasan.jpg",
         name: "Fasan",
         begin: "16-10",
         end: "15-01",
@@ -730,7 +730,7 @@ const huntingPeriods = [
     {
         id: 16,
         key: 15,
-        imgPath: "./images/wildtruhthahn.jpg",
+        imgPath: "./assets/images/wildtruhthahn.jpg",
         name: "Wildtruthahn",
         begin: "16-03",
         end: "30-04",
@@ -770,7 +770,7 @@ const huntingPeriods = [
     {
         id: 17,
         key: 16,
-        imgPath: "./images/ringeltaube.jpg",
+        imgPath: "./assets/images/ringeltaube.jpg",
         name: "Ringeltaube",
         begin: "01-11",
         end: "20-02",
@@ -816,7 +816,7 @@ const huntingPeriods = [
     {
         id: 18,
         key: 17,
-        imgPath: "./images/hoeckerschwan.jpg",
+        imgPath: "./assets/images/hoeckerschwan.jpg",
         name: "Höckerschwan",
         begin: "01-11",
         end: "20-02",
@@ -862,7 +862,7 @@ const huntingPeriods = [
     {
         id: 19,
         key: 18,
-        imgPath: "./images/kanadagans.jpg",
+        imgPath: "./assets/images/kanadagans.jpg",
         name: "Grau-Kanada-Nilgänse",
         begin: "16-07",
         end: "31-01",
@@ -902,7 +902,7 @@ const huntingPeriods = [
     {
         id: 20,
         key: 19,
-        imgPath: "./images/stockente.jpg",
+        imgPath: "./assets/images/stockente.jpg",
         name: "Stockente",
         begin: "16-09",
         end: "15-01",
@@ -952,7 +952,7 @@ const huntingPeriods = [
     {
         id: 21,
         key: 20,
-        imgPath: "./images/waldschnepfe.jpg",
+        imgPath: "./assets/images/waldschnepfe.jpg",
         name: "Waldschnepfe",
         begin: "16-10",
         end: "15-01",
@@ -999,7 +999,7 @@ const huntingPeriods = [
     {
         id: 22,
         key: 21,
-        imgPath: "./images/rabenkraehe.jpg",
+        imgPath: "./assets/images/rabenkraehe.jpg",
         name: "Rabenkrähe",
         begin: "01-08",
         end: "10-03",
@@ -1046,7 +1046,7 @@ const huntingPeriods = [
     {
         id: 23,
         key: 22,
-        imgPath: "./images/elster.jpg",
+        imgPath: "./assets/images/elster.jpg",
         name: "Elster",
         begin: "01-08",
         end: "28-02",
@@ -1093,7 +1093,7 @@ const huntingPeriods = [
     {
         id: 24,
         key: 23,
-        imgPath: "./images/rothirsch.jpg",
+        imgPath: "./assets/images/rothirsch.jpg",
         name: "Rotwild",
         begin: "01-08",
         end: "31-01",
@@ -1144,7 +1144,7 @@ const huntingPeriods = [
     {
         id: 25,
         key: 24,
-        imgPath: "./images/muffelwild.jpg",
+        imgPath: "./assets/images/muffelwild.jpg",
         name: "Muffelwild",
         begin: "01-08",
         end: "31-01",
@@ -1190,7 +1190,7 @@ const huntingPeriods = [
     {
         id: 26,
         key: 25,
-        imgPath: "./images/schmaltier-rot.jpg",
+        imgPath: "./assets/images/schmaltier-rot.jpg",
         name: "Schmaltiere/spießer",
         begin: "01-05",
         end: "31-05",
@@ -1241,7 +1241,7 @@ const huntingPeriods = [
     {
         id: 27,
         key: 26,
-        imgPath: "./images/schmalreh.jpg",
+        imgPath: "./assets/images/schmalreh.jpg",
         name: "Schmalrehe/spießer",
         begin: "01-05,01-09",
         end: "31-05,31-01",

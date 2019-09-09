@@ -6,19 +6,26 @@ import GeneralInfoCard from './GeneralInfoCard';
 import ResultCard from './ResultCard';
 import { connect } from 'react-redux';
 import GameIntro from './GameIntro';
+import shuffle from '../modules/Shuffle';
 
 class MainContent extends Component {
   constructor(props) {
     super();
+
+
     let theData = huntingPeriods;
-    theData = this.shuffle(theData);
+
+    let solutionStateArray = [false, false];
+    theData = shuffle(theData);
+
     this.state = {
       startDate: "",
       endDate: "",
       dates: theData,
       currentItem: 0,
       showSolutionFeedback: false,
-      result: false
+      result: false,
+      solutionState: solutionStateArray
     };
 
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
@@ -29,11 +36,16 @@ class MainContent extends Component {
   }
 
   componentWillUnmount() {
+
+    let solutionStateArray = [false, false];
+
     this.setState({
       startDate: "",
       endDate: "",
-      nabuData: {},
       currentItem: 0,
+      showSolutionFeedback: false,
+      result: false,
+      solutionState: solutionStateArray
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -55,35 +67,25 @@ class MainContent extends Component {
       });
   }
 
-  shuffle(a) {
-    let j, x, i,idtemp, keytemp;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[i].key = i;
-        a[i].id = i+1;
-        a[j] = x;
-        x.id = j+1;
-        x.key = j;
-    }
-    return a;
-  }
-
   resetGameState = () => {
     // TODO: Implement a function that
     // sets the game state back to its
     // initial state
     let theData = huntingPeriods;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
+
+    let solutionStateArray = [false, false];
+
     this.setState({
       startDate: "",
       endDate: "",
       dates: theData,
       currentItem: 0,
       showSolutionFeedback: false,
-      result: false
+      result: false,
+      solutionState: solutionStateArray
     });
+
     this.props.dispatch({type: 'RESET'});
     this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     this.props.dispatch( {type: 'SET_LEVELONE_DATA', payload: this.generateDates(0)} );
@@ -92,6 +94,17 @@ class MainContent extends Component {
   // An event handler has an event parameter
   checkSolution = (id, userStart, userEnd) => {
     let item = this.state.dates[id];
+
+    let solArray = [false, false];
+
+    if(userStart === item.begin) {
+      solArray[0] = true;
+    }
+
+    if(userEnd === item.end) {
+      solArray[1] = true;
+    }
+
     if(userStart === item.begin && userEnd === item.end) {
       console.log("CheckSolution: Correct");
       this.setState({
@@ -107,6 +120,10 @@ class MainContent extends Component {
       });
       this.props.dispatch( {type: 'RESULT_WRONG'} );
     }
+
+    this.setState({
+      solutionState: solArray
+    })
 
   }
 
@@ -185,9 +202,18 @@ class MainContent extends Component {
     } else {
       mainCard = (
         (!this.state.showSolutionFeedback) ?
-          <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={false} handler={this.checkSolution} /> 
+          <AnimalCard item={this.state.dates[this.state.currentItem]} 
+                      feedbackState={false} 
+                      handler={this.checkSolution}
+                      userSolution={this.state.solutionState}
+                      /> 
         : 
-          <AnimalCard item={this.state.dates[this.state.currentItem]} feedbackState={true} result={this.state.result} handler={this.advanceHandler} /> 
+          <AnimalCard item={this.state.dates[this.state.currentItem]} 
+                      feedbackState={true} 
+                      result={this.state.result} 
+                      handler={this.advanceHandler}
+                      userSolution={this.state.solutionState}
+                      /> 
       );
     }
 

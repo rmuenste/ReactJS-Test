@@ -13,24 +13,25 @@ class BirdsOfPreyGameLevelTwo extends Component {
     let theData = birdsofpreyData;
     theData = shuffle(theData);
 
+    let solutionStateArray = [false, false, false, false];
+
     this.state = {
-      startDate: "",
-      endDate: "",
       theBirdsOfPrey: theData,
       allNames: birdsofpreyNames,
       currentItem: 0,
+      solutionState: solutionStateArray 
     };
 
-//    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
   }
 
   componentWillUnmount() {
+    let solutionStateArray = [false, false, false, false];
+
     this.setState({
-      startDate: "",
-      endDate: "",
       theBirdsOfPrey: {},
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -42,18 +43,16 @@ class BirdsOfPreyGameLevelTwo extends Component {
   }
 
   resetGameState = () => {
-    // TODO: Implement a function that
-    // sets the game state back to its
-    // initial state
 
     let theData = ducksData;
     theData = shuffle(theData);
 
+    let solutionStateArray = [false, false, false, false];
+
     this.setState({
-      startDate: "",
-      endDate: "",
       theBirdsOfPrey: theData,
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -64,56 +63,53 @@ class BirdsOfPreyGameLevelTwo extends Component {
   checkSolution = (item, userSolution) => {
 
     let userResult = false;
-
-    let nameResult = false;
-    let typeResult = false;
-    let breedingResult = false;
-    let eggsResult = false;
-
+    let solutionStateArray = [false, false, false, false];
     let points = 0.0;
 
     if (userSolution.name === item.name) {
-        nameResult = true;
+        solutionStateArray[0] = true;
         points += 25.0;
     } else {
         console.log("name wrong " + userSolution.name);
     }
 
     if (userSolution.flightType === item.type) {
-        typeResult = true;
+        solutionStateArray[1] = true;
         points += 25.0;
     } else {
-        console.log("type wrong " + userSolution.flightType);
+        console.log("type wrong " + userSolution.type);
     }
 
     if (userSolution.breeding === item.breeding) {
-        breedingResult = true;
+        solutionStateArray[2] = true;
         points += 25.0;
     } else {
-        console.log("breeding wrong " + userSolution.breeding);
+        console.log("breeding wrong " + userSolution.breedingResult);
     }
 
     if (userSolution.eggs === item.eggs) {
-        eggsResult = true;
+        solutionStateArray[3] = true;
         points += 25.0;
     } else {
-        console.log("eggs wrong " + userSolution.eggs);
+        console.log("eggs wrong " + userSolution.eggsResult);
     }
 
-    if (userSolution.name === item.name &&
-        userSolution.flightType === item.type &&
-        userSolution.breeding === item.breeding &&
-        userSolution.eggs === item.eggs) {
+    if (solutionStateArray[0] &&
+        solutionStateArray[1] &&
+        solutionStateArray[2] &&
+        solutionStateArray[3]) {
             userResult = true;
         }
 
-    if(userResult || points >= 75.0) {
+    this.setState({solutionState: solutionStateArray})
+
+    if(userResult) {
       console.log("CheckSolution: Correct");
       console.log("Points: " + points);
-      this.props.dispatch( {type: 'RESULT_OK_POINTS', payload: points} );
+      this.props.dispatch( {type: 'RESULT_OK'} );
     } else {
       console.log("Wrong");
-      this.props.dispatch( {type: 'RESULT_WRONG_POINTS', payload: points} );
+      this.props.dispatch( {type: 'RESULT_WRONG'} );
     }
 
   }
@@ -139,13 +135,17 @@ class BirdsOfPreyGameLevelTwo extends Component {
             <BirdsOfPreyAnimalCardLevelTwo item={this.state.theBirdsOfPrey[this.state.currentItem]} 
                              solutionHandler={this.checkSolution} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
           : 
             <BirdsOfPreyAnimalCardLevelTwo item={this.state.theBirdsOfPrey[this.state.currentItem]} 
                              feedbackState={true} 
                              result={this.props.currentResult} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
         );
       }
   

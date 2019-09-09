@@ -5,7 +5,7 @@ const RavensGameIntro = (props) => {
         <div className="container-fluid padding">
             <div className="row welcome text-center">
                 <div className="col-12">
-                    <h1 className="display-4">Tauben (Columbiformes)</h1>
+                    <h1 className="display-4">Rabenvögel</h1>
                     <hr/>
                 </div>
                 <div className="col-12">

@@ -5,12 +5,15 @@ import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
 import GullsGameInfo from "./GullsGameInfo";
 import GullsAnimalCardLevelTwo from "./GullsAnimalCardLevelTwo";
+import shuffle from "../../modules/Shuffle";
 
 class GullsGameLevelTwo extends Component {
   constructor(props) {
     super();
     let theData = gullsData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
+
+    let solutionStateArray = [false, false, false, false];
 
     this.state = {
       startDate: "",
@@ -18,33 +21,21 @@ class GullsGameLevelTwo extends Component {
       theGulls: theData,
       allNames: gullsNames,
       currentItem: 0,
+      solutionState: solutionStateArray 
     };
 
-//    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
   }
 
-  shuffle(a) {
-    let j, x, i,idtemp, keytemp;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[i].key = i;
-        a[i].id = i+1;
-        a[j] = x;
-        x.id = j+1;
-        x.key = j;
-    }
-    return a;
-  }
-
   componentWillUnmount() {
+    let solutionStateArray = [false, false, false, false];
+
     this.setState({
       startDate: "",
       endDate: "",
       theGulls: {},
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -56,18 +47,18 @@ class GullsGameLevelTwo extends Component {
   }
 
   resetGameState = () => {
-    // TODO: Implement a function that
-    // sets the game state back to its
-    // initial state
 
     let theData = ducksData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
+
+    let solutionStateArray = [false, false, false, false];
 
     this.setState({
       startDate: "",
       endDate: "",
       theGulls: theData,
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -78,48 +69,45 @@ class GullsGameLevelTwo extends Component {
   checkSolution = (item, userSolution) => {
 
     let userResult = false;
-
-    let nameResult = false;
-    let typeResult = false;
-    let breedingResult = false;
-    let eggsResult = false;
-
+    let solutionStateArray = [false, false, false, false];
     let points = 0.0;
 
     if (userSolution.name === item.name) {
-        nameResult = true;
+        solutionStateArray[0] = true;
         points += 25.0;
     } else {
         console.log("name wrong " + userSolution.name);
     }
 
-    if (userSolution.type === item.children) {
-        typeResult = true;
+    if (userSolution.type === item.type) {
+        solutionStateArray[1] = true;
         points += 25.0;
     } else {
-        console.log("children wrong " + userSolution.type);
+        console.log("type wrong " + userSolution.type);
     }
 
     if (userSolution.breeding === item.breeding) {
-        breedingResult = true;
+        solutionStateArray[2] = true;
         points += 25.0;
     } else {
         console.log("breeding wrong " + userSolution.breedingResult);
     }
 
     if (userSolution.eggs === item.eggs) {
-        eggsResult = true;
+        solutionStateArray[3] = true;
         points += 25.0;
     } else {
         console.log("eggs wrong " + userSolution.eggsResult);
     }
 
-    if (userSolution.name === item.name &&
-        userSolution.type === item.children &&
-        userSolution.breeding === item.breeding &&
-        userSolution.eggs === item.eggs) {
+    if (solutionStateArray[0] &&
+        solutionStateArray[1] &&
+        solutionStateArray[2] &&
+        solutionStateArray[3]) {
             userResult = true;
         }
+
+    this.setState({solutionState: solutionStateArray})
 
     if(userResult) {
       console.log("CheckSolution: Correct");
@@ -153,13 +141,17 @@ class GullsGameLevelTwo extends Component {
             <GullsAnimalCardLevelTwo item={this.state.theGulls[this.state.currentItem]} 
                              solutionHandler={this.checkSolution} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
           : 
             <GullsAnimalCardLevelTwo item={this.state.theGulls[this.state.currentItem]} 
                              feedbackState={true} 
                              result={this.props.currentResult} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
         );
       }
   

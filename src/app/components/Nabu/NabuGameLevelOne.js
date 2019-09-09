@@ -4,46 +4,38 @@ import nabuBirds from './nabudata';
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
 import NabuGameInfo from "./NabuGameInfo";
+import shuffle from "../../modules/Shuffle";
 
 class NabuGameLevelOne extends Component {
   constructor(props) {
     super();
       
     let theData = nabuBirds;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
+
+    let solutionStateArray = [false];
 
     this.state = {
       startDate: "",
       endDate: "",
       nabuData: theData,
       currentItem: 0,
+      solutionState: solutionStateArray 
     };
 
 //    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
   }
 
-  shuffle(a) {
-    let j, x, i,idtemp, keytemp;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[i].key = i;
-        a[i].id = i+1;
-        a[j] = x;
-        x.id = j+1;
-        x.key = j;
-    }
-    return a;
-  }
-
   componentWillUnmount() {
+    let solutionStateArray = [false];
+
     this.setState({
       startDate: "",
       endDate: "",
       nabuData: {},
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -55,18 +47,18 @@ class NabuGameLevelOne extends Component {
   }
 
   resetGameState = () => {
-    // TODO: Implement a function that
-    // sets the game state back to its
-    // initial state
 
     let theData = nabuBirds;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
+
+    let solutionStateArray = [false];
 
     this.setState({
       startDate: "",
       endDate: "",
       nabuData: theData,
       currentItem: 0,
+      solutionState: solutionStateArray 
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -76,13 +68,16 @@ class NabuGameLevelOne extends Component {
   // An event handler has an event parameter
   checkSolution = (item, userSolution) => {
 
+    let solutionStateArray = [false];
+
     if(userSolution === item.name) {
-      console.log("CheckSolution: Correct");
+      solutionStateArray[0] = true;
       this.props.dispatch( {type: 'RESULT_OK'} );
     } else {
-      console.log("Wrong");
       this.props.dispatch( {type: 'RESULT_WRONG'} );
     }
+
+    this.setState({solutionState: solutionStateArray})
 
   }
 
@@ -107,13 +102,17 @@ class NabuGameLevelOne extends Component {
             <NabuAnimalCard item={this.state.nabuData[this.state.currentItem]} 
                             inputData={this.state.nabuData}
                             solutionHandler={this.checkSolution} 
-                            continueHandler={this.advanceHandler}/>
+                            continueHandler={this.advanceHandler}
+                            userSolution={this.state.solutionState}
+                            />
           : 
             <NabuAnimalCard item={this.state.nabuData[this.state.currentItem]} 
                             feedbackState={true} 
                             inputData={this.state.nabuData}
                             result={this.props.currentResult} 
-                            continueHandler={this.advanceHandler}/>
+                            continueHandler={this.advanceHandler}
+                            userSolution={this.state.solutionState}
+                            />
         );
       }
   

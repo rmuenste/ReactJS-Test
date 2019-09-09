@@ -5,7 +5,7 @@ const Carousel = () => {
         <div id="slides" className="carousel slide" data-ride="carousel">
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                <img src="images/bench20.jpg" className="img-fluid" />
+                <img src="assets/images/bench20.jpg" className="img-fluid" />
                 <div className="carousel-caption">
                     <h1 className="display-2">Jagdakademie</h1>
                     <h3>Wissen ist Macht</h3>
