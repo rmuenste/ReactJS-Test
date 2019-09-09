@@ -72,7 +72,6 @@ class NabuAnimalCard extends Component {
   handleOnChange = (event) => {
     // destructure the object
     const {name, value, type, checked} = event.target;
-    //console.log("NabuAnimalCardHandleChange!" + " " + name);
     type === "checkBox" ? this.setState({[name]: checked}) :
     this.setState({
       [name]: event.target.value
@@ -81,6 +80,7 @@ class NabuAnimalCard extends Component {
 
   generateQuestionsForm = () => {
 
+    // Here the options data for the GameSelectElement is generated
     let choicesArray = this.props.inputData.map(
        (item) => (<option key={item.key}>{item.name}</option>));
 
