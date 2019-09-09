@@ -18,11 +18,21 @@ class Navbar extends React.Component {
             <li className="nav-item">
                 <NavLink to={"/"} exact className="nav-link">Home</NavLink>
             </li>
-            <li className="nav-item">
-                <NavLink to={"/gezeiten"} className="nav-link">J-Zeit</NavLink>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Jagdrecht 
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <NavLink to={"/gezeiten"} className="dropdown-item">Jagdzeiten</NavLink>
+              </div>
             </li>
-            <li className="nav-item">
-                <NavLink to={"/nabu"} className="nav-link">Nabu</NavLink>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Naturschutz 
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <NavLink to={"/nabu"} className="dropdown-item">Nabu</NavLink>
+              </div>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,7 +73,6 @@ class Navbar extends React.Component {
               </div>
             </li>
           </ul>
-
         </div>
       </div>
     </nav>
