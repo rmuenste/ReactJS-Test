@@ -288,4 +288,16 @@ const nabuBirds = [
     }
 ];
 
+const solutionArrayPrototype = [false];
+
+export const controllerStatePrototype = {
+    currentItem: 0,
+    solutionState: solutionArrayPrototype
+}
+
+export const viewStatePrototype = {
+      animalName: "",
+      fieldNames: ["animalName"]
+}
+
 export default nabuBirds;

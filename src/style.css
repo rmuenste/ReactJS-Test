@@ -298,7 +298,8 @@ figure {
 
 
 .my-select-success {
-  background-color: lightblue;
+  background-color: #80d66e;
+  box-shadow: 0 0 0 0.2rem #5cb85c;
 }
 
 /*
@@ -307,8 +308,8 @@ figure {
 */
 
 .my-select-success:disabled {
-  background-color: lightblue;
-  box-shadow: 0 0 0 0.2rem #798A56;
+  background-color: #98ff83;
+  box-shadow: 0 0 0 0.2rem #5cb85c;
 }
 
 .card-body {

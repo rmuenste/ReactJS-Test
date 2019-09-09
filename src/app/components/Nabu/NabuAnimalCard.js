@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
 import { shuffleNames } from "../../modules/Shuffle";
+import GameSelectElement from "../GameSelectElement/GameSelectElement";
 
 class NabuAnimalCard extends Component {
   constructor(props) {
@@ -16,14 +17,20 @@ class NabuAnimalCard extends Component {
     this.state = {
       animalName: "",
       endDate: "",
-      choices: namesElementArray
+      choices: namesElementArray,
+      fieldNames: ["animalName"]
     };
 
   }
 
+  handleContinue = () => {
+    console.log("continueHandler!");
+    console.log(this.props);
+    this.props.continueHandler();
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.item.name !== prevProps.item.name) {
-
       let namesArray = this.generateRandomAnswers(this.props);
       namesArray = shuffleNames(namesArray);
       let namesElementArray = namesArray.map(
@@ -31,16 +38,12 @@ class NabuAnimalCard extends Component {
       );
 
       this.setState({
-        choices: namesElementArray
+        animalName: "",
+        endDate: "",
+        choices: namesElementArray,
+        fieldNames: ["animalName"]
       });
-
     }
-  }
-
-  handleContinue = () => {
-    console.log("continueHandler!");
-    console.log(this.props);
-    this.props.continueHandler();
   }
 
   handleSolution = () => {
@@ -74,40 +77,55 @@ class NabuAnimalCard extends Component {
     this.setState({
       [name]: event.target.value
     });
-//    }, () => {
-//      console.log("Name: " + this.state.animalName);
-//    });
+  }
+
+  generateQuestionsForm = () => {
+
+    let choicesArray = this.props.inputData.map(
+       (item) => (<option key={item.key}>{item.name}</option>));
+
+    let allDataArray = [choicesArray];
+
+    let headerArray = ["Tierart auswählen"];
+
+    let solutionArray = [this.props.item.name];
+
+    let elementDisabled = this.props.showTheOverlay || !this.props.gameRunning;
+
+    if(this.props.showTheOverlay) {
+      headerArray = [""];
+    }
+
+    let selectElementArray = this.state.fieldNames.map( (itemName, index) => {
+      return (
+      <GameSelectElement isDisabled={elementDisabled} 
+                          name={itemName}
+                          key={index}
+                          value={(this.props.showTheOverlay) ? solutionArray[index] : this.state[itemName]}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={allDataArray[index]}
+                          selectHeader={headerArray[index]}
+                          showResult={this.props.showTheOverlay}
+                          userSolution={this.props.userSolution[index]}
+                          />
+      );
+    });
+
+    let questionsForm = (
+      <form>
+        <div className="form-group">
+          {selectElementArray}
+        </div>
+      </form>
+    );
+
+    return questionsForm;
   }
 
   // render
   render() {
 
-    let selectClass = "custom-select";
-    if (this.props.showTheOverlay) {
-      if (this.props.reduxResult === false)
-        selectClass = "custom-select my-select";
-      else
-        selectClass = "custom-select my-select-success";
-    }
-
-    let selectComponent = (
-    <select className={selectClass} id="exampleFormControlSelect1"  
-                      disabled={this.props.showTheOverlay}
-                      value={this.state.animalName}
-                      name="animalName" 
-                      onChange={this.handleOnChange}>
-    <option>Tierart auswählen</option>
-    {this.state.choices}
-    </select>);
-
-    if (this.props.showTheOverlay) {
-    selectComponent = (
-    <select className={selectClass} id="exampleFormControlSelect1"  
-                      disabled={this.props.showTheOverlay}
-                      >
-    <option>{this.props.item.name}</option>
-    </select>);
-    }
+    let questionsForm = this.generateQuestionsForm();
 
     return (
 			<div className="card">
@@ -115,14 +133,10 @@ class NabuAnimalCard extends Component {
 				<img src={this.props.item.imgPath} className="card-img-top"/>
 				<div className="card-body">
 					<h4 className="card-title">Tierart:</h4>
-						<form>
-							<div className="form-group">
-                {selectComponent}
-							</div>
-						</form>
-                {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
-                <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
-                }
+          {questionsForm}
+          {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
+          <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
+          }
 				</div>
 			</div>      
       );

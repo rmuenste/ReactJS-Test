@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
+import GameSelectElement from "../GameSelectElement/GameSelectElement";
 
 class GullsAnimalCard extends Component {
   constructor() {
@@ -9,19 +10,9 @@ class GullsAnimalCard extends Component {
       animalName: "",
       duckType: "",
       breeding: "",
-      eggs: ""
+      eggs: "",
+      fieldNames: ["animalName", "duckType", "breeding", "eggs"]
     };
-  }
-
-  shuffle = (a) => {
-    let j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
   }
 
   handleContinue = () => {
@@ -30,26 +21,25 @@ class GullsAnimalCard extends Component {
     this.props.continueHandler();
   }
 
-  handleSolution = () => {
-    let solutionObject =  {
-        name: this.state.animalName,
-        type: this.state.duckType,
-        breeding: this.state.breeding,
-        eggs: this.state.eggs
-    };
+  componentDidUpdate(prevProps) {
+    // Clean the state when a new item is displayed
+    if (this.props.item.name !== prevProps.item.name) {
+      this.setState({
+        animalName: "",
+        duckType: "",
+        breeding: "",
+        eggs: "",
+        fieldNames: ["animalName", "duckType", "breeding", "eggs"]
+      });
+    }
+  }
 
+  handleSolution = () => {
     this.props.solutionHandler(this.props.item, {
         name: this.state.animalName,
         type: this.state.duckType,
         breeding: this.state.breeding,
         eggs: this.state.eggs
-    });
-
-    this.setState({
-      animalName: "",
-      duckType: "",
-      breeding: "",
-      eggs: ""
     });
   }
 
@@ -63,14 +53,71 @@ class GullsAnimalCard extends Component {
     });
   }
 
-  // render
-  render() {
-//    let namesArray = [...this.props.item.choices, this.props.item.name];
-//    namesArray = this.shuffle(namesArray);
+  generateQuestionsForm = () => {
+
     let choicesArray = this.props.inputData.map(
        (item) => (<option key={item.key}>{item.name}</option>));
 
     let answersArray = [(<option key="1">Nestflüchter</option>), (<option key="2">Nesthocker</option>), (<option key="3">Platzhocker</option>)]; 
+
+    let breedingArray = [(<option key="1">Bodenbrüter</option>), (<option key="2">Baumbrüter</option>), (<option key="3">Höhlenbrüter</option>)]; 
+
+    let eggsArray = [(<option key="1">{this.props.item.eggs}</option>)]; 
+
+    let elementDisabled = this.props.showTheOverlay;
+
+    let allDataArray = [choicesArray, answersArray, breedingArray, eggsArray];
+
+    let headerArray = ["Möwenart", "Ablegetyp", "Brutort", "Anzahl Eier?"];
+
+    let solutionArray = [this.props.item.name, this.props.item.type, this.props.item.breeding, this.props.item.eggs];
+
+    if(this.props.showTheOverlay) {
+      headerArray = ["", "", "", ""];
+    }
+
+    let selectElementArray = this.state.fieldNames.map( (itemName, index) => {
+      return (
+      <GameSelectElement isDisabled={elementDisabled} 
+                          name={itemName}
+                          value={(this.props.showTheOverlay) ? solutionArray[index] : this.state[itemName]}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={allDataArray[index]}
+                          selectHeader={headerArray[index]}
+                          showResult={this.props.showTheOverlay}
+                          userSolution={this.props.userSolution[index]}
+                          />
+      );
+    });
+
+    let questionsForm = (
+      <form>
+        <div className="form-group row">
+          <div className="col-sm-6">
+            {selectElementArray[0]}
+          </div>
+          <div className="col-sm-6">
+            {selectElementArray[1]}
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-6">
+            {selectElementArray[2]}
+          </div>
+          <div className="col-sm-6">
+            {selectElementArray[3]}
+          </div>
+        </div>
+      </form>
+    );
+
+    return questionsForm;
+  }
+
+  // render
+  render() {
+
+    let questionsForm = this.generateQuestionsForm();
 
     return (
 			<div className="card">
@@ -78,57 +125,10 @@ class GullsAnimalCard extends Component {
 				<img src={this.props.item.imgPath} className="card-img-top"/>
 				<div className="card-body">
 					<h4 className="card-title">Fragen:</h4>
-						<form>
-							<div className="form-group row">
-                                <div className="col-sm-6">
-                                <select className="form-control" id="exampleFormControlSelect1"  
-                                        disabled={false}
-                                        value={this.state.animalName}
-                                        name="animalName" 
-                                        onChange={this.handleOnChange}>
-                                        <option>Tierart auswählen</option>
-                                        {choicesArray}
-                                </select>
-                                </div>
-                                <div className="col-sm-6">
-                                <select className="form-control" id="exampleFormControlSelect1"  
-                                        disabled={false}
-                                        value={this.state.duckType}
-                                        name="duckType" 
-                                        onChange={this.handleOnChange}>
-                                        <option>Ablegetyp auswählen</option>
-                                        {answersArray}
-                                </select>
-                                </div>
-                            </div>
-							<div className="form-group row">
-                                <div className="col-sm-6">
-                                <select className="form-control" id="exampleFormControlSelect1"  
-                                        disabled={false}
-                                        value={this.state.breeding}
-                                        name="breeding" 
-                                        onChange={this.handleOnChange}>
-                                        <option>Brütet wo?</option>
-                                        <option>Bodenbrüter</option>
-                                        <option>Baumbrüter</option>
-                                        <option>Höhlenbrüter</option>
-                                </select>
-                                </div>
-                                <div className="col-sm-6">
-                                <select className="form-control" id="exampleFormControlSelect1"  
-                                        disabled={false}
-                                        value={this.state.eggs}
-                                        name="eggs" 
-                                        onChange={this.handleOnChange}>
-                                        <option>Wieviele Eier?</option>
-                                        <option>{this.props.item.eggs}</option>
-                                </select>
-                                </div>
-                            </div>
-						</form>
-                {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
-                <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
-                }
+          {questionsForm}
+          {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
+          <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
+          }
 				</div>
 			</div>      
       );

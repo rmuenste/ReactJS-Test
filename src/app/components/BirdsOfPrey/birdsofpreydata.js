@@ -186,7 +186,8 @@ export const statePrototype = {
     name: "",
     flightType: "",
     breeding: "",
-    eggs: ""
+    eggs: "",
+    fieldNames: ["name", "flightType", "breeding", "eggs"]
 }
 
 export const birdsofpreyNames = [

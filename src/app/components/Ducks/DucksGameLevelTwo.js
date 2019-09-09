@@ -49,9 +49,6 @@ class DucksGameLevelTwo extends Component {
   }
 
   resetGameState = () => {
-    // TODO: Implement a function that
-    // sets the game state back to its
-    // initial state
 
     let theData = ducksData;
     theData = shuffle(theData);
