@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
+import GameSelectElement from "../GameSelectElement/GameSelectElement";
 
 class SeedsAnimalCard extends Component {
   constructor() {
@@ -8,18 +9,8 @@ class SeedsAnimalCard extends Component {
     this.state = {
       animalName: "",
       endDate: "",
+      fieldNames: ["animalName"]
     };
-  }
-
-  shuffle = (a) => {
-    let j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
   }
 
   handleContinue = () => {
@@ -32,7 +23,8 @@ class SeedsAnimalCard extends Component {
     this.props.solutionHandler(this.props.item, this.state.animalName);
 
     this.setState({
-      animalName: ""
+      animalName: "",
+      fieldNames: ["animalName"]
     });
   }
 
@@ -40,27 +32,65 @@ class SeedsAnimalCard extends Component {
   handleOnChange = (event) => {
     // destructure the object
     const {name, value, type, checked} = event.target;
-    //console.log("NabuAnimalCardHandleChange!" + " " + name);
     type === "checkBox" ? this.setState({[name]: checked}) :
     this.setState({
       [name]: event.target.value
     });
-//    }, () => {
-//      console.log("Name: " + this.state.animalName);
-//    });
+  }
+
+  generateQuestionsForm = () => {
+
+    let choicesArray = this.props.inputData.map(
+       (item) => (<option key={item.key}>{item.name}</option>));
+
+    let elementDisabled = this.props.showTheOverlay;
+
+    let allDataArray = [choicesArray];
+
+    let headerArray = ["Saatgut auswählen"];
+
+//    let solutionArray = [this.props.item.name, this.props.item.type, this.props.item.breeding, this.props.item.eggs];
+
+    if(this.props.showTheOverlay) {
+      headerArray = ["", "", "", ""];
+    }
+
+    let selectElementArray = this.state.fieldNames.map( (itemName, index) => {
+      return (
+      <GameSelectElement isDisabled={elementDisabled} 
+                          name={itemName}
+                          value={(this.props.showTheOverlay) ? solutionArray[index] : this.state[itemName]}
+                          changeHandler={this.handleOnChange}
+                          selectOptions={allDataArray[index]}
+                          selectHeader={headerArray[index]}
+                          showResult={this.props.showTheOverlay}
+                          userSolution={this.props.userSolution[index]}
+                          />
+      );
+    });
+
+    let questionsForm = (
+      <form>
+        <div className="form-group">
+                      <select className="form-control" id="exampleFormControlSelect1"  
+                              disabled={false}
+                              value={this.state.animalName}
+                              name="animalName" 
+                              onChange={this.handleOnChange}>
+            <option>Saatgut auswählen</option>
+            {choicesArray}
+        </select>
+        </div>
+      </form>
+    );
+
+    return questionsForm;
   }
 
   // render
   render() {
-//    let namesArray = [...this.props.item.choices, this.props.item.name];
-//    namesArray = this.shuffle(namesArray);
-    let choicesArray = this.props.inputData.map(
-       (item) => (<option key={item.key}>{item.name}</option>));
-//     [
-//		(<option key="0">1</option>),
-//		(<option key="1">2</option>),
-//		(<option key="2">3</option>)
-//    ];
+
+    let questionsForm = this.generateQuestionsForm();
 
     return (
 			<div className="card">
@@ -68,21 +98,10 @@ class SeedsAnimalCard extends Component {
 				<img src={this.props.item.imgPath} className="card-img-top"/>
 				<div className="card-body">
 					<h4 className="card-title">Saatgut:</h4>
-						<form>
-							<div className="form-group">
-                            <select className="form-control" id="exampleFormControlSelect1"  
-                                    disabled={false}
-                                    value={this.state.animalName}
-                                    name="animalName" 
-                                    onChange={this.handleOnChange}>
-									<option>Saatgut auswählen</option>
-                  {choicesArray}
-							</select>
-							</div>
-						</form>
-                {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
-                <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
-                }
+          {questionsForm}
+          {(!this.props.showTheOverlay) ? <button className="btn btn-primary btn-block" onClick={this.handleSolution} disabled={!this.props.gameRunning}>Fertig!</button> :
+          <button className="btn btn-primary btn-block" onClick={this.handleContinue} disabled={!this.props.gameRunning}>Weiter!</button>
+          }
 				</div>
 			</div>      
       );
