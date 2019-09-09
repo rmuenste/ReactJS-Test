@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import ChoiceGameView from "./ChoiceGameView";
-import nabuBirds from '../Nabu/nabudata';
-import { controllerStatePrototype } from '../Nabu/nabudata';
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
 import NabuGameInfo from "../Nabu/NabuGameInfo";
@@ -12,10 +10,10 @@ class ChoiceGameController extends Component {
   constructor(props) {
     super();
       
-    let theData = nabuBirds;
+    let theData = props.gameDataJson;
     theData = shuffle(theData);
 
-    this.state = {nabuData: theData, ...controllerStatePrototype};
+    this.state = {nabuData: theData, ...props.controllerStatePrototype};
 
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
   }
@@ -23,7 +21,7 @@ class ChoiceGameController extends Component {
   componentWillUnmount() {
     this.setState({
       nabuData: {},
-      ...controllerStatePrototype
+      ...this.props.controllerStatePrototype
     });
     this.props.dispatch({type: 'RESET'});
   }
@@ -35,12 +33,13 @@ class ChoiceGameController extends Component {
 
   resetGameState = () => {
 
-    let theData = nabuBirds;
+    let theData = this.props.gameDataJson;
+
     theData = shuffle(theData);
 
     this.setState({
       nabuData: theData,
-      ...controllerStatePrototype
+      ...this.props.controllerStatePrototype
     });
 
     this.props.dispatch({type: 'RESET'});

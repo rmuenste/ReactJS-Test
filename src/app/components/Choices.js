@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import ChoiceGameController from "./ChoiceGame/ChoiceGameController";
+import { controllerStatePrototype } from './Nabu/nabudata';
 import NabuGameIntro from "./Nabu/NabuGameIntro";
 import {connect} from 'react-redux';
+import nabuBirds from './Nabu/nabudata';
 
 class Choices extends Component {
   constructor(props) {
@@ -21,7 +23,10 @@ class Choices extends Component {
   }
 
   render () {
-    let GameComponent = (<ChoiceGameController />);
+    let GameComponent = (<ChoiceGameController 
+                                               gameDataJson={nabuBirds}
+                                               controllerStatePrototype={controllerStatePrototype}
+                         />);
 
     return (
       <div className="container-fluid padding">
