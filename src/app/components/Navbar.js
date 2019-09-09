@@ -18,6 +18,9 @@ class Navbar extends React.Component {
             <li className="nav-item">
                 <NavLink to={"/"} exact className="nav-link">Home</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink to={"/choices"} exact className="nav-link">Choices</NavLink>
+            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Jagdrecht 

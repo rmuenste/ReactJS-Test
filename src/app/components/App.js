@@ -13,6 +13,7 @@ import Pigeons from './Pigeons';
 import Ravens from './Ravens';
 import Chicken from './Chicken';
 import Seeds from './Seeds';
+import Choices from './Choices';
 //import Breeding from './Breeding';
 import BirdsOfPrey from './BirdsOfPrey';
 import {BrowserRouter as Router, Route} from "react-router-dom";
@@ -41,6 +42,7 @@ class App extends React.Component {
             <Route path="/ravens" component={Ravens}/>
             <Route path="/seeds" component={Seeds}/>
             <Route path="/birdsofprey" component={BirdsOfPrey}/>
+            <Route path="/choices" component={Choices}/>
             <hr className="my-4"/>
             <SocialMediaInfo />
             <Footer />
@@ -50,5 +52,7 @@ class App extends React.Component {
   }
 
 }
+
+//                <NavLink to={"/choices"} exact className="nav-link">Choices</NavLink>
 
 export default App;
