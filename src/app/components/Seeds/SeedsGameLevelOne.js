@@ -1,50 +1,31 @@
 import React, {Component} from "react";
 import SeedsAnimalCard from "./SeedsAnimalCard";
 import seedsData from './seedsdata';
-import { seedsNames } from './seedsdata';
+import { controllerStatePrototype } from './seedsdata';
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
 import SeedsGameInfo from "./SeedsGameInfo";
+import shuffle from "../../modules/Shuffle";
 
 class SeedsGameLevelOne extends Component {
   constructor(props) {
     super();
     let theData = seedsData;
-    theData = this.shuffle(theData);
+
+    theData = shuffle(theData);
 
     this.state = {
-      startDate: "",
-      endDate: "",
       theSeeds: theData,
-      allNames: seedsNames,
-      currentItem: 0,
+      ...controllerStatePrototype
     };
 
-//    props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
     props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: theData.length} );
-  }
-
-  shuffle(a) {
-    let j, x, i,idtemp, keytemp;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[i].key = i;
-        a[i].id = i+1;
-        a[j] = x;
-        x.id = j+1;
-        x.key = j;
-    }
-    return a;
   }
 
   componentWillUnmount() {
     this.setState({
-      startDate: "",
-      endDate: "",
       theSeeds: {},
-      currentItem: 0,
+      ...controllerStatePrototype
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -56,18 +37,13 @@ class SeedsGameLevelOne extends Component {
   }
 
   resetGameState = () => {
-    // TODO: Implement a function that
-    // sets the game state back to its
-    // initial state
 
     let theData = seedsData;
-    theData = this.shuffle(theData);
+    theData = shuffle(theData);
 
     this.setState({
-      startDate: "",
-      endDate: "",
       theSeeds: theData,
-      currentItem: 0,
+      ...controllerStatePrototype
     });
 
     this.props.dispatch({type: 'RESET'});
@@ -77,14 +53,16 @@ class SeedsGameLevelOne extends Component {
   // An event handler has an event parameter
   checkSolution = (item, userSolution) => {
 
+    let solutionStateArray = [false];
+
     if(userSolution === item.name) {
-      console.log("CheckSolution: Correct");
+      solutionStateArray[0] = true;
       this.props.dispatch( {type: 'RESULT_OK'} );
     } else {
-      console.log("Wrong");
       this.props.dispatch( {type: 'RESULT_WRONG'} );
     }
 
+    this.setState({solutionState: solutionStateArray})
   }
 
   advanceHandler = () => {
@@ -97,24 +75,28 @@ class SeedsGameLevelOne extends Component {
   }
 
   render() {
-      let ducksCard = "";
+      let seedsCard = "";
       if (this.props.progress === this.props.totalQuestions && !this.props.showTheOverlay) {
-        ducksCard = (
+        seedsCard = (
           <ResultCard />
         );
       } else {
-        ducksCard = (
+        seedsCard = (
           (!this.props.showTheOverlay) ?
             <SeedsAnimalCard item={this.state.theSeeds[this.state.currentItem]} 
                              solutionHandler={this.checkSolution} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
           : 
             <SeedsAnimalCard item={this.state.theSeeds[this.state.currentItem]} 
                              feedbackState={true} 
                              result={this.props.currentResult} 
                              inputData={this.state.allNames} 
-                             continueHandler={this.advanceHandler}/>
+                             continueHandler={this.advanceHandler}
+                             userSolution={this.state.solutionState}
+                             />
         );
       }
   
@@ -125,7 +107,7 @@ class SeedsGameLevelOne extends Component {
                   <SeedsGameInfo resetHandler={this.resetGameState} />
               </div>
               <div className="col-md-4">
-                  {ducksCard}
+                  {seedsCard}
               </div>
           </div>
         </div>

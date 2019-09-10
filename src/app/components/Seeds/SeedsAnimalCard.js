@@ -8,7 +8,6 @@ class SeedsAnimalCard extends Component {
     super();
     this.state = {
       animalName: "",
-      endDate: "",
       fieldNames: ["animalName"]
     };
   }
@@ -49,7 +48,7 @@ class SeedsAnimalCard extends Component {
 
     let headerArray = ["Saatgut auswählen"];
 
-//    let solutionArray = [this.props.item.name, this.props.item.type, this.props.item.breeding, this.props.item.eggs];
+    let solutionArray = [this.props.item.name];
 
     if(this.props.showTheOverlay) {
       headerArray = ["", "", "", ""];
@@ -58,6 +57,7 @@ class SeedsAnimalCard extends Component {
     let selectElementArray = this.state.fieldNames.map( (itemName, index) => {
       return (
       <GameSelectElement isDisabled={elementDisabled} 
+                          key={index}
                           name={itemName}
                           value={(this.props.showTheOverlay) ? solutionArray[index] : this.state[itemName]}
                           changeHandler={this.handleOnChange}
@@ -69,17 +69,19 @@ class SeedsAnimalCard extends Component {
       );
     });
 
+//                <select className="form-control" id="exampleFormControlSelect1"  
+//                        disabled={false}
+//                        value={this.state[this.state.fieldNames[0]]}
+//                        name={this.state.fieldNames[0]} 
+//                        onChange={this.handleOnChange}>
+//      <option>Saatgut auswählen</option>
+//      {choicesArray}
+//  </select>
+
     let questionsForm = (
       <form>
         <div className="form-group">
-                      <select className="form-control" id="exampleFormControlSelect1"  
-                              disabled={false}
-                              value={this.state.animalName}
-                              name="animalName" 
-                              onChange={this.handleOnChange}>
-            <option>Saatgut auswählen</option>
-            {choicesArray}
-        </select>
+          {selectElementArray}
         </div>
       </form>
     );

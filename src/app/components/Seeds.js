@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import SeedsGameLevelOne from "./Seeds/SeedsGameLevelOne";
-import SeedsGameLevelTwo from "./Seeds/SeedsGameLevelTwo";
 import {connect} from 'react-redux';
 import SeedsGameIntro from "./Seeds/SeedsGameIntro";
 
@@ -22,12 +21,7 @@ class Seeds extends Component {
   }
 
   render () {
-    let GameComponent = "";
-    if (this.props.level == 1) {
-        GameComponent = (<SeedsGameLevelOne setLevelHandler={this.gameLevelChanged}/>);
-    } else if (this.props.level == 2) {
-        GameComponent = (<SeedsGameLevelTwo setLevelHandler={this.gameLevelChanged}/>);
-    }
+    let GameComponent = (<SeedsGameLevelOne setLevelHandler={this.gameLevelChanged}/>);
 
     return (
       <div className="container-fluid padding">

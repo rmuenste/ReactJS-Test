@@ -297,5 +297,12 @@ export const seedsNames = [
     },
 ]
 
+    let solutionStateArray = [false];
+
+export const controllerStatePrototype = {
+  allNames: seedsNames,
+  currentItem: 0,
+  solutionState: solutionStateArray 
+};
 
 export default seedsData;

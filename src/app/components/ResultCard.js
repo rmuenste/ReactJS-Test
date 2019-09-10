@@ -11,16 +11,16 @@ class ResultCard extends React.Component {
     let percentage = 100.0 *  this.props.correctAnswers / this.props.totalQuestions;
     let percentageString = percentage + "%";
 
-    let medalLink = "images/lemon.png";
+    let medalLink = "assets/images/lemon.png";
 
     if(percentage > 90.0) {
-        medalLink = "images/goldmedal.png";
+        medalLink = "assets/images/goldmedal.png";
     }
     else if(percentage > 75.0) {
-        medalLink = "images/silvermedal.png";
+        medalLink = "assets/images/silvermedal.png";
     }
     else if(percentage > 65.0) {
-        medalLink = "images/bronzemedal.png";
+        medalLink = "assets/images/bronzemedal.png";
     }
 
     let pointsResult = null;
