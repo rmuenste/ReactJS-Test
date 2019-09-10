@@ -297,17 +297,18 @@ export const seedsNames = [
     },
 ]
 
-let solutionStateArray = [false];
+let testFieldNames = ["name"];
 
 export const controllerStatePrototype = {
   allNames: seedsNames,
   currentItem: 0,
-  solutionState: solutionStateArray 
+  solutionState: [false], 
+  fieldNames: testFieldNames
 };
 
 export const viewStatePrototype = {
-    seedsName: "",
-    fieldNames: ["seedsName"]
+    name: "",
+    fieldNames: testFieldNames
 };
 
 export default seedsData;

@@ -17,7 +17,12 @@ class SeedsAnimalCard extends Component {
   }
 
   handleSolution = () => {
-    this.props.solutionHandler(this.props.item, this.state[this.state.fieldNames[0]]);
+    let solutionObject = {};
+
+    for (let field of this.state.fieldNames) 
+      solutionObject[field] = this.state[field];
+    
+    this.props.solutionHandler(solutionObject);
 
     this.setState({...viewStatePrototype});
   }

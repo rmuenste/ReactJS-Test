@@ -50,15 +50,19 @@ class SeedsGameLevelOne extends Component {
   }
 
   // An event handler has an event parameter
-  checkSolution = (item, userSolution) => {
+  checkSolution = (userSolution) => {
+
+    const item = this.state.theSeeds[this.state.currentItem];
 
     let solutionStateArray = [false];
 
-    if(userSolution === item.name) {
-      solutionStateArray[0] = true;
-      this.props.dispatch( {type: 'RESULT_OK'} );
-    } else {
-      this.props.dispatch( {type: 'RESULT_WRONG'} );
+    for(let [idx, field] in this.state.fieldNames.entries()) {
+      if(userSolution[field] === item[field]) {
+        solutionStateArray[idx] = true;
+        this.props.dispatch( {type: 'RESULT_OK'} );
+      } else {
+        this.props.dispatch( {type: 'RESULT_WRONG'} );
+      }
     }
 
     this.setState({solutionState: solutionStateArray})
