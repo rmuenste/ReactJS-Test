@@ -288,11 +288,9 @@ const nabuBirds = [
     }
 ];
 
-const solutionArrayPrototype = [false];
-
 export const controllerStatePrototype = {
     currentItem: 0,
-    solutionState: solutionArrayPrototype
+    solutionState: [false]
 }
 
 export const viewStatePrototype = {
