@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FeedbackOverlay from "../FeedbackOverlay";
 import GameSelectElement from "../GameSelectElement/GameSelectElement";
+import { viewStatePrototype } from "./seedsdata";
 
 class SeedsAnimalCard extends Component {
   constructor() {
     super();
-    this.state = {
-      animalName: "",
-      fieldNames: ["animalName"]
-    };
+    this.state = {...viewStatePrototype};
   }
 
   handleContinue = () => {
@@ -19,12 +17,9 @@ class SeedsAnimalCard extends Component {
   }
 
   handleSolution = () => {
-    this.props.solutionHandler(this.props.item, this.state.animalName);
+    this.props.solutionHandler(this.props.item, this.state[this.state.fieldNames[0]]);
 
-    this.setState({
-      animalName: "",
-      fieldNames: ["animalName"]
-    });
+    this.setState({...viewStatePrototype});
   }
 
   // An event handler has an event parameter
@@ -68,15 +63,6 @@ class SeedsAnimalCard extends Component {
                           />
       );
     });
-
-//                <select className="form-control" id="exampleFormControlSelect1"  
-//                        disabled={false}
-//                        value={this.state[this.state.fieldNames[0]]}
-//                        name={this.state.fieldNames[0]} 
-//                        onChange={this.handleOnChange}>
-//      <option>Saatgut auswählen</option>
-//      {choicesArray}
-//  </select>
 
     let questionsForm = (
       <form>

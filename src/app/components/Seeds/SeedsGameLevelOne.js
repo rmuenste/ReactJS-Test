@@ -32,7 +32,6 @@ class SeedsGameLevelOne extends Component {
   }
 
   componentDidMount() {
-    console.log("Component did mount maincontent");
     this.props.dispatch( {type: 'SET_TOTAL_QUESTIONS', payload: this.state.theSeeds.length} );
   }
 
@@ -91,8 +90,7 @@ class SeedsGameLevelOne extends Component {
                              />
           : 
             <SeedsAnimalCard item={this.state.theSeeds[this.state.currentItem]} 
-                             feedbackState={true} 
-                             result={this.props.currentResult} 
+                             solutionHandler={this.checkSolution} 
                              inputData={this.state.allNames} 
                              continueHandler={this.advanceHandler}
                              userSolution={this.state.solutionState}
