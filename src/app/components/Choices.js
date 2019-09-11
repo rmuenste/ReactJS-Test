@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import ChoiceGameController from "./ChoiceGame/ChoiceGameController";
-import { controllerStatePrototype } from './Nabu/nabudata';
-import NabuGameIntro from "./Nabu/NabuGameIntro";
+import { controllerStatePrototype } from './Seeds/seedsdata';
+import SeedsGameIntro from "./Seeds/SeedsGameIntro";
 import {connect} from 'react-redux';
-import nabuBirds from './Nabu/nabudata';
+import seedsData from "./Seeds/seedsdata";
 
 class Choices extends Component {
   constructor(props) {
@@ -24,13 +24,13 @@ class Choices extends Component {
 
   render () {
     let GameComponent = (<ChoiceGameController 
-                                               gameDataJson={nabuBirds}
+                                               gameDataJson={seedsData}
                                                controllerStatePrototype={controllerStatePrototype}
                          />);
 
     return (
       <div className="container-fluid padding">
-          <NabuGameIntro />
+          <SeedsGameIntro />
           {GameComponent}
       </div>
     );

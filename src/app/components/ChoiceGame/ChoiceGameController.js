@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import ChoiceGameView from "./ChoiceGameView";
 import { connect } from 'react-redux';
 import ResultCard from '../ResultCard';
-import NabuGameInfo from "../Nabu/NabuGameInfo";
-import NabuAnimalCard from "../Nabu/NabuAnimalCard";
+import SeedsGameInfo from "../Seeds/SeedsGameInfo";
+import SeedsAnimalCard from "../Seeds/SeedsAnimalCard";
 import shuffle from "../../modules/Shuffle";
 
 class ChoiceGameController extends Component {
@@ -47,15 +47,20 @@ class ChoiceGameController extends Component {
   }
 
   // An event handler has an event parameter
-  checkSolution = (item, userSolution) => {
-    // Set the solution state array
+  checkSolution = (userSolution) => {
+
+    // get the current item
+    const item = this.state.nabuData[this.state.currentItem];
+
     let solutionStateArray = [false];
 
-    if(userSolution === item.name) {
-      solutionStateArray[0] = true;
-      this.props.dispatch( {type: 'RESULT_OK'} );
-    } else {
-      this.props.dispatch( {type: 'RESULT_WRONG'} );
+    for(let [idx, field] of this.state.fieldNames.entries()) {
+      if(userSolution[field] === item[field]) {
+        solutionStateArray[idx] = true;
+        this.props.dispatch( {type: 'RESULT_OK'} );
+      } else {
+        this.props.dispatch( {type: 'RESULT_WRONG'} );
+      }
     }
 
     this.setState({solutionState: solutionStateArray})
@@ -79,14 +84,14 @@ class ChoiceGameController extends Component {
       } else {
         nabuCard = (
           (!this.props.showTheOverlay) ?
-            <NabuAnimalCard item={this.state.nabuData[this.state.currentItem]} 
+            <SeedsAnimalCard item={this.state.nabuData[this.state.currentItem]} 
                             inputData={this.state.nabuData}
                             solutionHandler={this.checkSolution} 
                             continueHandler={this.advanceHandler}
                             userSolution={this.state.solutionState}
                             />
           : 
-            <NabuAnimalCard item={this.state.nabuData[this.state.currentItem]} 
+            <SeedsNabuAnimalCard item={this.state.nabuData[this.state.currentItem]} 
                             feedbackState={true} 
                             inputData={this.state.nabuData}
                             result={this.props.currentResult} 
@@ -100,7 +105,7 @@ class ChoiceGameController extends Component {
         <div>
           <div className="row text-center padding">
             <div className="col-md-4">
-              <NabuGameInfo resetHandler={this.resetGameState} />
+              <SeedsGameInfo resetHandler={this.resetGameState} />
             </div>
             <div className="col-md-4">
               {nabuCard}
